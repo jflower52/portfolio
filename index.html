@@ -2,289 +2,84 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PORTFOLIO</title>
     <!-- CSS스타일 -->
     <link rel="stylesheet" href="./CSS/style01.css" />
     <!-- SWIPER -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <!-- AOS 라이브러리 불러오기-->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    <title>PORTFOLIO</title>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
+
   <body>
-    <!-- 메뉴 -->
     <header>
-      <nav>
+      <nav class="wrapper">
+        <a href="#portfolio">오호준의 Portfolio</a>
+        <a href="#" id="toggle">
+          <img src="토글 이미지 추가해야 함" />
+        </a>
         <ul>
-          <a href="#home"><li class="menuBtn underline">HOME</li></a>
-          <a href="#introduction"><li class="menuBtn underline">INTRODUCTION</li></a>
-          <a href="#project"><li class="menuBtn underline">PROJECT</li></a>
-          <a href="#contact"><li class="menuBtn underline">CONTACT</li></a>
+          <li><a href="#introduction">INTRODUCTION</a></li>
+          <li><a href="#archiving">ARCHIVING</a></li>
+          <li><a href="#project">PROJECT</a></li>
+          <li><a href="#contact">CONTACT</a></li>
         </ul>
       </nav>
-
-      <div id="mobileNav">
-        <ul>
-          <a href="#home">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 48 48"><path d="M8 42V18L24.1 6 40 18v24H28.3V27.75h-8.65V42Zm3-3h5.65V24.75H31.3V39H37V19.5L24.1 9.75 11 19.5Zm13-14.65Z" /></svg>
-            </li>
-          </a>
-          <a href="#introduction">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 48 48">
-                <path
-                  d="M31.3 21.35q1.15 0 1.925-.775Q34 19.8 34 18.65t-.775-1.925q-.775-.775-1.925-.775t-1.925.775q-.775.775-.775 1.925t.775 1.925q.775.775 1.925.775Zm-14.6 0q1.15 0 1.925-.775.775-.775.775-1.925t-.775-1.925q-.775-.775-1.925-.775t-1.925.775Q14 17.5 14 18.65t.775 1.925q.775.775 1.925.775Zm7.3 13.6q3.3 0 6.075-1.775Q32.85 31.4 34.1 28.35h-2.6q-1.15 2-3.15 3.075-2 1.075-4.3 1.075-2.35 0-4.375-1.05t-3.125-3.1H13.9q1.3 3.05 4.05 4.825Q20.7 34.95 24 34.95ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 23.95q0-4.1 1.575-7.75 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24.05 4q4.1 0 7.75 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-20Zm0 17q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Z"
-                />
-              </svg>
-            </li>
-          </a>
-          <a href="#project">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 48 48">
-                <path
-                  d="M28.5 40v-3h6q1.05 0 1.775-.725Q37 35.55 37 34.5v-5q0-1.85 1.125-3.3 1.125-1.45 2.875-2v-.4q-1.75-.5-2.875-1.975T37 18.5v-5q0-1.05-.725-1.775Q35.55 11 34.5 11h-6V8h6q2.3 0 3.9 1.6t1.6 3.9v5q0 1.05.725 1.775Q41.45 21 42.5 21H44v6h-1.5q-1.05 0-1.775.725Q40 28.45 40 29.5v5q0 2.3-1.6 3.9T34.5 40Zm-15 0q-2.3 0-3.9-1.6T8 34.5v-5q0-1.05-.725-1.775Q6.55 27 5.5 27H4v-6h1.5q1.05 0 1.775-.725Q8 19.55 8 18.5v-5q0-2.3 1.6-3.9T13.5 8h6v3h-6q-1.05 0-1.775.725Q11 12.45 11 13.5v5q0 1.85-1.125 3.325T7 23.8v.4q1.75.55 2.875 2T11 29.5v5q0 1.05.725 1.775Q12.45 37 13.5 37h6v3Z"
-                />
-              </svg>
-            </li>
-          </a>
-          <a href="#contact">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 48 48"><path d="M7 40q-1.2 0-2.1-.9Q4 38.2 4 37V11q0-1.2.9-2.1Q5.8 8 7 8h34q1.2 0 2.1.9.9.9.9 2.1v26q0 1.2-.9 2.1-.9.9-2.1.9Zm17-15.1L7 13.75V37h34V13.75Zm0-3L40.8 11H7.25ZM7 13.75V11v26Z" /></svg>
-            </li>
-          </a>
-        </ul>
-      </div>
     </header>
 
-    <!-- 1. HOME 슬라이드 -->
-    <article id="home">
-      <!-- 텍스트 슬라이드 -->
-      <div class="text-slider-wrapper">
-        <div class="text-slider">
-          <div class="text-slide">
-            <h1 class="design_tool">
-              UI/UX DESIGN <br />
-              <span>Ps</span><span>Ai</span><span>Xd</span>
-            </h1>
+    <section id="portfolio">
+      <div class="wrapper">
+        <div class="swiper">
+          <!-- 추가로 필요한 래퍼 -->
+          <div class="swiper-wrapper">
+            <!-- 슬라이드들 -->
+            <div class="swiper-slide">슬라이드 1</div>
+            <div class="swiper-slide">슬라이드 2</div>
           </div>
-          <div class="text-slide">
-            <h1 class="pub_tool">
-              WED/MOBILE<br />PUBLISHING<br />
-              <span>HTML</span><span>CSS</span><span>JS</span><span>JQuery</span>
-            </h1>
-          </div>
-          <div class="text-slide">
-            <h1>DRAWING <br />SKILLS</h1>
-          </div>
+          <!-- 네비게이션 버튼 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
-      <!-- 이전 다음 버튼-->
-      <div class="slider-control">
-        <div class="prev">
-          <button class="slideBtn" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M20 44 0 24 20 4l2.8 2.85L5.65 24 22.8 41.15Z" /></svg>
-          </button>
-        </div>
-        <div class="next">
-          <button class="slideBtn" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m15.2 43.9-2.8-2.85L29.55 23.9 12.4 6.75l2.8-2.85 20 20Z" /></svg>
-          </button>
-        </div>
-      </div>
-      <!-- 블럭창 -->
-      <div class="blocks">
-        <div class="block-1"></div>
-        <div class="block-2"></div>
-        <div class="block-3"></div>
-      </div>
-      <!-- 오버레이창 -->
-      <div class="overlay"></div>
-      <!-- 이미지 슬라이드 -->
-      <div class="image-slider">
-        <div class="image-slide" id="one" style="background: url(files/slide01_musicapp.png) no-repeat 50% 50%; background-size: cover"></div>
-        <div class="image-slide" id="two" style="background: url(files/slide02_pub.png) no-repeat 50% 50%; background-size: cover"></div>
-        <div class="image-slide" id="three" style="background: url(files/slide03_draw.png) no-repeat 50% 50%; background-size: cover"></div>
-      </div>
-    </article>
+    </section>
 
-    <!-- ------------------------------------- 2. 소개 -->
-    <article id="introduction">
-      <div class="mainTitle">WHO <br class="br" />I AM</div>
-      <div class="introText">
-        <p>
-          Web Publisher who can design,<br class="br" />
-          Designer who can web publishing.
-        </p>
-        <p>
-          웹 퍼블리싱 가능한 디자이너,<br class="br" />
-          디자인 가능한 웹 퍼블리셔 홍길동입니다.
-        </p>
-        <br />
-        <p><span class="fontbold">2021.12</span> 영진직업전문학교 K-digital training - 수료중</p>
-        <p><span class="fontbold">2022.05</span> 디지털 혁신공유대학사업(인공지능) open API활용 경진대회 - <span class="fontbold">장려상</span></p>
-      </div>
-      <div class="introBox">
-        <div class="textInBox" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-          <div class="num1 numbers">1</div>
-          <p class="fontbold">홍길동</p>
-          <p>신입 UI/UX디자이너 & 웹퍼블리셔</p>
-          <p>010-1234-5678</p>
-          <p>mail@gmail.com</p>
-        </div>
+    <section id="introduction">INTRODUCTION</section>
 
-        <div class="textInBox" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-          <div class="num2 numbers">2</div>
-          <p class="fontbold">사용 언어</p>
-          <div class="useSth">
-            <div class="useName">HTML</div>
-            <div class="graphBar">
-              <div class="graph1 graphHTML"></div>
-            </div>
-          </div>
-          <div class="useSth">
-            <div class="useName">CSS</div>
-            <div class="graphBar">
-              <div class="graph1 graphCSS"></div>
-            </div>
-          </div>
-          <div class="useSth">
-            <div class="useName">JavaScript</div>
-            <div class="graphBar">
-              <div class="graph1 graphJS"></div>
-            </div>
-          </div>
-          <div class="useSth">
-            <div class="useName">JQuery</div>
-            <div class="graphBar">
-              <div class="graph1 graphJS"></div>
-            </div>
-          </div>
-        </div>
-        <div class="textInBox" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-          <div class="num3 numbers">3</div>
-          <p class="fontbold">사용 툴</p>
-          <div class="useSth">
-            <div class="useName">VScode</div>
-            <div class="graphBar">
-              <div class="graph2 graphVS"></div>
-            </div>
-          </div>
-          <div class="useSth">
-            <div class="useName">Ps</div>
-            <div class="graphBar">
-              <div class="graph2 graphPs"></div>
-            </div>
-          </div>
-          <div class="useSth">
-            <div class="useName">Ai</div>
-            <div class="graphBar">
-              <div class="graph2 graphAi"></div>
-            </div>
-          </div>
-          <div class="useSth">
-            <div class="useName">Xd</div>
-            <div class="graphBar">
-              <div class="graph2 graphXd"></div>
-            </div>
-          </div>
-        </div>
-        <div class="textInBox" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-          <div class="num3 numbers">4</div>
-          <p class="fontbold">응용 기술</p>
-          <p>Open API 로그인, 지도, 알림톡 등</p>
-          <p>JSON, AJAX</p>
-          <p>React, Flutter</p>
-          <p>MySQL</p>
-        </div>
-      </div>
-    </article>
+    <section id="archiving">ARCHIVING</section>
 
-    <!-- ------------------------------------- 3. 포트폴리오 -->
-    <article id="project">
-      <div class="mainTitle">PROJECT</div>
+    <section id="project">PROJECT</section>
 
-      <div class="projectMenu">
-        <span class="total fontbold">전체(8)</span>
-        <br class="br" /><br class="br" />
-        <span class="mine">개인프로젝트(4)</span>
-        <span class="team">팀프로젝트(4)</span>
-      </div>
+    <section id="contact">CONTACT</section>
 
-      <div class="cardWrapper">
-        <div class="card">
-          <div class="portfolio ourProject">
-            <div class="pfImg ecoImg"></div>
-            <div class="pfText">
-              <p><span class="fontSmall">실무 팀프로젝트</span></p>
-              <h3><span class="fontbold">깨끗한 지구 에코스</span></h3>
-              <p>· 주제 : 탄소저감 활동을 장려하는 어플리케이션 리디자인</p>
-              <p>· 기획 : 상용화 된 어플리케이션을 사용성 테스트해보고, 이용자들의 편의를 도모할 수 있도록 수정보완</p>
-              <p>· 역할 : 기획 및 UX/UI 디자인 (4일)</p>
-              <p>· 사용 : Ps, Xd</p>
-              <p><span class="fontSmall">2022.07 </span></p>
-              <div class="buttonWrap"><button onclick=" window.open('files/ecoce.pdf') ">PROPOSAL 1</button> <button onclick=" window.open('sub/02ecocs.html') ">PROPOSAL 2</button></div>
-            </div>
-          </div>
+    <footer>푸터</footer>
 
-          
-
-          <div class="portfolio myProject">
-            <div class="pfImg musicApp"></div>
-            <div class="pfText">
-              <p><span class="fontSmall">개인 프로젝트</span></p>
-              <h3><span class="fontbold">VIBE</span></h3>
-              <p>· 주제 : 음악 어플리케이션 디자인</p>
-              <p>· 기획 : 네이버 뮤직 VIBE를 벤치마킹해, iOS용 음악 어플리케이션을 디자인</p>
-              <p>· 역할 : 기획 및 UX/UI 디자인</p>
-              <p>· 사용 : Ps, Ai, Xd</p>
-              <p><span class="fontSmall">2022.03 (7일) </span></p>
-              <div class="buttonWrap">
-                <button onclick=" window.open('files/musicapp.pdf') ">PROPOSAL</button>
-              </div>
-            </div>
-          </div>
-
-    <!-- ------------------------------------- 4. 컨택트 -->
-    <article id="contact">
-      <div class="mainTitle">CONTACT</div>
-
-      <div class="businessCard" data-aos="flip-right">
-        <div class="businessCardEnglish">
-          <p class="jobName"><span>UI/UX</span> designer & <span>WEB</span> publisher</p>
-          <p class="name"><span>H</span>ong <span>K</span>il dong</p>
-        </div>
-        <div class="businessCardKorea">
-          <p class="jobName"><span>UI/UX</span> 디자이너 & <span>WEB</span> 퍼블리셔</p>
-          <p class="name">홍 길 동</p>
-        </div>
-        <div class="phone_email">
-          <p class="phone">010-1234-5678</p>
-          <p class="email">mail@gmail.com</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- 5. 푸터 -->
-    <footer>
-      Copyright © 2025 오호준<br class="br" />
-      All rights reserved
-    </footer>
-
-    <!-- ------------------------------------- 탑버튼 -->
-    <a href="#home">
-      <div id="topBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z" /></svg>
-      </div>
-    </a>
-
-    <!-- 자바스크립트 -->
+    <!-- JS -->
     <script src="./JS/index.js"></script>
     <!-- SWIPER -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- AOS 스크립트 -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        // 슬라이드 무한 루프
+        loop: true,
+
+        // 자동 슬라이드 기능
+        autoplay: {
+          // 슬라이드 4초마다 자동 전환
+          delay: 4000,
+          // 사용자가 슬라이드 조작해도 자동 슬라이드 기능 비활성화 방지
+          disableOnInteraction: false,
+        },
+
+        // 네비게이션 화살표 (다음, 이전 슬라이드 이동)
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+    <!-- AOS 스크립트 시작 -->
     <script>
       AOS.init();
     </script>
