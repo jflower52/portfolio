@@ -4,24 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PORTFOLIO</title>
+
     <!-- CSS스타일 -->
     <link rel="stylesheet" href="./CSS/style01.css" />
+
     <!-- SWIPER -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
 
   <body>
+    <!-- 헤더 -->
     <header>
       <nav class="wrapper">
-        <a href="#web-main">OHJ's Portfolio</a>
+        <!-- 로고 -->
+        <a href="#web-main" class="logo">OHJ's Portfolio</a>
+        <!-- 모바일 토글 버튼 -->
         <a href="#" id="toggle">
-          <img src="토글 이미지 추가해야 함" />
+          <img src="토글 이미지 추가해야 함" alt="toggle" />
         </a>
-        <ul>
+        <!-- 네비게이션 메뉴 -->
+        <ul class="menu">
           <li><a href="#introduction">INTRODUCTION</a></li>
           <li><a href="#archiving">ARCHIVING</a></li>
           <li><a href="#project">PROJECT</a></li>
@@ -30,10 +37,10 @@
       </nav>
     </header>
 
+    <!-- 포트폴리오 슬라이드 -->
     <section id="portfolio">
       <div class="wrapper">
         <div class="swiper">
-          <!-- 추가로 필요한 래퍼 -->
           <div class="swiper-wrapper">
             <!-- 슬라이드들 -->
             <div class="swiper-slide">슬라이드 1</div>
@@ -47,13 +54,11 @@
     </section>
 
     <section id="introduction">INTRODUCTION</section>
-
     <section id="archiving">ARCHIVING</section>
-
     <section id="project">PROJECT</section>
-
     <section id="contact">CONTACT</section>
 
+    <!-- 푸터 -->
     <footer>푸터</footer>
 
     <!-- JS -->
@@ -79,7 +84,7 @@
         },
       });
     </script>
-    <!-- AOS 스크립트 시작 -->
+    <!-- AOS -->
     <script>
       AOS.init();
     </script>
