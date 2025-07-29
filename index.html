@@ -9,6 +9,7 @@
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
+      <!-- Google API 라이브러리 -->
       <script src="https://apis.google.com/js/api.js"></script>
    </head>
    <body>
@@ -92,9 +93,9 @@
                <button class="tab-btn" data-tab="team">Team</button>
                <button class="tab-btn" data-tab="single">Single</button>
             </div>
-            <!-- GRID -->
+            <!-- PROJECT GRID -->
             <div class="project-grid">
-               <!-- Team -->
+               <!-- Team 프로젝트 -->
                <div class="project-card" data-category="team">
                   <div class="project-image">
                      <img src="images/오늘 한 빵.png" alt="오늘 한 빵" />
@@ -142,10 +143,10 @@
                      </div>
                   </div>
                </div>
-               <!-- Single -->
+               <!-- Single 프로젝트 (이미지 모두 images/샘플.png로 변경) -->
                <div class="project-card" data-category="single">
                   <div class="project-image">
-                     <img src="images/personal1.png" alt="개인 프로젝트 A" />
+                     <img src="images/샘플.png" alt="개인 프로젝트 A" />
                   </div>
                   <div class="project-details">
                      <h3>개인 프로젝트 A</h3>
@@ -159,7 +160,7 @@
                </div>
                <div class="project-card" data-category="single">
                   <div class="project-image">
-                     <img src="images/personal2.png" alt="개인 프로젝트 B" />
+                     <img src="images/샘플.png" alt="개인 프로젝트 B" />
                   </div>
                   <div class="project-details">
                      <h3>개인 프로젝트 B</h3>
@@ -173,7 +174,7 @@
                </div>
                <div class="project-card" data-category="single">
                   <div class="project-image">
-                     <img src="images/personal3.png" alt="개인 프로젝트 C" />
+                     <img src="images/샘플.png" alt="개인 프로젝트 C" />
                   </div>
                   <div class="project-details">
                      <h3>개인 프로젝트 C</h3>
@@ -187,7 +188,7 @@
                </div>
                <div class="project-card" data-category="single">
                   <div class="project-image">
-                     <img src="images/personal4.png" alt="개인 프로젝트 D" />
+                     <img src="images/샘플.png" alt="개인 프로젝트 D" />
                   </div>
                   <div class="project-details">
                      <h3>개인 프로젝트 D</h3>
@@ -207,10 +208,25 @@
 
       <!-- CONTACT -->
       <section id="contact" class="section">
-         <div class="container">
+         <div class="container contact-container">
             <h2 class="section-title">Contact</h2>
-            <button id="btn-signin">Google 로그인</button>
-            <button id="btn-signout" style="display: none">로그아웃</button>
+            <p class="contact-info">
+               Google 계정으로 로그인하시면 내 메일함(나
+               jflower0502@gmail.com)으로<br />
+               메시지를 보낼 수 있습니다.
+            </p>
+            <div class="auth-buttons">
+               <button id="btn-signin" class="btn btn-primary">
+                  Google 로그인
+               </button>
+               <button
+                  id="btn-signout"
+                  class="btn btn-outline"
+                  style="display: none"
+               >
+                  로그아웃
+               </button>
+            </div>
             <form id="mail-form" class="contact-form" style="display: none">
                <input
                   type="email"
@@ -226,7 +242,7 @@
                />
                <textarea
                   id="mail-body"
-                  placeholder="내용"
+                  placeholder="메시지를 입력하세요"
                   rows="6"
                   required
                ></textarea>
@@ -254,7 +270,6 @@
 
       <!-- 기존 포트폴리오 기능 -->
       <script src="JS/index.js"></script>
-
       <!-- Gmail API 로그인·전송 기능 -->
       <script src="JS/gmail-api.js"></script>
    </body>

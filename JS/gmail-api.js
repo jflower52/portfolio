@@ -1,7 +1,6 @@
-// gmail-api.js
-
 // 1) Google API 설정
-const CLIENT_ID = "YOUR_CLIENT_ID.apps.googleusercontent.com";
+const CLIENT_ID =
+   "176709535488-ps06stgm1it6e3l48qk3l80qpt08nr94.apps.googleusercontent.com";
 const SCOPES = "https://www.googleapis.com/auth/gmail.send";
 
 // 버튼/폼 참조
@@ -11,18 +10,32 @@ const mailForm = document.getElementById("mail-form");
 
 // 2) gapi 로드 및 초기화
 function handleClientLoad() {
-   gapi.load("client:auth2", initClient);
-}
-async function initClient() {
-   await gapi.client.init({
-      clientId: CLIENT_ID,
-      scope: SCOPES,
+   gapi.load("client:auth2", {
+      callback: initClient,
+      onerror: () => console.error("gapi.load 실패"),
    });
-   gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-   updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
 }
 
-// 3) 로그인 상태에 따른 UI 전환
+async function initClient() {
+   try {
+      await gapi.client.init({
+         apiKey: "YOUR_API_KEY",
+         clientId: CLIENT_ID,
+         discoveryDocs: [
+            "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest",
+         ],
+         scope: SCOPES,
+      });
+      const auth = gapi.auth2.getAuthInstance();
+      auth.isSignedIn.listen(updateSigninStatus);
+      updateSigninStatus(auth.isSignedIn.get());
+   } catch (e) {
+      console.error("gapi.client.init 에러:", e);
+      alert("API 초기화 중 오류 발생: " + e.message);
+   }
+}
+
+// 3) 로그인 상태 UI 전환
 function updateSigninStatus(isSignedIn) {
    if (isSignedIn) {
       btnSignin.style.display = "none";
@@ -39,17 +52,20 @@ function updateSigninStatus(isSignedIn) {
 btnSignin.onclick = () => gapi.auth2.getAuthInstance().signIn();
 btnSignout.onclick = () => gapi.auth2.getAuthInstance().signOut();
 
-// 5) 메일 RAW 생성 (Base64 URL-safe)
+// 5) 메일 RAW 생성
 function makeRawEmail(to, subject, body) {
    const nl = "\r\n";
-   let str = `To: ${to}${nl}Subject: ${subject}${nl}Content-Type: text/html; charset=UTF-8${nl}${nl}${body}`;
+   let str = `To: ${to}${nl}`;
+   str += `Subject: ${subject}${nl}`;
+   str += `Content-Type: text/html; charset=UTF-8${nl}${nl}`;
+   str += body;
    return btoa(unescape(encodeURIComponent(str)))
       .replace(/\+/g, "-")
       .replace(/\//g, "_")
       .replace(/=+$/, "");
 }
 
-// 6) 폼 제출 시 Gmail API 호출
+// 6) 폼 제출 → Gmail API 호출
 mailForm.addEventListener("submit", async (e) => {
    e.preventDefault();
    const to = document.getElementById("mail-to").value;
@@ -71,5 +87,5 @@ mailForm.addEventListener("submit", async (e) => {
    }
 });
 
-// 7) 첫 로드시 Google API 로드
+// 7) 페이지 로드시 Google API 로드
 handleClientLoad();
