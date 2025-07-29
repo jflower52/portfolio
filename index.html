@@ -3,264 +3,259 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>포트폴리오</title>
+      <title>오호준 포트폴리오</title>
       <link rel="stylesheet" href="CSS/index.css" />
       <link
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
+      <script src="https://apis.google.com/js/api.js"></script>
    </head>
    <body>
-      <!-- ===== NAVIGATION ===== -->
-      <nav class="fixed-nav">
-         <div class="nav-left">PORTFOLIO</div>
-         <div class="nav-right">
-            <a href="#home">홈</a>
-            <a href="#profile">프로필</a>
-            <a href="#skills">스킬</a>
-            <a href="#career">커리어</a>
-            <a href="#projects">프로젝트</a>
+      <!-- NAVIGATION -->
+      <nav class="navbar">
+         <div class="container nav-container">
+            <a href="#home" class="logo">PORTFOLIO</a>
+            <ul class="nav-menu">
+               <li><a href="#home">Home</a></li>
+               <li><a href="#profile">Profile</a></li>
+               <li><a href="#skills">Skills</a></li>
+               <li><a href="#career">Career</a></li>
+               <li><a href="#projects">Projects</a></li>
+               <li><a href="#contact">Contact</a></li>
+            </ul>
          </div>
       </nav>
 
-      <!-- ===== HOME ===== -->
-      <section id="home" class="full-page home-page">
-         <div class="home-content">
+      <!-- HERO -->
+      <header id="home" class="hero">
+         <div class="hero-content container">
             <h1>안녕하세요! 👋</h1>
-            <h2>개발자 <span class="highlight">오호준</span>입니다</h2>
-            <p class="home-desc">
-               -,<br />
-               -.
+            <h2>웹 개발자 <span class="highlight">오호준</span>입니다</h2>
+            <p>사용자 중심의 웹 애플리케이션 개발에 열정을 가지고 있습니다.</p>
+            <div class="hero-buttons">
+               <a href="#profile" class="btn btn-primary">프로필 보기</a>
+               <a href="#projects" class="btn btn-outline">프로젝트 보기</a>
+            </div>
+         </div>
+      </header>
+
+      <!-- PROFILE -->
+      <section id="profile" class="section">
+         <div class="container">
+            <h2 class="section-title">Profile</h2>
+            <p>
+               2021년부터 웹 에이전시에서 근무하다가 현재는 프리랜서로 활동
+               중입니다.<br />
+               HTML, CSS, JavaScript, React, PHP 등을 사용하여 반응형 웹을
+               개발합니다.
             </p>
-            <div class="home-buttons">
-               <a href="#profile" class="btn-primary">프로필 보기</a>
-               <a href="#projects" class="btn-outline">프로젝트 보기</a>
-            </div>
          </div>
       </section>
 
-      <!-- ===== PROFILE ===== -->
-      <section id="profile" class="container section-block">
-         <h2 class="section-title">프로필</h2>
-         <p>
-            안녕하세요! 저는 웹 개발자 오호준입니다.<br />
-            창의적이고 효율적인 웹 서비스를 만드는 데 관심이 있습니다.
-         </p>
-      </section>
-
-      <!-- ===== SKILLS ===== -->
-      <section id="skills" class="container section-block">
-         <h2 class="section-title">스킬</h2>
-         <ul class="skills-list">
-            <li class="skill-item figma">Figma</li>
-            <li class="skill-item ps">PhotoShop</li>
-            <li class="skill-item html">HTML</li>
-            <li class="skill-item css">CSS</li>
-            <li class="skill-item js">JavaScript</li>
-            <li class="skill-item php">PHP</li>
-            <li class="skill-item react">React</li>
-         </ul>
-      </section>
-
-      <!-- ===== CAREER ===== -->
-      <section id="career" class="container section-block">
-         <h2 class="section-title">커리어</h2>
-         <p>2020-2023:</p>
-         <p>2024:</p>
-      </section>
-
-      <!-- ===== PROJECTS ===== -->
-      <section id="projects" class="container">
-         <h2 class="section-title">프로젝트</h2>
-
-         <!-- 탭 버튼 -->
-         <div class="tabs">
-            <button class="tab-btn active" data-tab="team">팀 프로젝트</button>
-            <button class="tab-btn" data-tab="personal">개인 프로젝트</button>
-         </div>
-
-         <!-- 팀 프로젝트 -->
-         <div class="tab-content active" id="team">
-            <div class="project-card">
-               <div class="project-image">
-                  <img src="IMG/오늘 한 빵.png" alt="팀프로젝트1" />
-               </div>
-               <div class="project-info">
-                  <h3>오늘 한 빵</h3>
-                  <p class="date">2024.07.01 ~ 2024.07.24</p>
-                  <p class="desc">OPEN API를 활용한 GPS활용 앱 개발</p>
-                  <h4>주요 기능</h4>
-                  <ul class="features">
-                     <li>✔ GPS 인증 스탬프 시스템</li>
-                     <li>✔ 관리자 페이지</li>
-                     <li>✔ 소셜 로그인</li>
-                  </ul>
-                  <div class="skills">
-                     <span class="skill html">Kotlin</span>
-                     <span class="skill css">EJS</span>
-                     <span class="skill js">Node.js</span>
-                     <span class="skill js">MySQL</span>
-                  </div>
-                  <div class="links">
-                     <a href="https://github.com/jflower52/todayhanbbang_app"
-                        ><i class="fa-brands fa-github"></i
-                     ></a>
-                     <a
-                        href="https://github.com/jflower52/todayhanbbang_android"
-                        ><i class="fa-brands fa-github"></i
-                     ></a>
-                  </div>
-               </div>
-            </div>
-            <div class="project-card">
-               <div class="project-image">
-                  <img src="IMG/굿 핑.png" alt="팀프로젝트2" />
-               </div>
-               <div class="project-info">
-                  <h3>굿 핑(Good-Ping)</h3>
-                  <p class="date">2024.. ~ 2024..</p>
-                  <p class="desc">API 연동을 활용한 정보 제공 사이트입니다.</p>
-                  <h4>주요 기능</h4>
-                  <ul class="features">
-                     <li>✔ 카카오 알림톡</li>
-                     <li>✔ 반응형 웹</li>
-                     <li>✔ 소셜 로그인</li>
-                  </ul>
-                  <div class="skills">
-                     <span class="skill html">React</span>
-                     <span class="skill css">CSS</span>
-                     <span class="skill js">Node.js</span>
-                     <span class="skill js">PostgreSQL</span>
-                  </div>
-                  <div class="links">
-                     <a href="https://github.com/jflower52/Good-Ping"
-                        ><i class="fa-brands fa-github"></i
-                     ></a>
-                  </div>
-               </div>
-            </div>
-            <div class="project-card">
-               <div class="project-image">
-                  <img src="IMG/I-Mon.png" alt="팀프로젝트3" />
-               </div>
-               <div class="project-info">
-                  <h3>I-Mon</h3>
-                  <p class="date">2024.. ~ 2024..</p>
-                  <p class="desc">파일 암호화 프로그램 / 관리자 페이지 구축</p>
-                  <h4>주요 기능</h4>
-                  <ul class="features">
-                     <li>✔</li>
-                     <li>✔</li>
-                     <li>✔</li>
-                  </ul>
-                  <div class="skills">
-                     <span class="skill html">HTML</span>
-                     <span class="skill css">CSS</span>
-                     <span class="skill js">JS</span>
-                  </div>
-                  <div class="links">
-                     <a href="https://github.com/CodeNation04/CodeNation"
-                        ><i class="fa-brands fa-github"></i
-                     ></a>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <!-- 개인 프로젝트 -->
-         <div class="tab-content" id="personal">
-            <div class="project-card">
-               <div class="project-image">
-                  <img src="images/personal1.png" alt="개인프로젝트1" />
-               </div>
-               <div class="project-info">
-                  <h3>개인 프로젝트 A</h3>
-                  <p class="date">2024.05.01 ~ 2024.05.15</p>
-                  <p class="desc">개인 블로그 웹사이트입니다.</p>
-                  <h4>주요 기능</h4>
-                  <ul class="features">
-                     <li>✔ 게시글 작성/수정/삭제</li>
-                     <li>✔ 카테고리별 분류</li>
-                     <li>✔ 반응형 UI</li>
-                  </ul>
-                  <div class="skills">
-                     <span class="skill html">HTML</span>
-                     <span class="skill css">CSS</span>
-                     <span class="skill js">JS</span>
-                  </div>
-                  <div class="links">
-                     <a href="#"><i class="fa-solid fa-house"></i></a>
-                     <a href="#"><i class="fa-brands fa-github"></i></a>
-                  </div>
-               </div>
-            </div>
-            <div class="project-card">
-               <div class="project-image">
-                  <img src="images/personal2.png" alt="개인프로젝트2" />
-               </div>
-               <div class="project-info">
-                  <h3>개인 프로젝트 B</h3>
-                  <p class="date">2024.06.01 ~ 2024.06.20</p>
-                  <p class="desc">투두리스트 애플리케이션입니다.</p>
-                  <h4>주요 기능</h4>
-                  <ul class="features">
-                     <li>✔ 로컬 저장소 활용</li>
-                     <li>✔ 일정 관리</li>
-                     <li>✔ UI 애니메이션</li>
-                  </ul>
-                  <div class="skills">
-                     <span class="skill html">HTML</span>
-                     <span class="skill css">CSS</span>
-                     <span class="skill js">JS</span>
-                  </div>
-                  <div class="links">
-                     <a href="#"><i class="fa-solid fa-house"></i></a>
-                     <a href="#"><i class="fa-brands fa-github"></i></a>
-                  </div>
-               </div>
-            </div>
-            <div class="project-card">
-               <div class="project-image">
-                  <img src="images/personal3.png" alt="개인프로젝트3" />
-               </div>
-               <div class="project-info">
-                  <h3>개인 프로젝트 C</h3>
-                  <p class="date">2024.07.05 ~ 2024.07.25</p>
-                  <p class="desc">포트폴리오 사이트입니다.</p>
-                  <h4>주요 기능</h4>
-                  <ul class="features">
-                     <li>✔ 프로젝트 전환 탭</li>
-                     <li>✔ 스크롤 애니메이션</li>
-                     <li>✔ 반응형 레이아웃</li>
-                  </ul>
-                  <div class="skills">
-                     <span class="skill html">HTML</span>
-                     <span class="skill css">CSS</span>
-                     <span class="skill js">JS</span>
-                  </div>
-                  <div class="links">
-                     <a href="#"><i class="fa-solid fa-house"></i></a>
-                     <a href="#"><i class="fa-brands fa-github"></i></a>
-                  </div>
-               </div>
-            </div>
+      <!-- SKILLS -->
+      <section id="skills" class="section">
+         <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <ul class="skills-list">
+               <li class="skill-item html">HTML</li>
+               <li class="skill-item css">CSS</li>
+               <li class="skill-item js">JavaScript</li>
+               <li class="skill-item react">React</li>
+               <li class="skill-item php">PHP</li>
+               <li class="skill-item mysql">MySQL</li>
+            </ul>
          </div>
       </section>
 
-      <!-- ===== FOOTER ===== -->
-      <footer>
-         <p>오호준의 포트폴리오</p>
-         <div class="footer-icons">
-            <a href="https://github.com/jflower52" target="_blank"
-               ><i class="fab fa-github"></i
-            ></a>
-            <a href="https://velog.io/@jflower/posts" target="_blank"
-               ><i class="fa-solid fa-blog"></i
-            ></a>
+      <!-- CAREER -->
+      <section id="career" class="section">
+         <div class="container">
+            <h2 class="section-title">Career</h2>
+            <ul class="career-list">
+               <li>
+                  <strong>2021.03 – 2023.08</strong> 웹 에이전시 (프론트엔드
+                  개발)
+               </li>
+               <li><strong>2023.09 – 현재</strong> 프리랜서 웹 개발자</li>
+            </ul>
+         </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+         <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <!-- TABS -->
+            <div class="tabs">
+               <button class="tab-btn active" data-tab="all">All</button>
+               <button class="tab-btn" data-tab="team">Team</button>
+               <button class="tab-btn" data-tab="single">Single</button>
+            </div>
+            <!-- GRID -->
+            <div class="project-grid">
+               <!-- Team -->
+               <div class="project-card" data-category="team">
+                  <div class="project-image">
+                     <img src="images/오늘 한 빵.png" alt="오늘 한 빵" />
+                  </div>
+                  <div class="project-details">
+                     <h3>오늘 한 빵</h3>
+                     <p>OPEN API를 활용한 GPS 인증 앱 개발</p>
+                     <div class="project-tags">
+                        <span class="skill-badge kotlin">Kotlin</span>
+                        <span class="skill-badge ejs">EJS</span>
+                        <span class="skill-badge nodejs">Node.js</span>
+                        <span class="skill-badge mysql">MySQL</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="project-card" data-category="team">
+                  <div class="project-image">
+                     <img src="images/굿 핑.png" alt="굿 핑" />
+                  </div>
+                  <div class="project-details">
+                     <h3>굿 핑 (Good-Ping)</h3>
+                     <p>API 연동 기반 정보 제공 사이트</p>
+                     <div class="project-tags">
+                        <span class="skill-badge react">React</span>
+                        <span class="skill-badge css">CSS</span>
+                        <span class="skill-badge nodejs">Node.js</span>
+                        <span class="skill-badge postgresql">PostgreSQL</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="project-card" data-category="team">
+                  <div class="project-image">
+                     <img src="images/I-Mon.png" alt="I-Mon" />
+                  </div>
+                  <div class="project-details">
+                     <h3>I-Mon</h3>
+                     <p>파일 암호화 프로그램 & 관리자 페이지 구축</p>
+                     <div class="project-tags">
+                        <span class="skill-badge html">HTML</span>
+                        <span class="skill-badge css">CSS</span>
+                        <span class="skill-badge php">PHP</span>
+                        <span class="skill-badge csharp">C#</span>
+                        <span class="skill-badge laravel">Laravel</span>
+                        <span class="skill-badge mariadb">MariaDB</span>
+                     </div>
+                  </div>
+               </div>
+               <!-- Single -->
+               <div class="project-card" data-category="single">
+                  <div class="project-image">
+                     <img src="images/personal1.png" alt="개인 프로젝트 A" />
+                  </div>
+                  <div class="project-details">
+                     <h3>개인 프로젝트 A</h3>
+                     <p>개인 블로그 웹사이트</p>
+                     <div class="project-tags">
+                        <span class="skill-badge html">HTML</span>
+                        <span class="skill-badge css">CSS</span>
+                        <span class="skill-badge js">JavaScript</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="project-card" data-category="single">
+                  <div class="project-image">
+                     <img src="images/personal2.png" alt="개인 프로젝트 B" />
+                  </div>
+                  <div class="project-details">
+                     <h3>개인 프로젝트 B</h3>
+                     <p>투두리스트 애플리케이션</p>
+                     <div class="project-tags">
+                        <span class="skill-badge html">HTML</span>
+                        <span class="skill-badge css">CSS</span>
+                        <span class="skill-badge js">JavaScript</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="project-card" data-category="single">
+                  <div class="project-image">
+                     <img src="images/personal3.png" alt="개인 프로젝트 C" />
+                  </div>
+                  <div class="project-details">
+                     <h3>개인 프로젝트 C</h3>
+                     <p>포트폴리오 사이트 리뉴얼</p>
+                     <div class="project-tags">
+                        <span class="skill-badge html">HTML</span>
+                        <span class="skill-badge css">CSS</span>
+                        <span class="skill-badge js">JavaScript</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="project-card" data-category="single">
+                  <div class="project-image">
+                     <img src="images/personal4.png" alt="개인 프로젝트 D" />
+                  </div>
+                  <div class="project-details">
+                     <h3>개인 프로젝트 D</h3>
+                     <p>간단한 메모 앱 개발</p>
+                     <div class="project-tags">
+                        <span class="skill-badge html">HTML</span>
+                        <span class="skill-badge css">CSS</span>
+                        <span class="skill-badge js">JavaScript</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- PAGINATION -->
+            <div class="pagination"></div>
+         </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+         <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <button id="btn-signin">Google 로그인</button>
+            <button id="btn-signout" style="display: none">로그아웃</button>
+            <form id="mail-form" class="contact-form" style="display: none">
+               <input
+                  type="email"
+                  id="mail-to"
+                  placeholder="받는 사람 이메일"
+                  required
+               />
+               <input
+                  type="text"
+                  id="mail-subject"
+                  placeholder="제목"
+                  required
+               />
+               <textarea
+                  id="mail-body"
+                  placeholder="내용"
+                  rows="6"
+                  required
+               ></textarea>
+               <button type="submit" class="btn btn-primary">
+                  메일 보내기
+               </button>
+            </form>
+         </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+         <div class="container footer-container">
+            <p>© 2024 오호준 포트폴리오</p>
+            <div class="footer-icons">
+               <a href="https://github.com/jflower52" target="_blank"
+                  ><i class="fab fa-github"></i
+               ></a>
+               <a href="https://velog.io/@jflower/posts" target="_blank"
+                  ><i class="fa-solid fa-blog"></i
+               ></a>
+            </div>
          </div>
       </footer>
 
-      <!-- ===== JS ===== -->
+      <!-- 기존 포트폴리오 기능 -->
       <script src="JS/index.js"></script>
+
+      <!-- Gmail API 로그인·전송 기능 -->
+      <script src="JS/gmail-api.js"></script>
    </body>
 </html>
