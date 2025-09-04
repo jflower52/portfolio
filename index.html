@@ -2,70 +2,554 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오호준의 포트폴리오</title>
-    <link rel="stylesheet" href="CSS/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- 폰트 아이콘 -->
+    <title>오호준의 포트폴리오</title>
+    <meta name="description" content="오호준 포트폴리오 — 프론트엔드 개발" />
+    <meta name="theme-color" content="#141827" />
+
+    <!-- Font (KR 가독성) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (안정 버전 6.5.x) -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="CSS/index.css" />
   </head>
 
   <body>
-    <!-- 메뉴바 -->
-    <nav class="navbar">
-      <div class="container">
-        <a href="#home" class="logo">PORTFOLIO</a>
-        <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#profile">Profile</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+    <a class="skip-link" href="#home">본문 바로가기</a>
+
+    <!-- ===== NAV ===== -->
+    <nav class="navbar" aria-label="주요">
+      <div class="container nav-inner">
+        <a href="#home" class="logo" aria-label="홈으로">PORTFOLIO</a>
+
+        <button
+          class="menu-toggle"
+          aria-label="메뉴 열기"
+          aria-controls="nav-menu"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul id="nav-menu" class="nav-menu" role="menubar">
+          <li role="none">
+            <a role="menuitem" class="nav-link" href="#home">Home</a>
+          </li>
+          <li role="none">
+            <a role="menuitem" class="nav-link" href="#profile">Profile</a>
+          </li>
+          <li role="none">
+            <a role="menuitem" class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li role="none">
+            <a role="menuitem" class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li role="none">
+            <a role="menuitem" class="nav-link" href="#contact">Contact</a>
+          </li>
         </ul>
       </div>
     </nav>
 
-    <!-- HEADER -->
-    <header id="home"></header>
+    <!-- ===== HERO ===== -->
+    <header id="home" class="section hero reveal">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>
+            안녕하세요 👋<br /><strong>오호준</strong>의 포트폴리오입니다.
+          </h1>
+          <p class="lead">
+            사용자 경험을 중시하는 <b>프론트엔드 개발자</b>를 목표로 매일
+            개선하고 성장합니다.
+          </p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#projects"
+              ><i class="fa-solid fa-folder-open"></i> 프로젝트 보기</a
+            >
+            <a class="btn ghost" href="#contact"
+              ><i class="fa-solid fa-paper-plane"></i> 연락하기</a
+            >
+          </div>
+        </div>
 
-    <!-- PROFILE -->
-    <section id="profile" class="section"></section>
+        <!-- SVG 아트: 이미지 없이도 깔끔 -->
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 440 320" role="img">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6f7ef8" />
+                <stop offset="100%" stop-color="#764ba2" />
+              </linearGradient>
+              <filter id="b" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="12" />
+              </filter>
+            </defs>
+            <circle
+              cx="120"
+              cy="120"
+              r="90"
+              fill="url(#g)"
+              opacity="0.55"
+              filter="url(#b)"
+            />
+            <rect
+              x="140"
+              y="80"
+              width="240"
+              height="160"
+              rx="18"
+              fill="url(#g)"
+              opacity="0.8"
+            />
+            <rect
+              x="160"
+              y="100"
+              width="200"
+              height="120"
+              rx="14"
+              fill="#0f1320"
+            />
+            <g opacity="0.5" fill="url(#g)">
+              <rect x="176" y="120" width="72" height="10" rx="5" />
+              <rect x="176" y="140" width="160" height="10" rx="5" />
+              <rect x="176" y="160" width="132" height="10" rx="5" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </header>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
+    <!-- ===== PROFILE ===== -->
+    <section id="profile" class="section reveal">
       <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <ul class="skills-list">
-          <li class="skill-item html">HTML</li>
-          <li class="skill-item css">CSS</li>
-          <li class="skill-item js">JavaScript</li>
-          <li class="skill-item react">React</li>
-        </ul>
+        <h2 class="section-title">Profile</h2>
+        <article class="card profile">
+          <div class="avatar" aria-hidden="true">OH</div>
+          <div class="profile-body">
+            <p>
+              학습한 내용을 빠르게 실습하고 결과물로 증명합니다. 작은 개선을
+              꾸준히 쌓는 <b>지속적 개선</b>을 지향합니다.
+            </p>
+            <ul class="meta">
+              <li>
+                <i class="fa-solid fa-location-dot"></i> Republic of Korea
+              </li>
+              <li>
+                <i class="fa-solid fa-code"></i> HTML · CSS · JavaScript · React
+              </li>
+              <li>
+                <i class="fa-solid fa-graduation-cap"></i> TIL/블로그로 기록
+              </li>
+            </ul>
+            <div class="links">
+              <a
+                class="icon-btn"
+                href="https://github.com/jflower52"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                class="icon-btn"
+                href="https://velog.io/@jflower/posts"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Velog"
+              >
+                <i class="fa-solid fa-blog"></i>
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section"></section>
+    <!-- ===== SKILL & TOOLS ===== -->
+    <section id="skills" class="section alt reveal">
+      <div class="container">
+        <h2 class="section-title">Skill &amp; Tools</h2>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section"></section>
+        <div class="skills-rows">
+          <!-- FrontEnd -->
+          <div class="skills-group">
+            <h3 class="skills-heading">FrontEnd</h3>
+            <ul class="skill-icons">
+              <li>
+                <button
+                  class="skill-pill ic--html"
+                  aria-label="HTML"
+                  title="HTML"
+                >
+                  <i class="fa-brands fa-html5"></i>
+                </button>
+              </li>
+              <li>
+                <button class="skill-pill ic--css" aria-label="CSS" title="CSS">
+                  <i class="fa-brands fa-css3-alt"></i>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="skill-pill ic--js"
+                  aria-label="JavaScript"
+                  title="JavaScript"
+                >
+                  <i class="fa-brands fa-js"></i>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="skill-pill ic--react"
+                  aria-label="React"
+                  title="React"
+                >
+                  <i class="fa-brands fa-react"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
 
-    <!-- FOOTER -->
+          <!-- Tools -->
+          <div class="skills-group">
+            <h3 class="skills-heading">Tools</h3>
+            <ul class="skill-icons">
+              <li>
+                <button
+                  class="skill-pill ic--figma"
+                  aria-label="Figma"
+                  title="Figma"
+                >
+                  <i class="fa-brands fa-figma"></i>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="skill-pill ic--github"
+                  aria-label="GitHub"
+                  title="GitHub"
+                >
+                  <i class="fa-brands fa-github"></i>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="skill-pill ic--notion"
+                  aria-label="Notion"
+                  title="Notion"
+                >
+                  <span class="notion-mark">N</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="skill-pill ic--discord"
+                  aria-label="Discord"
+                  title="Discord"
+                >
+                  <i class="fa-brands fa-discord"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section reveal">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+
+        <!-- Segmented Control -->
+        <div class="segmented" role="tablist" aria-label="프로젝트 필터">
+          <button
+            class="seg-btn active"
+            role="tab"
+            aria-selected="true"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button
+            class="seg-btn"
+            role="tab"
+            aria-selected="false"
+            data-filter="team"
+          >
+            Team
+          </button>
+          <button
+            class="seg-btn"
+            role="tab"
+            aria-selected="false"
+            data-filter="single"
+          >
+            Single
+          </button>
+        </div>
+
+        <!-- Grid: 카드는 6개 이상 있어도 됩니다 -->
+        <div class="grid projects-grid" id="project-grid">
+          <!-- Team -->
+          <article class="card project" data-type="team">
+            <div
+              class="thumb gradient-a"
+              role="img"
+              aria-label="반응형 포트폴리오 썸네일"
+            ></div>
+            <div class="project-body">
+              <h3 class="project-title">반응형 포트폴리오</h3>
+              <p class="project-desc">
+                팀 협업으로 만든 반응형 사이트. 스크롤 리빌/하이라이트 적용.
+              </p>
+              <div class="project-tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small" href="#">Demo</a
+                ><a class="btn small ghost" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Single -->
+          <article class="card project" data-type="single">
+            <div
+              class="thumb gradient-b"
+              role="img"
+              aria-label="Todo 앱 썸네일"
+            ></div>
+            <div class="project-body">
+              <h3 class="project-title">Todo 앱</h3>
+              <p class="project-desc">
+                로컬스토리지 기반 개인 프로젝트. 키보드 접근성 강화.
+              </p>
+              <div class="project-tags">
+                <span>React</span><span>Hooks</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small" href="#">Demo</a
+                ><a class="btn small ghost" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Team -->
+          <article class="card project" data-type="team">
+            <div
+              class="thumb gradient-c"
+              role="img"
+              aria-label="API 대시보드 썸네일"
+            ></div>
+            <div class="project-body">
+              <h3 class="project-title">API 데이터 대시보드</h3>
+              <p class="project-desc">
+                공공 API 대시보드. 로딩/에러 상태 및 캐싱 설계.
+              </p>
+              <div class="project-tags">
+                <span>JavaScript</span><span>Fetch</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small" href="#">Demo</a
+                ><a class="btn small ghost" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 아래는 페이지네이션 테스트용 예시 카드 3개 더 -->
+          <article class="card project" data-type="single">
+            <div
+              class="thumb gradient-b"
+              role="img"
+              aria-label="UI 컴포넌트 라이브러리"
+            ></div>
+            <div class="project-body">
+              <h3 class="project-title">UI 컴포넌트 라이브러리</h3>
+              <p class="project-desc">공통 UI를 모듈화하여 재사용성 향상.</p>
+              <div class="project-tags"><span>CSS</span><span>JS</span></div>
+              <div class="project-actions">
+                <a class="btn small" href="#">Demo</a
+                ><a class="btn small ghost" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project" data-type="team">
+            <div
+              class="thumb gradient-a"
+              role="img"
+              aria-label="실시간 채팅"
+            ></div>
+            <div class="project-body">
+              <h3 class="project-title">실시간 채팅</h3>
+              <p class="project-desc">팀 협업용 실시간 채팅 데모.</p>
+              <div class="project-tags">
+                <span>WebSocket</span><span>JS</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small" href="#">Demo</a
+                ><a class="btn small ghost" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project" data-type="single">
+            <div
+              class="thumb gradient-c"
+              role="img"
+              aria-label="이미지 갤러리"
+            ></div>
+            <div class="project-body">
+              <h3 class="project-title">이미지 갤러리</h3>
+              <p class="project-desc">
+                반응형 Masonry 느낌의 갤러리(간단 버전).
+              </p>
+              <div class="project-tags"><span>HTML</span><span>CSS</span></div>
+              <div class="project-actions">
+                <a class="btn small" href="#">Demo</a
+                ><a class="btn small ghost" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pager -->
+        <div class="pager" id="project-pager" aria-label="프로젝트 페이지 이동">
+          <button class="pager-btn prev" aria-label="이전 페이지" disabled>
+            <i class="fa-solid fa-angle-left"></i> Prev
+          </button>
+          <span class="pager-info" aria-live="polite">1 / 1</span>
+          <button class="pager-btn next" aria-label="다음 페이지" disabled>
+            Next <i class="fa-solid fa-angle-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section alt reveal">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">Contact</h2>
+          <p class="muted">프로젝트나 협업 제안은 언제든 환영합니다.</p>
+          <ul class="meta">
+            <li><i class="fa-solid fa-envelope"></i> jflower0502@gmail.com</li>
+            <li><i class="fa-solid fa-link"></i> github.com/jflower52</li>
+            <li><i class="fa-solid fa-blog"></i> velog.io/@jflower</li>
+          </ul>
+        </div>
+
+        <form
+          id="contact-form"
+          class="card form-card"
+          autocomplete="on"
+          novalidate
+        >
+          <label class="field">
+            <span>이름</span>
+            <input
+              type="text"
+              name="name"
+              placeholder="이름을 입력하세요"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>이메일</span>
+            <input
+              type="email"
+              name="email"
+              placeholder="example@email.com"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>메시지</span>
+            <textarea
+              name="message"
+              rows="4"
+              placeholder="내용을 입력하세요"
+              required
+            ></textarea>
+          </label>
+          <button class="btn primary" type="submit">
+            <i class="fa-solid fa-paper-plane"></i> 보내기
+          </button>
+          <p class="form-note muted">
+            * 데모 폼으로, 제출 시 화면 우측 하단에 토스트가 뜹니다.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
-      <p>© 2024 오호준 포트폴리오</p>
-      <div>
-        <a href="https://github.com/jflower52" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://velog.io/@jflower/posts" target="_blank">
-          <i class="fa-solid fa-blog"></i>
-        </a>
+      <div class="container footer-inner">
+        <p>© 2024 오호준 포트폴리오</p>
+        <div class="socials">
+          <a
+            href="https://github.com/jflower52"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://velog.io/@jflower/posts"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Velog"
+          >
+            <i class="fa-solid fa-blog"></i>
+          </a>
+        </div>
       </div>
     </footer>
 
+    <!-- ===== FABs (우하단) ===== -->
+    <div class="fab" aria-label="빠른 동작">
+      <!-- 이메일: 툴팁 표시 + 클릭 복사 + 토스트 -->
+      <button
+        type="button"
+        class="fab-btn email-btn"
+        aria-label="이메일 복사하기"
+      >
+        <i class="fa-solid fa-envelope"></i>
+        <span class="tooltip" role="status" aria-live="polite"
+          >jflower0502@gmail.com</span
+        >
+      </button>
+
+      <!-- 위로 가기 -->
+      <button type="button" class="fab-btn to-top" aria-label="위로 가기">
+        <i class="fa-solid fa-arrow-up"></i>
+      </button>
+    </div>
+
+    <!-- Toast -->
+    <div
+      id="toast"
+      class="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+    <!-- Scripts -->
     <script src="JS/index.js"></script>
   </body>
 </html>
