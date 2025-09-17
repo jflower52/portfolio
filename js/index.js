@@ -70,7 +70,7 @@ toTopBtn?.addEventListener("click", () =>
   window.scrollTo({ top: 0, behavior: "smooth" })
 );
 
-/* ===== Toast ===== */
+/* ===== 토스트 ===== */
 const toast = document.getElementById("toast");
 function showToast(message, timeout = 2000) {
   if (!toast) return;
