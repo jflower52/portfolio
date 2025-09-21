@@ -1,14 +1,22 @@
 /* ========== 1) Nav: 색 변화 & 모바일 토글 ========== */
 // 스크롤 시 .navbar에 scrolled 클래스 토글, 모바일 메뉴 토글/닫기
-const navbar   = document.querySelector(".navbar");
-const toggleBtn = document.querySelector(".menu-toggle");
-const navMenu  = document.querySelector("#nav-menu");
+const navbar     = document.querySelector(".navbar");
+const toggleBtn  = document.querySelector(".menu-toggle");
+const navMenu    = document.querySelector("#nav-menu");
+const snapContainer = document.querySelector(".snap-container");
+const scrollSources = [window, snapContainer].filter(Boolean);
+
+function getScrollOffset() {
+  const mainOffset = snapContainer ? snapContainer.scrollTop : 0;
+  const pageOffset = window.scrollY || 0;
+  return Math.max(mainOffset, pageOffset);
+}
 
 function onScrollNav() {
-  if (window.scrollY > 8) navbar.classList.add("scrolled");
-  else navbar.classList.remove("scrolled");
+  if (getScrollOffset() > 8) navbar?.classList.add("scrolled");
+  else navbar?.classList.remove("scrolled");
 }
-window.addEventListener("scroll", onScrollNav);
+scrollSources.forEach((target) => target.addEventListener("scroll", onScrollNav));
 onScrollNav(); // 초기 상태 반영
 
 // 햄버거 버튼 클릭 시 네비 열기/닫기 및 접근성 속성 반영
@@ -76,16 +84,19 @@ function revelsInit() {
 const toTopBtn = document.querySelector(".fab .to-top");
 
 function updateToTopVisibility() {
-  if (window.scrollY > 260) toTopBtn.classList.add("show");
+  if (!toTopBtn) return;
+  if (getScrollOffset() > 260) toTopBtn.classList.add("show");
   else toTopBtn.classList.remove("show");
 }
-window.addEventListener("scroll", updateToTopVisibility);
+scrollSources.forEach((target) =>
+  target.addEventListener("scroll", updateToTopVisibility)
+);
 updateToTopVisibility();
 
-toTopBtn?.addEventListener("click", () =>
-  window.scrollTo({ top: 0, behavior: "smooth" })
-);
-
+toTopBtn?.addEventListener("click", () => {
+  snapContainer?.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 /* ========== 5) 토스트 ========== */
 // #toast 요소에 메시지를 표시하고 일정 시간 후 자동 숨김
@@ -155,10 +166,11 @@ const PAGE_SIZE = 6; // 한 페이지 6개 (3x2)
 let currentFilter = "all";
 let currentPage = 1;
 
-const segContainer = document.querySelector(".segmented");
-const segButtons   = document.querySelectorAll(".seg-btn");
-const gridEl       = document.getElementById("project-grid");
-const projectCards = [...document.querySelectorAll("#project-grid .project")];
+const segContainer  = document.querySelector(".segmented");
+const segButtons    = document.querySelectorAll(".seg-btn");
+const gridEl        = document.getElementById("project-grid");
+const projectsWindow = document.querySelector(".projects-window");
+const projectCards  = [...document.querySelectorAll("#project-grid .project")];
 
 const pagerEl = document.getElementById("project-pager");
 const prevBtn = pagerEl?.querySelector(".prev");
@@ -188,6 +200,8 @@ function renderProjects() {
   if (infoEl)  infoEl.textContent = `${currentPage} / ${totalPages}`;
   if (prevBtn) prevBtn.disabled = currentPage <= 1;
   if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+  
+  projectsWindow?.scrollTo({ top: 0 });
 }
 
 // 세그먼트(필터) 버튼 클릭 처리

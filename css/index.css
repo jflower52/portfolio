@@ -24,6 +24,10 @@ html {
   html {
     scroll-behavior: auto;
   }
+  .snap-container {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
   .reveal {
     transition: none !important;
   }
@@ -41,6 +45,15 @@ body {
     radial-gradient(900px 600px at 110% 8%, #18213e 0%, transparent 55%),
     var(--bg);
   line-height: 1.65;
+}
+
+.snap-container {
+  scroll-snap-type: y mandatory;
+  height: calc(100dvh - var(--nav-h));
+  overflow-y: auto;
+  padding-top: var(--nav-h);
+  scroll-padding-top: var(--nav-h);
+  scroll-behavior: smooth;
   padding-top: var(--nav-h);
 }
 img {
@@ -162,12 +175,21 @@ img {
   }
 }
 
-
 /* ========== 3) Sections & Hero ========== */
-/* 공통 섹션 패딩 & 오프셋 */
+/* 공통 섹션 레이아웃 */
 .section {
-  padding: 80px 0;
-  scroll-margin-top: calc(var(--nav-h) + 14px);
+  min-height: calc(100dvh - var(--nav-h));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.section > .container {
+  padding-block: 80px;
+  align-self: stretch;
+  box-sizing: border-box;
 }
 .section.alt {
   background: linear-gradient(
@@ -182,8 +204,8 @@ img {
 }
 
 /* Hero */
-.hero {
-  padding: 96px 0 84px;
+.hero > .container {
+  padding-block: 96px 84px;
 }
 .hero-inner {
   display: grid;
@@ -428,6 +450,27 @@ img {
 
 
 /* ========== 7) Projects ========== */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  align-self: stretch;
+}
+.projects-window {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-gutter: stable both-edges;
+}
+.projects-window:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+}
+.projects-container .pager {
+  margin-top: auto;
+}
 .grid {
   display: grid;
   gap: 18px;
@@ -489,14 +532,32 @@ img {
 
 
 /* ========== 8) Contact ========== */
-.contact-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr 1fr;
+.contact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
 }
-@media (max-width: 860px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
+.contact-intro {
+  max-width: 520px;
+}
+.contact-form-panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+.contact-form-panel .form-card {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
+  padding: 22px;
+}
+@media (max-width: 680px) {
+  .contact-stack {
+    gap: 20px;
+  }
+  .contact-form-panel .form-card {
+    padding: 18px;
   }
 }
 .form-card {
