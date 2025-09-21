@@ -4,31 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>오호준의 포트폴리오</title>
+    <title>hojun portfolio</title>
     <meta name="description" content="오호준 포트폴리오 — 프론트엔드 개발" />
     <meta name="theme-color" content="#141827" />
 
-    <!-- Font (KR 가독성) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Font Awesome (안정 버전 6.5.x) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/index.css" />
   </head>
 
   <body>
     <a class="skip-link" href="#home">본문 바로가기</a>
 
-    <!-- ===== NAV ===== -->
+    <!-- 네비게이션 -->
     <nav class="navbar" aria-label="주요">
       <div class="container nav-inner">
         <a href="#home" class="logo" aria-label="홈으로">오호준의 포트폴리오</a>
@@ -62,7 +59,7 @@
       </div>
     </nav>
 
-    <!-- ===== HERO ===== -->
+    <!-- HOME -->
     <header id="home" class="section hero reveal">
       <div class="container hero-inner">
         <div class="hero-copy">
@@ -130,7 +127,7 @@
       </div>
     </header>
 
-    <!-- ===== PROFILE ===== -->
+    <!-- PROFILE -->
     <section id="profile" class="section reveal">
       <div class="container">
         <h2 class="section-title">About Me</h2>
@@ -144,21 +141,12 @@
                 <i class="fa-solid fa-user"></i> 오호준
               </li>
               <li>
-                <i class="fa-solid fa-cake-candles"></i> 2002.05.01
-              </li>
-              <li>
-                <i class="fa-solid fa-location-dot"></i> 대구광역시 북구
-              </li>
-              <li>
                 <i class="fa-solid fa-phone"></i> 010-3259-4824
               </li>
               <li>
                 <i class="fa-solid fa-envelope"></i> jflower0502@gmail.com
               </li>
-              <li>
-                <i class="fa-solid fa-graduation-cap"></i> 영진전문대학교 학사(컴퓨터정보계열)
-              </li>
-            </ul>
+              </ul>
             
             <div class="links">
               <a
@@ -185,15 +173,15 @@
       </div>
     </section>
 
-    <!-- ===== SKILL & TOOLS ===== -->
+    <!-- SKILL & TOOLS -->
     <section id="skills" class="section alt reveal">
       <div class="container">
         <h2 class="section-title">Skill &amp; Tools</h2>
 
         <div class="skills-rows">
-          <!-- FrontEnd -->
+          <!-- SKILL -->
           <div class="skills-group">
-            <h3 class="skills-heading">FrontEnd</h3>
+            <h3 class="skills-heading">Skill</h3>
             <ul class="skill-icons">
               <li>
                 <button
@@ -230,7 +218,7 @@
             </ul>
           </div>
 
-          <!-- Tools -->
+          <!-- TOOLS -->
           <div class="skills-group">
             <h3 class="skills-heading">Tools</h3>
             <ul class="skill-icons">
@@ -252,15 +240,7 @@
                   <i class="fa-brands fa-github"></i>
                 </button>
               </li>
-              <li>
-                <button
-                  class="skill-pill ic--notion"
-                  aria-label="Notion"
-                  title="Notion"
-                >
-                  <span class="notion-mark">N</span>
-                </button>
-              </li>
+              
               <li>
                 <button
                   class="skill-pill ic--discord"
@@ -276,12 +256,12 @@
       </div>
     </section>
 
-    <!-- ===== PROJECTS ===== -->
+    <!-- PROJECTS -->
     <section id="projects" class="section reveal">
       <div class="container">
         <h2 class="section-title">Projects</h2>
 
-        <!-- Segmented Control -->
+        <!-- 프로젝트 필터 -->
         <div class="segmented" role="tablist" aria-label="프로젝트 필터">
           <button
             class="seg-btn active"
@@ -309,9 +289,7 @@
           </button>
         </div>
 
-        <!-- Grid: 카드는 6개 이상 있어도 됩니다 -->
         <div class="grid projects-grid" id="project-grid">
-          <!-- Team -->
           <article class="card project" data-type="team">
             <div
               class="thumb gradient-a"
@@ -333,7 +311,6 @@
             </div>
           </article>
 
-          <!-- Single -->
           <article class="card project" data-type="single">
             <div
               class="thumb gradient-b"
@@ -355,7 +332,6 @@
             </div>
           </article>
 
-          <!-- Team -->
           <article class="card project" data-type="team">
             <div
               class="thumb gradient-c"
@@ -377,7 +353,6 @@
             </div>
           </article>
 
-          <!-- 아래는 페이지네이션 테스트용 예시 카드 3개 더 -->
           <article class="card project" data-type="single">
             <div
               class="thumb gradient-b"
@@ -434,7 +409,7 @@
           </article>
         </div>
 
-        <!-- Pager -->
+        <!-- 페이지네이션 -->
         <div class="pager" id="project-pager" aria-label="프로젝트 페이지 이동">
           <button class="pager-btn prev" aria-label="이전 페이지" disabled>
             <i class="fa-solid fa-angle-left"></i> Prev
@@ -447,7 +422,7 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
+    <!-- CONTACT -->
     <section id="contact" class="section alt reveal">
       <div class="container contact-grid">
         <div>
@@ -503,7 +478,7 @@
       </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="container footer-inner">
         <p>© 2025 오호준 포트폴리오</p>
@@ -530,7 +505,7 @@
 
     <!-- ===== FABs (우하단) ===== -->
     <div class="fab" aria-label="빠른 동작">
-      <!-- 이메일: 툴팁 표시 + 클릭 복사 + 토스트 -->
+      <!-- 이메일 -->
       <button
         type="button"
         class="fab-btn email-btn"
@@ -548,7 +523,7 @@
       </button>
     </div>
 
-    <!-- Toast -->
+    <!-- TOAST -->
     <div
       id="toast"
       class="toast"
@@ -557,7 +532,7 @@
       aria-atomic="true"
     ></div>
 
-    <!-- Scripts -->
+    <!-- 메인 자바스크립트 파일 로드 -->
     <script src="js/index.js"></script>
   </body>
 </html>
