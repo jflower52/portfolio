@@ -1,4 +1,5 @@
-/* ===== 기본 ===== */
+/* ========== 1) 기본 / 리셋 / 접근성 ========== */
+/* ----- 기본(테마 변수) ----- */
 :root {
   --bg: #0b0d12;
   --panel: #121521;
@@ -12,6 +13,7 @@
   --shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
 }
 
+/* ----- 리셋 ----- */
 * {
   box-sizing: border-box;
 }
@@ -26,7 +28,6 @@ html {
     transition: none !important;
   }
 }
-
 body {
   margin: 0;
   font-family: "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto,
@@ -42,7 +43,6 @@ body {
   line-height: 1.65;
   padding-top: var(--nav-h);
 }
-
 img {
   max-width: 100%;
   display: block;
@@ -55,7 +55,7 @@ img {
   color: var(--muted);
 }
 
-/* ===== A11y ===== */
+/* ----- 접근성: Skip Link ----- */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -77,7 +77,8 @@ img {
   border-radius: 8px;
 }
 
-/* ===== Navbar ===== */
+
+/* ========== 2) Navbar ========== */
 .navbar {
   position: fixed;
   inset: 0 0 auto 0;
@@ -92,7 +93,6 @@ img {
   background: rgba(20, 24, 39, 0.9);
   box-shadow: var(--shadow);
 }
-
 .nav-inner {
   height: 100%;
   display: flex;
@@ -133,7 +133,7 @@ img {
 .nav-menu a.active {
   background: linear-gradient(90deg, var(--brand), var(--brand-2));
 }
-
+/* 모바일 네비 */
 @media (max-width: 860px) {
   .menu-toggle {
     display: block;
@@ -162,7 +162,9 @@ img {
   }
 }
 
-/* ===== Sections ===== */
+
+/* ========== 3) Sections & Hero ========== */
+/* 공통 섹션 패딩 & 오프셋 */
 .section {
   padding: 80px 0;
   scroll-margin-top: calc(var(--nav-h) + 14px);
@@ -179,7 +181,7 @@ img {
   margin: 0 0 18px;
 }
 
-/* ===== Hero ===== */
+/* Hero */
 .hero {
   padding: 96px 0 84px;
 }
@@ -212,7 +214,9 @@ img {
   }
 }
 
-/* Buttons */
+
+/* ========== 4) Buttons & Cards ========== */
+/* 버튼 */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -240,7 +244,7 @@ img {
   font-size: 0.95rem;
 }
 
-/* ===== Cards / Common ===== */
+/* 카드 */
 .card {
   background: linear-gradient(
     180deg,
@@ -253,7 +257,8 @@ img {
   box-shadow: var(--shadow);
 }
 
-/* ===== Profile ===== */
+
+/* ========== 5) Profile ========== */
 .profile {
   display: grid;
   gap: 18px;
@@ -308,7 +313,9 @@ img {
   transform: translateY(-1px);
 }
 
-/* ===== Skills ===== */
+
+/* ========== 6) Skills ========== */
+/* 스킬 리스트 (바) */
 .skill-list {
   list-style: none;
   padding: 0;
@@ -349,7 +356,7 @@ img {
   transform: translateZ(0);
 }
 
-/* ===== Skill & Tools (icon pills) ===== */
+/* 스킬 아이콘(알약) */
 .skills-rows {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -361,12 +368,10 @@ img {
     grid-template-columns: 1fr;
   }
 }
-
 .skills-heading {
   margin: 0 0 12px;
   font-size: clamp(18px, 2.6vw, 22px);
 }
-
 .skill-icons {
   list-style: none;
   margin: 0;
@@ -375,7 +380,6 @@ img {
   flex-wrap: wrap;
   gap: 14px;
 }
-
 .skill-pill {
   width: 64px;
   height: 64px;
@@ -394,35 +398,19 @@ img {
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.28);
   background: rgba(255, 255, 255, 0.08);
 }
-
 .skill-pill i {
   font-size: 28px;
   line-height: 1;
 }
 
-/* 브랜드 컬러 */
-.ic--html i {
-  color: #e44d26;
-}
-.ic--css i {
-  color: #1572b6;
-}
-.ic--js i {
-  color: #f7df1e;
-}
-.ic--react i {
-  color: #61dafb;
-}
-.ic--figma i {
-  color: #f24e1e;
-}
-.ic--github i {
-  color: #ffffff;
-  opacity: 0.95;
-}
-.ic--discord i {
-  color: #5865f2;
-}
+/* 브랜드 컬러 (아이콘) */
+.ic--html i { color: #e44d26; }
+.ic--css i { color: #1572b6; }
+.ic--js i { color: #f7df1e; }
+.ic--react i { color: #61dafb; }
+.ic--figma i { color: #f24e1e; }
+.ic--github i { color: #ffffff; opacity: 0.95; }
+.ic--discord i { color: #5865f2; }
 
 /* Notion 커스텀 마크 (FA에 공식 아이콘 없음) */
 .ic--notion .notion-mark {
@@ -438,7 +426,8 @@ img {
   letter-spacing: 0.02em;
 }
 
-/* ===== Projects ===== */
+
+/* ========== 7) Projects ========== */
 .grid {
   display: grid;
   gap: 18px;
@@ -457,21 +446,16 @@ img {
   }
 }
 
+/* 프로젝트 카드 */
 .project .thumb {
   aspect-ratio: 16/10;
   border-radius: 12px;
   margin-bottom: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
-.gradient-a {
-  background: linear-gradient(135deg, #5046e6, #7d5bd1);
-}
-.gradient-b {
-  background: linear-gradient(135deg, #2e9ca1, #5fc5a1);
-}
-.gradient-c {
-  background: linear-gradient(135deg, #c6579a, #9a59d1);
-}
+.gradient-a { background: linear-gradient(135deg, #5046e6, #7d5bd1); }
+.gradient-b { background: linear-gradient(135deg, #2e9ca1, #5fc5a1); }
+.gradient-c { background: linear-gradient(135deg, #c6579a, #9a59d1); }
 
 .project-body {
   display: grid;
@@ -503,7 +487,8 @@ img {
   margin-top: 4px;
 }
 
-/* ===== Contact ===== */
+
+/* ========== 8) Contact ========== */
 .contact-grid {
   display: grid;
   gap: 20px;
@@ -514,7 +499,6 @@ img {
     grid-template-columns: 1fr;
   }
 }
-
 .form-card {
   display: grid;
   gap: 10px;
@@ -542,7 +526,8 @@ img {
   margin: 0;
 }
 
-/* ===== Footer ===== */
+
+/* ========== 9) Footer ========== */
 .footer {
   padding: 26px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -564,7 +549,8 @@ img {
   opacity: 1;
 }
 
-/* ===== Reveal on scroll ===== */
+
+/* ========== 10) Reveal on scroll ========== */
 .reveal {
   opacity: 0;
   transform: translateY(12px);
@@ -575,7 +561,8 @@ img {
   transform: none;
 }
 
-/* ===== FAB ===== */
+
+/* ========== 11) FAB & Tooltip ========== */
 .fab {
   position: fixed;
   right: 16px;
@@ -606,8 +593,7 @@ img {
 .fab-btn i {
   font-size: 1.15rem;
 }
-
-/* to-top 초기 숨김 */
+/* to-top 초기 숨김/표시 */
 .fab-btn.to-top {
   opacity: 0;
   pointer-events: none;
@@ -639,7 +625,8 @@ img {
   opacity: 1;
 }
 
-/* ===== Toast ===== */
+
+/* ========== 12) Toast ========== */
 .toast {
   position: fixed;
   right: 16px;
@@ -661,7 +648,9 @@ img {
   transform: none;
 }
 
-/* ===== Segmented Control (Projects Filter) ===== */
+
+/* ========== 13) Segmented(프로젝트 필터) & Pager ========== */
+/* Segmented */
 .segmented {
   margin: 8px 0 18px;
   background: rgba(255, 255, 255, 0.06);
@@ -700,7 +689,7 @@ img {
   display: none !important;
 }
 
-/* ===== Pager ===== */
+/* Pager */
 .pager {
   display: flex;
   align-items: center;
