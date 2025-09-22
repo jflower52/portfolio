@@ -1,171 +1,127 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>hojun portfolio</title>
-    <meta name="description" content="오호준 포트폴리오 — 프론트엔드 개발" />
-    <meta name="theme-color" content="#141827" />
+    <title>오호준 · 프론트엔드 포트폴리오</title>
+    <meta name="description" content="프론트엔드 개발자 오호준 — 프로젝트, 기술 스택, 연락처" />
+    <meta name="theme-color" content="#0b0d12" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <link rel="stylesheet" href="css/index.css" />
+
+    <!-- 구조화 데이터 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "오호준",
+        "jobTitle": "Frontend Developer",
+        "email": "mailto:jflower0502@gmail.com",
+        "url": "https://example.com",
+        "sameAs": ["https://github.com/jflower52","https://velog.io/@jflower/posts"]
+      }
+    </script>
   </head>
 
   <body>
     <a class="skip-link" href="#home">본문 바로가기</a>
 
-    <!-- 네비게이션 -->
+    <!-- ===== 네비게이션 (고정) ===== -->
     <nav class="navbar" aria-label="주요">
-      <div class="container nav-inner">
-        <a href="#home" class="logo" aria-label="홈으로">오호준의 포트폴리오</a>
+      <div class="container nav__inner">
+        <a href="#home" class="logo" aria-label="홈으로">Hojun.dev</a>
 
-        <button
-          class="menu-toggle"
-          aria-label="메뉴 열기"
-          aria-controls="nav-menu"
-          aria-expanded="false"
-        >
+        <button class="menu-toggle" aria-label="메뉴 열기" aria-controls="nav-menu" aria-expanded="false">
           <i class="fa-solid fa-bars"></i>
         </button>
 
         <ul id="nav-menu" class="nav-menu" role="menubar">
+          <li role="none"><a role="menuitem" class="nav-link" href="#home">Home</a></li>
+          <li role="none"><a role="menuitem" class="nav-link" href="#about">About</a></li>
+          <li role="none"><a role="menuitem" class="nav-link" href="#skills">Skills</a></li>
+          <li role="none"><a role="menuitem" class="nav-link" href="#projects">Projects</a></li>
+          <li role="none"><a role="menuitem" class="nav-link" href="#contact">Contact</a></li>
           <li role="none">
-            <a role="menuitem" class="nav-link" href="#home">Home</a>
-          </li>
-          <li role="none">
-            <a role="menuitem" class="nav-link" href="#profile">Profile</a>
-          </li>
-          <li role="none">
-            <a role="menuitem" class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li role="none">
-            <a role="menuitem" class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li role="none">
-            <a role="menuitem" class="nav-link" href="#contact">Contact</a>
+            <button class="theme-toggle" type="button" aria-label="테마 전환">
+              <i class="fa-solid fa-circle-half-stroke"></i>
+            </button>
           </li>
         </ul>
       </div>
     </nav>
 
-    <main class="snap-container">
+    <!-- ===== 스냅 컨테이너(원-페이징) ===== -->
+    <main class="snap-container" id="content">
       <!-- HOME -->
       <header id="home" class="section hero reveal">
-        <div class="container hero-inner">
-          <div class="hero-copy">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Frontend · UI Engineering</p>
             <h1>
-              프론트엔드 개발자<br /><strong>오호준</strong>입니다.
+              사용자 경험에 진심인<br />
+              <strong>프론트엔드 개발자 오호준</strong>
             </h1>
-            <p class="lead">
-              사용자 경험을 중시하는 <b>프론트엔드 개발자</b>를 목표로 매일
-              개선하고 성장합니다.
-            </p>
-            <div class="hero-cta">
-              <a class="btn primary" href="#projects"
-                ><i class="fa-solid fa-folder-open"></i> 프로젝트 보기</a
-              >
-              <a class="btn ghost" href="#contact"
-                ><i class="fa-solid fa-paper-plane"></i> 연락하기</a
-              >
+            <p class="lead">접근성, 성능, 유지보수성을 바탕으로 팀이 오래 쓰는 프론트엔드를 만듭니다.</p>
+            <div class="hero__cta">
+              <a class="btn primary nav-jump" href="#projects"><i class="fa-solid fa-folder-open"></i> 프로젝트 보기</a>
+              <a class="btn ghost nav-jump" href="#contact"><i class="fa-solid fa-paper-plane"></i> 연락하기</a>
             </div>
+            <ul class="hero__badges" aria-label="하이라이트">
+              <li><i class="fa-solid fa-bolt"></i> 성능 최적화</li>
+              <li><i class="fa-solid fa-universal-access"></i> 접근성</li>
+              <li><i class="fa-solid fa-cubes"></i> 재사용 컴포넌트</li>
+            </ul>
           </div>
 
-          <!-- SVG 아트 -->
-          <div class="hero-art" aria-hidden="true">
+          <div class="hero__art" aria-hidden="true">
             <svg viewBox="0 0 440 320" role="img">
               <defs>
                 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#6f7ef8" />
                   <stop offset="100%" stop-color="#764ba2" />
                 </linearGradient>
-                <filter id="b" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="12" />
-                </filter>
+                <filter id="b" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="12" /></filter>
               </defs>
-              <circle
-                cx="120"
-                cy="120"
-                r="90"
-                fill="url(#g)"
-                opacity="0.55"
-                filter="url(#b)"
-              />
-              <rect
-                x="140"
-                y="80"
-                width="240"
-                height="160"
-                rx="18"
-                fill="url(#g)"
-                opacity="0.8"
-              />
-              <rect
-                x="160"
-                y="100"
-                width="200"
-                height="120"
-                rx="14"
-                fill="#0f1320"
-              />
+              <circle cx="120" cy="120" r="90" fill="url(#g)" opacity="0.55" filter="url(#b)"/>
+              <rect x="140" y="80" width="240" height="160" rx="18" fill="url(#g)" opacity="0.8"/>
+              <rect x="160" y="100" width="200" height="120" rx="14" fill="#0f1320"/>
               <g opacity="0.5" fill="url(#g)">
-                <rect x="176" y="120" width="72" height="10" rx="5" />
-                <rect x="176" y="140" width="160" height="10" rx="5" />
-                <rect x="176" y="160" width="132" height="10" rx="5" />
+                <rect x="176" y="120" width="72" height="10" rx="5"/>
+                <rect x="176" y="140" width="160" height="10" rx="5"/>
+                <rect x="176" y="160" width="132" height="10" rx="5"/>
               </g>
             </svg>
           </div>
         </div>
       </header>
 
-      <!-- PROFILE -->
-      <section id="profile" class="section reveal">
+      <!-- ABOUT -->
+      <section id="about" class="section reveal">
         <div class="container">
-          <h2 class="section-title">About Me</h2>
+          <h2 class="section-title">About</h2>
           <article class="card profile">
             <div class="avatar">
-              <img src="img/profile.jpg" alt="오호준 프로필 사진" />
+              <img src="img/profile.jpg" width="240" height="240" alt="오호준 프로필 사진" loading="lazy" />
             </div>
-            <div class="profile-body">
+            <div class="profile__body">
+              <p class="muted">
+                빠르게 만드는 것보다 <b>오래 쓰이는 코드</b>를 우선합니다. 타입 안정성, 컴포넌트 추상화, 접근성(스크린리더/키보드)까지 고려합니다.
+              </p>
               <ul class="meta">
-                <li>
-                  <i class="fa-solid fa-user"></i> 오호준
-                </li>
-                <li>
-                  <i class="fa-solid fa-phone"></i> 010-3259-4824
-                </li>
-                <li>
-                  <i class="fa-solid fa-envelope"></i> jflower0502@gmail.com
-                </li>
+                <li><i class="fa-solid fa-user"></i> 오호준</li>
+                <li><i class="fa-solid fa-phone"></i> 010-3259-4824</li>
+                <li><i class="fa-solid fa-envelope"></i> jflower0502@gmail.com</li>
               </ul>
-
               <div class="links">
-                <a
-                  class="icon-btn"
-                  href="https://github.com/jflower52"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                >
+                <a class="icon-btn" href="https://github.com/jflower52" target="_blank" rel="noreferrer" aria-label="GitHub">
                   <i class="fa-brands fa-github"></i>
                 </a>
-                <a
-                  class="icon-btn"
-                  href="https://velog.io/@jflower/posts"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Velog"
-                >
+                <a class="icon-btn" href="https://velog.io/@jflower/posts" target="_blank" rel="noreferrer" aria-label="Velog">
                   <i class="fa-solid fa-blog"></i>
                 </a>
               </div>
@@ -174,87 +130,41 @@
         </div>
       </section>
 
-      <!-- SKILL & TOOLS -->
+      <!-- SKILLS -->
       <section id="skills" class="section alt reveal">
         <div class="container">
-          <h2 class="section-title">Skill &amp; Tools</h2>
+          <h2 class="section-title">Skills & Tools</h2>
 
-          <div class="skills-rows">
-            <!-- SKILL -->
-            <div class="skills-group">
-              <h3 class="skills-heading">Skill</h3>
+          <div class="skills__rows">
+            <div class="skills__group">
+              <h3 class="skills-heading">Skills</h3>
               <ul class="skill-icons">
-                <li>
-                  <button
-                    class="skill-pill ic--html"
-                    aria-label="HTML"
-                    title="HTML"
-                  >
-                    <i class="fa-brands fa-html5"></i>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    class="skill-pill ic--css"
-                    aria-label="CSS"
-                    title="CSS"
-                  >
-                    <i class="fa-brands fa-css3-alt"></i>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    class="skill-pill ic--js"
-                    aria-label="JavaScript"
-                    title="JavaScript"
-                  >
-                    <i class="fa-brands fa-js"></i>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    class="skill-pill ic--react"
-                    aria-label="React"
-                    title="React"
-                  >
-                    <i class="fa-brands fa-react"></i>
-                  </button>
-                </li>
+                <li><span class="skill-pill ic--html" title="HTML"><i class="fa-brands fa-html5"></i></span></li>
+                <li><span class="skill-pill ic--css" title="CSS"><i class="fa-brands fa-css3-alt"></i></span></li>
+                <li><span class="skill-pill ic--js" title="JavaScript"><i class="fa-brands fa-js"></i></span></li>
+                <li><span class="skill-pill ic--react" title="React"><i class="fa-brands fa-react"></i></span></li>
+              </ul>
+
+              <ul class="skill-list" aria-label="숙련도">
+                <li class="skill"><span class="label">Semantic HTML</span><div class="bar"><span class="fill" style="--w:95%"></span></div><span class="val">95%</span></li>
+                <li class="skill"><span class="label">CSS Architecture</span><div class="bar"><span class="fill" style="--w:90%"></span></div><span class="val">90%</span></li>
+                <li class="skill"><span class="label">JavaScript (ES+)</span><div class="bar"><span class="fill" style="--w:88%"></span></div><span class="val">88%</span></li>
+                <li class="skill"><span class="label">React · Hooks</span><div class="bar"><span class="fill" style="--w:85%"></span></div><span class="val">85%</span></li>
               </ul>
             </div>
 
-            <!-- TOOLS -->
-            <div class="skills-group">
+            <div class="skills__group">
               <h3 class="skills-heading">Tools</h3>
               <ul class="skill-icons">
-                <li>
-                  <button
-                    class="skill-pill ic--figma"
-                    aria-label="Figma"
-                    title="Figma"
-                  >
-                    <i class="fa-brands fa-figma"></i>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    class="skill-pill ic--github"
-                    aria-label="GitHub"
-                    title="GitHub"
-                  >
-                    <i class="fa-brands fa-github"></i>
-                  </button>
-                </li>
+                <li><span class="skill-pill ic--figma" title="Figma"><i class="fa-brands fa-figma"></i></span></li>
+                <li><span class="skill-pill ic--github" title="GitHub"><i class="fa-brands fa-github"></i></span></li>
+                <li><span class="skill-pill ic--discord" title="Discord"><i class="fa-brands fa-discord"></i></span></li>
+              </ul>
 
-                <li>
-                  <button
-                    class="skill-pill ic--discord"
-                    aria-label="Discord"
-                    title="Discord"
-                  >
-                    <i class="fa-brands fa-discord"></i>
-                  </button>
-                </li>
+              <ul class="bullets">
+                <li>PR 템플릿/CI 체크리스트로 코드 품질 표준화</li>
+                <li>스토리북·디자인 토큰으로 UI 일관성 유지</li>
+                <li>Vite/ESBuild로 개발 경험 개선</li>
               </ul>
             </div>
           </div>
@@ -263,185 +173,99 @@
 
       <!-- PROJECTS -->
       <section id="projects" class="section reveal">
-        <div class="container projects-container">
+        <div class="container projects__container">
           <h2 class="section-title">Projects</h2>
 
-          <!-- 프로젝트 필터 -->
-          <div class="segmented" role="tablist" aria-label="프로젝트 필터">
-            <button
-              class="seg-btn active"
-              role="tab"
-              aria-selected="true"
-              data-filter="all"
-            >
-              All
-            </button>
-            <button
-              class="seg-btn"
-              role="tab"
-              aria-selected="false"
-              data-filter="team"
-            >
-              Team
-            </button>
-            <button
-              class="seg-btn"
-              role="tab"
-              aria-selected="false"
-              data-filter="single"
-            >
-              Single
-            </button>
+          <div class="toolbar" role="region" aria-label="프로젝트 필터">
+            <div class="segmented" role="tablist">
+              <button class="seg-btn active" role="tab" aria-selected="true" data-filter="all">All</button>
+              <button class="seg-btn" role="tab" aria-selected="false" data-filter="team">Team</button>
+              <button class="seg-btn" role="tab" aria-selected="false" data-filter="single">Single</button>
+            </div>
+
+            <label class="search field">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" id="project-search" placeholder="프로젝트 검색 (제목/태그)" autocomplete="on" />
+            </label>
           </div>
 
-          <div
-            class="projects-window"
-            role="region"
-            aria-label="프로젝트 목록"
-            tabindex="0"
-          >
-            <div class="grid projects-grid" id="project-grid">
-              <article class="card project" data-type="team">
-                <div
-                  class="thumb gradient-a"
-                  role="img"
-                  aria-label="반응형 포트폴리오 썸네일"
-                ></div>
+          <div class="projects-window" role="region" aria-label="프로젝트 목록" tabindex="0">
+            <div id="project-grid" class="grid projects-grid">
+              <!-- data-title / data-tags / data-type -->
+              <article class="card project" data-type="team" data-title="반응형 포트폴리오" data-tags="html,css,javascript,ui">
+                <div class="thumb gradient-a" role="img" aria-label="반응형 포트폴리오 썸네일"></div>
                 <div class="project-body">
                   <h3 class="project-title">반응형 포트폴리오</h3>
-                  <p class="project-desc">
-                    팀 협업으로 만든 반응형 사이트. 스크롤 리빌/하이라이트 적용.
-                  </p>
-                  <div class="project-tags">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="btn small" href="#">Demo</a
-                    ><a class="btn small ghost" href="#">Code</a>
-                  </div>
+                  <p class="project-desc">팀 협업으로 만든 반응형 사이트. 스크롤 리빌/하이라이트 적용.</p>
+                  <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                  <div class="project-actions"><a class="btn small" href="#">Demo</a><a class="btn small ghost" href="#">Code</a></div>
                 </div>
               </article>
 
-              <article class="card project" data-type="single">
-                <div
-                  class="thumb gradient-b"
-                  role="img"
-                  aria-label="Todo 앱 썸네일"
-                ></div>
+              <article class="card project" data-type="single" data-title="Todo" data-tags="react,hooks,accessibility,storage">
+                <div class="thumb gradient-b" role="img" aria-label="Todo 앱 썸네일"></div>
                 <div class="project-body">
                   <h3 class="project-title">Todo</h3>
-                  <p class="project-desc">
-                    로컬스토리지 기반 개인 프로젝트. 키보드 접근성 강화.
-                  </p>
-                  <div class="project-tags">
-                    <span>React</span><span>Hooks</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="btn small" href="#">Demo</a
-                    ><a class="btn small ghost" href="#">Code</a>
-                  </div>
+                  <p class="project-desc">로컬스토리지 기반 개인 프로젝트. 키보드 접근성 강화.</p>
+                  <div class="project-tags"><span>React</span><span>Hooks</span></div>
+                  <div class="project-actions"><a class="btn small" href="#">Demo</a><a class="btn small ghost" href="#">Code</a></div>
                 </div>
               </article>
 
-              <article class="card project" data-type="team">
-                <div
-                  class="thumb gradient-c"
-                  role="img"
-                  aria-label="API 대시보드 썸네일"
-                ></div>
+              <article class="card project" data-type="team" data-title="API 데이터 대시보드" data-tags="fetch,api,loading,error,cache">
+                <div class="thumb gradient-c" role="img" aria-label="API 대시보드 썸네일"></div>
                 <div class="project-body">
                   <h3 class="project-title">API 데이터 대시보드</h3>
-                  <p class="project-desc">
-                    공공 API 대시보드. 로딩/에러 상태 및 캐싱 설계.
-                  </p>
-                  <div class="project-tags">
-                    <span>JavaScript</span><span>Fetch</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="btn small" href="#">Demo</a
-                    ><a class="btn small ghost" href="#">Code</a>
-                  </div>
+                  <p class="project-desc">공공 API 대시보드. 로딩/에러 상태 및 캐싱 설계.</p>
+                  <div class="project-tags"><span>JavaScript</span><span>Fetch</span></div>
+                  <div class="project-actions"><a class="btn small" href="#">Demo</a><a class="btn small ghost" href="#">Code</a></div>
                 </div>
               </article>
 
-              <article class="card project" data-type="single">
-                <div
-                  class="thumb gradient-b"
-                  role="img"
-                  aria-label="UI 컴포넌트 라이브러리"
-                ></div>
+              <article class="card project" data-type="single" data-title="UI 컴포넌트 라이브러리" data-tags="ui,components,design-system">
+                <div class="thumb gradient-b" role="img" aria-label="UI 컴포넌트 라이브러리 썸네일"></div>
                 <div class="project-body">
                   <h3 class="project-title">UI 컴포넌트 라이브러리</h3>
                   <p class="project-desc">공통 UI를 모듈화하여 재사용성 향상.</p>
                   <div class="project-tags"><span>CSS</span><span>JS</span></div>
-                  <div class="project-actions">
-                    <a class="btn small" href="#">Demo</a
-                    ><a class="btn small ghost" href="#">Code</a>
-                  </div>
+                  <div class="project-actions"><a class="btn small" href="#">Demo</a><a class="btn small ghost" href="#">Code</a></div>
                 </div>
               </article>
 
-              <article class="card project" data-type="team">
-                <div
-                  class="thumb gradient-a"
-                  role="img"
-                  aria-label="실시간 채팅"
-                ></div>
+              <article class="card project" data-type="team" data-title="실시간 채팅" data-tags="socket,websocket,chat,realtime">
+                <div class="thumb gradient-a" role="img" aria-label="실시간 채팅 썸네일"></div>
                 <div class="project-body">
                   <h3 class="project-title">실시간 채팅</h3>
                   <p class="project-desc">팀 협업용 실시간 채팅 데모.</p>
-                  <div class="project-tags">
-                    <span>WebSocket</span><span>JS</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="btn small" href="#">Demo</a
-                    ><a class="btn small ghost" href="#">Code</a>
-                  </div>
+                  <div class="project-tags"><span>WebSocket</span><span>JS</span></div>
+                  <div class="project-actions"><a class="btn small" href="#">Demo</a><a class="btn small ghost" href="#">Code</a></div>
                 </div>
               </article>
 
-              <article class="card project" data-type="single">
-                <div
-                  class="thumb gradient-c"
-                  role="img"
-                  aria-label="이미지 갤러리"
-                ></div>
+              <article class="card project" data-type="single" data-title="이미지 갤러리" data-tags="gallery,grid,layout">
+                <div class="thumb gradient-c" role="img" aria-label="이미지 갤러리 썸네일"></div>
                 <div class="project-body">
                   <h3 class="project-title">이미지 갤러리</h3>
-                  <p class="project-desc">
-                    반응형 Masonry 느낌의 갤러리(간단 버전).
-                  </p>
+                  <p class="project-desc">반응형 Masonry 느낌의 갤러리(간단 버전).</p>
                   <div class="project-tags"><span>HTML</span><span>CSS</span></div>
-                  <div class="project-actions">
-                    <a class="btn small" href="#">Demo</a
-                    ><a class="btn small ghost" href="#">Code</a>
-                  </div>
+                  <div class="project-actions"><a class="btn small" href="#">Demo</a><a class="btn small ghost" href="#">Code</a></div>
                 </div>
               </article>
             </div>
           </div>
 
-          <!-- 페이지네이션 -->
-          <div
-            class="pager"
-            id="project-pager"
-            aria-label="프로젝트 페이지 이동"
-          >
-            <button class="pager-btn prev" aria-label="이전 페이지" disabled>
-              <i class="fa-solid fa-angle-left"></i> Prev
-            </button>
+          <div class="pager" id="project-pager" aria-label="프로젝트 페이지 이동">
+            <button class="pager-btn prev" aria-label="이전 페이지" disabled><i class="fa-solid fa-angle-left"></i> Prev</button>
             <span class="pager-info" aria-live="polite">1 / 1</span>
-            <button class="pager-btn next" aria-label="다음 페이지" disabled>
-              Next <i class="fa-solid fa-angle-right"></i>
-            </button>
+            <button class="pager-btn next" aria-label="다음 페이지" disabled>Next <i class="fa-solid fa-angle-right"></i></button>
           </div>
         </div>
       </section>
 
       <!-- CONTACT -->
       <section id="contact" class="section alt reveal">
-        <div class="container contact-stack">
-          <div class="contact-intro">
+        <div class="container contact__stack">
+          <div class="contact__intro">
             <h2 class="section-title">Contact</h2>
             <p class="muted">프로젝트나 협업 제안은 언제든 환영합니다.</p>
             <ul class="meta">
@@ -451,50 +275,28 @@
             </ul>
           </div>
 
-          <div
-            class="contact-form-panel"
-            role="region"
-            aria-label="연락처 입력 폼"
-          >
-            <form
-              id="contact-form"
-              class="card form-card"
-              autocomplete="on"
-              novalidate
-            >
+          <div class="contact-form-panel" role="region" aria-label="연락처 입력 폼">
+            <form id="contact-form" class="card form-card" autocomplete="on" novalidate>
               <label class="field">
                 <span>이름</span>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="이름을 입력하세요"
-                  required
-                />
+                <input type="text" name="name" placeholder="이름을 입력하세요" required />
+                <small class="err" aria-live="polite"></small>
               </label>
               <label class="field">
                 <span>이메일</span>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="example@email.com"
-                  required
-                />
+                <input type="email" name="email" placeholder="example@email.com" required />
+                <small class="err" aria-live="polite"></small>
               </label>
               <label class="field">
                 <span>메시지</span>
-                <textarea
-                  name="message"
-                  rows="4"
-                  placeholder="내용을 입력하세요"
-                  required
-                ></textarea>
+                <textarea name="message" rows="4" placeholder="내용을 입력하세요" required></textarea>
+                <small class="err" aria-live="polite"></small>
               </label>
-              <button class="btn primary" type="submit">
-                <i class="fa-solid fa-paper-plane"></i> 보내기
-              </button>
-              <p class="form-note muted">
-                * 데모 폼으로, 제출 시 화면 우측 하단에 토스트가 뜹니다.
-              </p>
+              <div class="form__actions">
+                <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> 보내기</button>
+                <a class="btn ghost" href="mailto:jflower0502@gmail.com">메일로 보내기</a>
+              </div>
+              <p class="form-note muted">* 데모 폼입니다. 제출 시 우측 하단에 토스트가 뜹니다.</p>
             </form>
           </div>
         </div>
@@ -503,59 +305,29 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <div class="container footer-inner">
-        <p>© 2025 오호준 포트폴리오</p>
+      <div class="container footer__inner">
+        <p>© 2025 오호준</p>
         <div class="socials">
-          <a
-            href="https://github.com/jflower52"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-          >
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a
-            href="https://velog.io/@jflower/posts"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Velog"
-          >
-            <i class="fa-solid fa-blog"></i>
-          </a>
+          <a href="https://github.com/jflower52" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://velog.io/@jflower/posts" target="_blank" rel="noreferrer" aria-label="Velog"><i class="fa-solid fa-blog"></i></a>
         </div>
       </div>
     </footer>
 
-    <!-- FABs (우하단) -->
+    <!-- FAB -->
     <div class="fab" aria-label="빠른 동작">
-      <!-- 이메일 -->
-      <button
-        type="button"
-        class="fab-btn email-btn"
-        aria-label="이메일 복사하기"
-      >
+      <button type="button" class="fab-btn email-btn" aria-label="이메일 복사하기">
         <i class="fa-solid fa-envelope"></i>
-        <span class="tooltip" role="status" aria-live="polite"
-          >jflower0502@gmail.com</span
-        >
+        <span class="tooltip" role="status" aria-live="polite">jflower0502@gmail.com</span>
       </button>
-
-      <!-- 위로 가기 -->
       <button type="button" class="fab-btn to-top" aria-label="위로 가기">
         <i class="fa-solid fa-arrow-up"></i>
       </button>
     </div>
 
     <!-- TOAST -->
-    <div
-      id="toast"
-      class="toast"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    ></div>
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
-    <!-- 메인 자바스크립트 파일 로드 -->
-    <script src="js/index.js"></script>
+    <script src="js/index.js" defer></script>
   </body>
 </html>
