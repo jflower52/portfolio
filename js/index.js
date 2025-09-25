@@ -1,38 +1,25 @@
 /* ============================================================
- * 원-페이징 전용 UX 보강
- * - Snap 컨테이너 기준 ScrollSpy(메뉴 Active 정확도 개선)
- * - 컨테이너/윈도우 이중 스크롤 대응
- * - 네비 앵커 클릭 시 컨테이너로 부드럽게 스크롤
- * - 테마 토글, FAB/토스트, 프로젝트 필터+검색+페이지네이션, 폼 유효성
+ * Full-page Controller
+ *  - 섹션 단위 자연 스크롤(휠/터치/키보드/메뉴)
+ *  - ScrollSpy / Reveal / ToTop / 테마 / 필터/검색/페이징 / 폼 유효성
  * ============================================================ */
 
-/* ---------- 유틸 ---------- */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const on = (el, type, fn, opt) => el && el.addEventListener(type, fn, opt);
 
 /* 공통 DOM */
-const snapContainer = $(".snap-container");
 const navbar = $(".navbar");
 const toggleBtn = $(".menu-toggle");
 const navMenu = $("#nav-menu");
 const themeBtn = $(".theme-toggle");
 
-/* 컨테이너/윈도우 최대 스크롤값 (네비 상태/맨위버튼 표시용) */
-function getScrollOffset() {
-  const mainOffset = snapContainer ? snapContainer.scrollTop : 0;
-  const pageOffset = window.scrollY || 0;
-  return Math.max(mainOffset, pageOffset);
-}
-
-/* ---------- 1) Navbar 상태 & 모바일 토글 ---------- */
+/* ---------- Navbar 상태 ---------- */
 function onScrollNav() {
-  if (getScrollOffset() > 12) navbar?.classList.add("scrolled");
+  if ((window.scrollY || 0) > 12) navbar?.classList.add("scrolled");
   else navbar?.classList.remove("scrolled");
 }
-[window, snapContainer]
-  .filter(Boolean)
-  .forEach((t) => on(t, "scroll", onScrollNav));
+on(window, "scroll", onScrollNav);
 onScrollNav();
 
 on(toggleBtn, "click", () => {
@@ -46,36 +33,122 @@ on(navMenu, "click", (e) => {
   }
 });
 
-/* ---------- 2) Snap 내 앵커 스크롤 보정 ---------- */
-/* a[href^="#"] 클릭 시 기본동작을 막고, 스냅 컨테이너로 스크롤하도록 통일 */
-function scrollToHash(hash) {
-  const id = (hash || "").replace(/^#/, "");
-  const target = id ? document.getElementById(id) : null;
-  if (!target) return;
-  // 섹션이 스냅 컨테이너 자식이므로, scrollIntoView가 컨테이너를 스크롤
-  target.scrollIntoView({ block: "start", behavior: "smooth" });
-  // 접근성: 섹션 포커스 가능하게
-  target.setAttribute("tabindex", "-1");
-  target.focus({ preventScroll: true });
+/* ---------- Full-page Controller ---------- */
+const sections = $$("header.section, section.section");
+const navLinks = $$(".nav-link");
+let currentIndex = 0;
+let animating = false;
+
+function indexFromScroll() {
+  const navH = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue("--nav-h")
+  );
+  const probe = window.scrollY + (window.innerHeight - navH) / 2;
+  let best = 0,
+    bestDist = Infinity;
+  sections.forEach((sec, i) => {
+    const top = sec.offsetTop - navH;
+    const dist = Math.abs(probe - top);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = i;
+    }
+  });
+  return best;
 }
+function scrollToIndex(i) {
+  i = Math.max(0, Math.min(i, sections.length - 1));
+  const target = sections[i];
+  if (!target) return;
+  animating = true;
+  target.scrollIntoView({ block: "start", behavior: "smooth" });
+  currentIndex = i;
+  const id = target.id;
+  if (id) history.replaceState(null, "", `#${id}`);
+  clearTimeout(scrollToIndex._t);
+  scrollToIndex._t = setTimeout(() => (animating = false), 650);
+}
+currentIndex = indexFromScroll();
+
+/* 휠/트랙패드 */
+let wheelLock = false;
+on(
+  window,
+  "wheel",
+  (e) => {
+    if (animating) return;
+    if (Math.abs(e.deltaY) < 20) return;
+    if (wheelLock) return;
+    wheelLock = true;
+
+    if (e.deltaY > 0) scrollToIndex(currentIndex + 1);
+    else scrollToIndex(currentIndex - 1);
+
+    setTimeout(() => {
+      wheelLock = false;
+    }, 420);
+  },
+  { passive: true }
+);
+
+/* 키보드 */
+on(window, "keydown", (e) => {
+  if (e.target.matches("input,textarea,[contenteditable]")) return;
+  if (animating) return;
+  const down = ["PageDown", "ArrowDown", " "];
+  const up = ["PageUp", "ArrowUp"];
+  if (down.includes(e.key)) {
+    e.preventDefault();
+    scrollToIndex(currentIndex + 1);
+  } else if (up.includes(e.key)) {
+    e.preventDefault();
+    scrollToIndex(currentIndex - 1);
+  } else if (e.key === "Home") {
+    e.preventDefault();
+    scrollToIndex(0);
+  } else if (e.key === "End") {
+    e.preventDefault();
+    scrollToIndex(sections.length - 1);
+  }
+});
+
+/* 터치 스와이프 */
+let touchY = null;
+on(
+  window,
+  "touchstart",
+  (e) => {
+    touchY = e.changedTouches[0].clientY;
+  },
+  { passive: true }
+);
+on(
+  window,
+  "touchend",
+  (e) => {
+    if (touchY == null || animating) return;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dy) < 60) return;
+    if (dy < 0) scrollToIndex(currentIndex + 1);
+    else scrollToIndex(currentIndex - 1);
+    touchY = null;
+  },
+  { passive: true }
+);
+
+/* 메뉴/앵커 클릭 */
 on(document, "click", (e) => {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
-  const href = a.getAttribute("href");
-  const id = href.slice(1);
-  const tgt = document.getElementById(id);
-  if (tgt && snapContainer) {
-    e.preventDefault();
-    history.replaceState(null, "", href);
-    scrollToHash(href);
-  }
+  const id = a.getAttribute("href").slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+  e.preventDefault();
+  const idx = sections.indexOf(target);
+  if (idx >= 0) scrollToIndex(idx);
 });
-// 새로고침 시 해시가 있으면 해당 섹션으로 이동
-if (location.hash) setTimeout(() => scrollToHash(location.hash), 0);
 
-/* ---------- 3) ScrollSpy (스냅 컨테이너 기준) ---------- */
-const navLinks = $$(".nav-link");
-const sections = $$("header.section, section.section").filter((s) => s.id);
+/* 스크롤 스파이(네비 하이라이트) */
 const spy = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -88,15 +161,20 @@ const spy = new IntersectionObserver(
       });
     });
   },
-  {
-    root: snapContainer || null, // ★ 핵심: 컨테이너 기준으로 관찰
-    rootMargin: "-50% 0px -45% 0px", // 섹션 중앙 부근에서 활성화
-    threshold: 0,
-  }
+  { root: null, rootMargin: "-50% 0px -45% 0px", threshold: 0 }
 );
 sections.forEach((s) => spy.observe(s));
 
-/* ---------- 4) Reveal on scroll ---------- */
+/* 스크롤 시 현재 인덱스 보정 */
+let syncT;
+on(window, "scroll", () => {
+  clearTimeout(syncT);
+  syncT = setTimeout(() => {
+    currentIndex = indexFromScroll();
+  }, 100);
+});
+
+/* ---------- Reveal ---------- */
 const reveals = $$(".reveal");
 const ro = new IntersectionObserver(
   (ents) => {
@@ -107,39 +185,27 @@ const ro = new IntersectionObserver(
       }
     });
   },
-  { root: snapContainer || null, threshold: 0.15 }
+  { root: null, threshold: 0.15 }
 );
-function revelsInit() {
-  reveals.forEach((el) => ro.observe(el));
-}
-revelsInit();
+reveals.forEach((el) => ro.observe(el));
 
-/* ---------- 5) FAB: 맨 위로 ---------- */
+/* ---------- FAB ---------- */
 const toTopBtn = $(".fab .to-top");
 function updateToTopVisibility() {
-  if (!toTopBtn) return;
-  toTopBtn.classList.toggle("show", getScrollOffset() > 260);
+  toTopBtn?.classList.toggle("show", (window.scrollY || 0) > 260);
 }
-[window, snapContainer]
-  .filter(Boolean)
-  .forEach((t) => on(t, "scroll", updateToTopVisibility));
+on(window, "scroll", updateToTopVisibility);
 updateToTopVisibility();
-on(toTopBtn, "click", () => {
-  snapContainer?.scrollTo({ top: 0, behavior: "smooth" });
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+on(toTopBtn, "click", () => scrollToIndex(0));
 
-/* ---------- 6) 토스트 ---------- */
+/* ---------- 토스트 & 이메일 복사 ---------- */
 const toast = $("#toast");
 function showToast(message, timeout = 2000) {
-  if (!toast) return;
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(showToast._t);
   showToast._t = setTimeout(() => toast.classList.remove("show"), timeout);
 }
-
-/* ---------- 7) 클립보드 & 이메일 FAB ---------- */
 async function copyText(text) {
   try {
     await navigator.clipboard.writeText(text);
@@ -169,9 +235,9 @@ on($(".fab .email-btn"), "click", async () => {
   );
 });
 
-/* ---------- 8) 테마 전환 (로컬 저장) ---------- */
+/* ---------- 테마 전환 ---------- */
 const THEME_KEY = "hojun.theme";
-(function applySavedTheme() {
+(function () {
   const saved = localStorage.getItem(THEME_KEY);
   if (saved) document.documentElement.setAttribute("data-theme", saved);
 })();
@@ -183,7 +249,7 @@ on(themeBtn, "click", () => {
   localStorage.setItem(THEME_KEY, next);
 });
 
-/* ---------- 9) Contact 데모 폼 (간단 검사) ---------- */
+/* ---------- Contact 데모 폼 ---------- */
 const form = $("#contact-form");
 on(form, "submit", (e) => {
   e.preventDefault();
@@ -202,14 +268,14 @@ on(form, "submit", (e) => {
   setErr(emailEl, !emailOk ? "유효한 이메일을 입력해주세요." : "");
   const msgEl = form.elements.namedItem("message");
   setErr(msgEl, !data.message?.trim() ? "메시지를 입력해주세요." : "");
-
   if (!valid) return;
+
   console.log("Submitted form (demo):", data);
   showToast("메시지가 제출되었습니다! (데모 폼)");
   form.reset();
 });
 
-/* ---------- 10) Projects: 필터 + 검색 + 페이지네이션 ---------- */
+/* ---------- Projects: 필터/검색/페이징 ---------- */
 const PAGE_SIZE = 6;
 let currentFilter = "all";
 let currentPage = 1;
@@ -218,7 +284,6 @@ let currentQuery = "";
 const segContainer = $(".segmented");
 const segButtons = $$(".seg-btn");
 const gridEl = $("#project-grid");
-const projectsWindow = $(".projects-window");
 const projectCards = $$("#project-grid .project");
 
 const pagerEl = $("#project-pager");
@@ -252,8 +317,6 @@ function renderProjects() {
   if (infoEl) infoEl.textContent = `${currentPage} / ${totalPages}`;
   if (prevBtn) prevBtn.disabled = currentPage <= 1;
   if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
-
-  projectsWindow?.scrollTo({ top: 0, behavior: "smooth" });
 }
 on(segContainer, "click", (e) => {
   const btn = e.target.closest(".seg-btn");

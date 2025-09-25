@@ -3,28 +3,33 @@
    ========================= */
 :root {
   --bg: #0b0d12;
+  --bg-2: #0e121c;
   --panel: #121521;
   --panel-2: #0f1320;
   --text: #e9ecf1;
   --muted: #a7b0c2;
   --brand: #6f7ef8;
   --brand-2: #764ba2;
-  --nav-h: 68px;
-  --snap-offset: calc(var(--nav-h) + 18px); /* 네비 높이 + 여유 */
-  --footer-space: 96px; /* 푸터 앞 여유(잘림 방지) */
+
+  --nav-h: 68px; /* 고정 네비 높이 */
   --radius: 16px;
   --shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+
+  --fade-dark: 12%; /* 섹션 경계 크로스페이드 강도 */
+  --fade-light: 10%;
 }
 [data-theme="light"] {
   --bg: #f6f7fb;
-  --panel: #ffffff;
-  --panel-2: #ffffff;
+  --bg-2: #eef1f7;
+  --panel: #fff;
+  --panel-2: #fff;
   --text: #0e1220;
   --muted: #58607a;
   --brand: #5566ff;
   --brand-2: #7d4bd1;
   --shadow: 0 10px 24px rgba(15, 19, 32, 0.08);
 }
+
 *,
 *::before,
 *::after {
@@ -33,28 +38,35 @@
 html {
   scroll-behavior: smooth;
 }
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .reveal {
-    transition: none !important;
-  }
+html,
+body {
+  height: 100%;
 }
+
+/* body가 스크롤 컨테이너 + 스냅 */
 body {
   margin: 0;
   font-family: "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto,
     sans-serif;
   color: var(--text);
   background: radial-gradient(
-      1000px 600px at 10% -10%,
-      #1a2042 0%,
+      1600px 900px at 10% -20%,
+      color-mix(in oklab, var(--brand) 10%, transparent) 0,
       transparent 60%
     ),
-    radial-gradient(900px 600px at 110% 8%, #18213e 0%, transparent 55%),
-    var(--bg);
+    radial-gradient(
+      1400px 800px at 110% 10%,
+      color-mix(in oklab, var(--brand-2) 8%, transparent) 0,
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
   line-height: 1.65;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory; /* 풀페이지 강제 스냅 */
 }
+
 img {
   max-width: 100%;
   display: block;
@@ -69,7 +81,6 @@ img {
 .skip-link {
   position: absolute;
   left: -9999px;
-  top: auto;
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -78,8 +89,6 @@ img {
   position: fixed;
   left: 16px;
   top: 16px;
-  width: auto;
-  height: auto;
   padding: 8px 12px;
   z-index: 2000;
   background: #fff;
@@ -88,28 +97,21 @@ img {
 }
 
 /* =========================
-     Navbar (고정)
-     ========================= */
+   Navbar (고정)
+   ========================= */
 .navbar {
   position: fixed;
   inset: 0 0 auto 0;
   height: var(--nav-h);
-  background: rgba(20, 24, 39, 0.45);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: color-mix(in oklab, var(--panel) 60%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
   backdrop-filter: blur(8px);
   z-index: 1100;
   transition: background 0.18s ease, box-shadow 0.18s ease;
 }
-[data-theme="light"] .navbar {
-  background: rgba(255, 255, 255, 0.8);
-  border-bottom-color: rgba(0, 0, 0, 0.06);
-}
 .navbar.scrolled {
-  background: rgba(20, 24, 39, 0.9);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
   box-shadow: var(--shadow);
-}
-[data-theme="light"] .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.98);
 }
 .nav__inner {
   height: 100%;
@@ -119,23 +121,17 @@ img {
   gap: 12px;
 }
 .logo {
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
   font-weight: 900;
   letter-spacing: 0.06em;
-}
-[data-theme="light"] .logo {
-  color: #111;
 }
 .menu-toggle {
   display: none;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: var(--text);
   font-size: 1.1rem;
-}
-[data-theme="light"] .menu-toggle {
-  color: #111;
 }
 .nav-menu {
   list-style: none;
@@ -146,17 +142,18 @@ img {
   align-items: center;
 }
 .nav-menu a {
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 10px;
   transition: background 0.18s ease, color 0.18s ease;
 }
 .nav-menu a:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: color-mix(in oklab, var(--text) 10%, transparent);
 }
 .nav-menu a.active {
   background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  color: #fff;
 }
 .theme-toggle {
   border: 0;
@@ -168,11 +165,9 @@ img {
   cursor: pointer;
 }
 .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: color-mix(in oklab, var(--text) 10%, transparent);
 }
-[data-theme="light"] .theme-toggle:hover {
-  background: rgba(0, 0, 0, 0.06);
-}
+
 @media (max-width: 860px) {
   .menu-toggle {
     display: block;
@@ -181,8 +176,8 @@ img {
     position: fixed;
     right: 16px;
     top: calc(var(--nav-h) + 12px);
-    background: rgba(18, 21, 33, 0.96);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--panel);
+    border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
     border-radius: 14px;
     box-shadow: var(--shadow);
     padding: 10px;
@@ -199,52 +194,108 @@ img {
     opacity: 1;
     pointer-events: auto;
   }
-  [data-theme="light"] .nav-menu {
-    background: #fff;
-    border-color: rgba(0, 0, 0, 0.08);
-  }
 }
 
 /* =========================
-     Snap Container (원-페이징)
-     ========================= */
-.snap-container {
-  scroll-snap-type: y mandatory;
-  height: calc(100dvh - var(--nav-h));
-  overflow-y: auto;
-  scroll-padding-top: var(--snap-offset); /* 앵커/scrollIntoView 오프셋 */
-  padding-top: var(--nav-h); /* 첫 섹션이 네비 아래서 시작 */
-  padding-bottom: calc(
-    var(--footer-space) + env(safe-area-inset-bottom, 0px)
-  ); /* 푸터 잘림 방지 */
-  scroll-behavior: smooth;
+   Section (풀페이지)
+   ========================= */
+main {
+  padding-top: var(--nav-h);
 }
-
-/* =========================
-     Sections
-     ========================= */
 .section {
-  min-height: calc(100dvh - var(--nav-h));
+  position: relative;
+  height: calc(100svh - var(--nav-h)); /* 네비 길이 고려 */
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  scroll-margin-top: var(--snap-offset); /* 해시/포커스 이동 시 가려지지 않음 */
+  overflow: clip; /* 하단 겹침 방지 */
 }
 .section > .container {
-  padding-block: 80px;
+  padding-block: 64px;
   align-self: stretch;
   box-sizing: border-box;
 }
+@media (max-width: 860px) {
+  .section > .container {
+    padding-block: 48px;
+  }
+}
 .section.alt {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.03),
-    transparent 60%
+  background: transparent;
+}
+
+/* 섹션 경계 크로스페이드(부드러운 전환) */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: -18svh 0 auto 0;
+  height: 36svh;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+      1200px 520px at 12% 0%,
+      color-mix(in oklab, var(--brand) var(--fade-dark), transparent) 0,
+      transparent 60%
+    ),
+    radial-gradient(
+      1100px 520px at 88% 0%,
+      color-mix(
+          in oklab,
+          var(--brand-2) calc(var(--fade-dark) - 2%),
+          transparent
+        )
+        0,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--panel) 10%, transparent) 0%,
+      transparent 70%
+    );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.25) 70%,
+    rgba(0, 0, 0, 0)
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.25) 70%,
+    rgba(0, 0, 0, 0)
   );
 }
+[data-theme="light"] .section::before {
+  background: radial-gradient(
+      1200px 520px at 12% 0%,
+      color-mix(in oklab, var(--brand) var(--fade-light), transparent) 0,
+      transparent 60%
+    ),
+    radial-gradient(
+      1100px 520px at 88% 0%,
+      color-mix(
+          in oklab,
+          var(--brand-2) calc(var(--fade-light) - 2%),
+          transparent
+        )
+        0,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--panel) 6%, transparent) 0%,
+      transparent 70%
+    );
+}
+.section:nth-of-type(even)::before {
+  inset: auto 0 -18svh 0;
+  height: 36svh;
+  transform: scaleY(-1);
+}
+
 .section-title {
   font-size: clamp(22px, 3.4vw, 32px);
   margin: 0 0 18px;
@@ -254,10 +305,7 @@ h1 {
   font-size: clamp(28px, 4.6vw, 46px);
 }
 
-/* Hero */
-.hero > .container {
-  padding-block: 96px 84px;
-}
+/* = Hero = */
 .hero__grid {
   display: grid;
   gap: 28px;
@@ -294,8 +342,8 @@ h1 {
   gap: 6px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: color-mix(in oklab, var(--panel) 40%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
 }
 .hero__art {
   filter: drop-shadow(var(--shadow));
@@ -317,7 +365,7 @@ h1 {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: transform 0.12s ease, background 0.18s ease, opacity 0.18s ease;
+  transition: transform 0.12s, background 0.18s, opacity 0.18s;
   color: #fff;
 }
 .btn:hover {
@@ -328,19 +376,20 @@ h1 {
 }
 .btn.ghost {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: color-mix(in oklab, var(--text) 20%, transparent);
+  color: var(--text);
 }
 .btn.small {
-  padding: 8px 12px;
-  font-size: 0.95rem;
+  padding: 6px 10px;
+  font-size: 0.9rem;
 }
 .card {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.045),
-    rgba(255, 255, 255, 0.02)
+    color-mix(in oklab, var(--panel) 85%, transparent),
+    color-mix(in oklab, var(--panel) 65%, transparent)
   );
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
@@ -368,8 +417,8 @@ h1 {
 .avatar img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
+  border-radius: 50%;
 }
 .meta {
   list-style: none;
@@ -393,21 +442,16 @@ h1 {
   height: 42px;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: color-mix(in oklab, var(--panel) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
   border-radius: 12px;
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
-  transition: background 0.18s ease, transform 0.12s ease, opacity 0.18s ease;
+  transition: background 0.18s, transform 0.12s, opacity 0.18s;
 }
 .icon-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: color-mix(in oklab, var(--panel) 80%, transparent);
   transform: translateY(-1px);
-}
-[data-theme="light"] .icon-btn {
-  background: #fff;
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #111;
 }
 
 /* Skills */
@@ -440,16 +484,16 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: color-mix(in oklab, var(--panel) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
   color: #fff;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.18s ease;
+  transition: transform 0.12s, box-shadow 0.12s, background 0.18s;
 }
 .skill-pill:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.28);
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in oklab, var(--panel) 75%, transparent);
 }
 .skill-pill i {
   font-size: 28px;
@@ -490,8 +534,8 @@ h1 {
   grid-template-columns: 160px 1fr 52px;
   gap: 10px;
   align-items: center;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: color-mix(in oklab, var(--panel) 55%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
   padding: 10px 12px;
   border-radius: 12px;
 }
@@ -505,7 +549,7 @@ h1 {
 .bar {
   position: relative;
   height: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in oklab, var(--text) 10%, transparent);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -515,27 +559,24 @@ h1 {
   width: var(--w, 0);
   background: linear-gradient(90deg, var(--brand), var(--brand-2));
   border-radius: 999px;
-  transform: translateZ(0);
 }
 
-/* Projects */
+/* Projects 컴팩트 */
 .projects__container {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  height: 100%;
-  align-self: stretch;
+  gap: 14px;
 }
 .toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 .segmented {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: color-mix(in oklab, var(--panel) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
   border-radius: 999px;
   padding: 6px;
   display: inline-flex;
@@ -550,14 +591,10 @@ h1 {
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease,
-    transform 0.08s ease;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s, transform 0.08s;
 }
 .seg-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-.seg-btn:active {
-  transform: translateY(1px);
+  background: color-mix(in oklab, var(--text) 10%, transparent);
 }
 .seg-btn.active {
   background: #0d0f16;
@@ -570,8 +607,8 @@ h1 {
   gap: 8px;
   padding: 8px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+  background: color-mix(in oklab, var(--panel) 50%, transparent);
 }
 .search input {
   border: 0;
@@ -582,38 +619,32 @@ h1 {
 }
 
 .projects-window {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding-right: 6px;
-  scrollbar-gutter: stable both-edges;
-}
-.projects-window:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 4px;
+  overflow: visible;
 }
 .grid {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 .projects-grid {
   grid-template-columns: repeat(3, 1fr);
 }
-@media (max-width: 1020px) {
+@media (max-width: 1180px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-width: 680px) {
+@media (max-width: 700px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
 }
+
 .project .thumb {
-  aspect-ratio: 16/10;
+  aspect-ratio: auto;
+  height: 150px;
   border-radius: 12px;
-  margin-bottom: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 10px;
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
 }
 .gradient-a {
   background: linear-gradient(135deg, #5046e6, #7d5bd1);
@@ -624,34 +655,38 @@ h1 {
 .gradient-c {
   background: linear-gradient(135deg, #c6579a, #9a59d1);
 }
+.card {
+  padding: 16px;
+}
 .project-body {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 .project-title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.02rem;
 }
 .project-desc {
   margin: 0;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
 }
 .project-tags span {
-  padding: 4px 8px;
+  padding: 3px 7px;
   border-radius: 999px;
-  font-size: 0.85rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  background: color-mix(in oklab, var(--panel) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
 }
 .project-actions {
   display: flex;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 6px;
+  margin-top: 2px;
 }
 .project.hide {
   display: none !important;
@@ -661,7 +696,7 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 2px;
 }
 .pager-btn {
   display: inline-flex;
@@ -669,14 +704,14 @@ h1 {
   gap: 8px;
   padding: 8px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid color-mix(in oklab, var(--text) 16%, transparent);
+  background: color-mix(in oklab, var(--panel) 55%, transparent);
   color: var(--text);
   cursor: pointer;
-  transition: background 0.18s ease, opacity 0.18s ease;
+  transition: background 0.18s, opacity 0.18s;
 }
 .pager-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: color-mix(in oklab, var(--panel) 75%, transparent);
 }
 .pager-btn:disabled {
   opacity: 0.45;
@@ -688,28 +723,44 @@ h1 {
   text-align: center;
 }
 
+@media (max-height: 820px) {
+  .project .thumb {
+    height: 140px;
+  }
+  .card {
+    padding: 14px;
+  }
+}
+@media (max-height: 720px) {
+  .project .thumb {
+    height: 130px;
+  }
+  .project-title {
+    font-size: 1rem;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+  }
+}
+
 /* Contact */
 .contact__stack {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  height: 100%;
+  gap: 16px;
 }
 .contact__intro {
   max-width: 560px;
 }
 .contact-form-panel {
-  flex: 1;
-  min-height: 0;
   display: flex;
 }
 .form-card {
   flex: 1;
   display: grid;
-  gap: 12px;
-  padding: 22px;
-  overflow-y: auto;
-  scrollbar-gutter: stable both-edges;
+  gap: 10px;
+  padding: 16px;
+  overflow: visible;
 }
 .field {
   display: grid;
@@ -718,17 +769,17 @@ h1 {
 .field input,
 .field textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 10px 12px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: color-mix(in oklab, var(--panel) 55%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
   border-radius: 12px;
   outline: none;
 }
 .field input:focus,
 .field textarea:focus {
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px rgba(111, 126, 248, 0.2);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 30%, transparent);
 }
 .err {
   color: #ff8080;
@@ -742,15 +793,25 @@ h1 {
 .form-note {
   margin: 0;
 }
+#contact .btn {
+  padding: 9px 14px;
+}
 
-/* Footer */
+/* Footer 섹션 자체도 풀페이지 */
+.footer-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .footer {
+  width: 100%;
   padding: 26px 0;
-  padding-bottom: calc(
-    26px + env(safe-area-inset-bottom, 0px)
-  ); /* 안전영역 보강 */
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: var(--panel-2);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--panel-2) 90%, transparent),
+    color-mix(in oklab, var(--panel-2) 70%, transparent)
+  );
+  border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
 }
 .footer__inner {
   display: flex;
@@ -759,7 +820,7 @@ h1 {
   gap: 10px;
 }
 .socials a {
-  color: #fff;
+  color: var(--text);
   margin-left: 10px;
   text-decoration: none;
   opacity: 0.85;
@@ -783,9 +844,7 @@ h1 {
 .fab {
   position: fixed;
   right: 16px;
-  bottom: calc(
-    16px + env(safe-area-inset-bottom, 0px)
-  ); /* 푸터/안전영역과 겹침 방지 */
+  bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -803,7 +862,7 @@ h1 {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
   cursor: pointer;
   position: relative;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.2s ease;
+  transition: transform 0.12s, box-shadow 0.12s, opacity 0.2s;
 }
 .fab-btn:hover {
   transform: translateY(-2px);
@@ -834,7 +893,7 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.12);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.18s ease;
+  transition: opacity 0.18s;
 }
 .fab-btn:hover .tooltip,
 .fab-btn:focus-visible .tooltip {
@@ -856,7 +915,7 @@ h1 {
   opacity: 0;
   transform: translateY(8px);
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s, transform 0.2s;
 }
 .toast.show {
   opacity: 1;
