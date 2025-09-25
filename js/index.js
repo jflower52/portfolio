@@ -1,9 +1,3 @@
-/* ============================================================
- * Full-page Controller
- *  - 섹션 단위 자연 스크롤(휠/터치/키보드/메뉴)
- *  - ScrollSpy / Reveal / ToTop / 테마 / 필터/검색/페이징 / 폼 유효성
- * ============================================================ */
-
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const on = (el, type, fn, opt) => el && el.addEventListener(type, fn, opt);
@@ -14,7 +8,7 @@ const toggleBtn = $(".menu-toggle");
 const navMenu = $("#nav-menu");
 const themeBtn = $(".theme-toggle");
 
-/* ---------- Navbar 상태 ---------- */
+/* Navbar 배경 전환 */
 function onScrollNav() {
   if ((window.scrollY || 0) > 12) navbar?.classList.add("scrolled");
   else navbar?.classList.remove("scrolled");
@@ -22,6 +16,7 @@ function onScrollNav() {
 on(window, "scroll", onScrollNav);
 onScrollNav();
 
+/* 모바일 메뉴 */
 on(toggleBtn, "click", () => {
   const opened = navMenu.classList.toggle("open");
   toggleBtn.setAttribute("aria-expanded", String(opened));
@@ -33,122 +28,9 @@ on(navMenu, "click", (e) => {
   }
 });
 
-/* ---------- Full-page Controller ---------- */
+/* ScrollSpy (부드러운 proximity 스냅과 함께 동작) */
 const sections = $$("header.section, section.section");
 const navLinks = $$(".nav-link");
-let currentIndex = 0;
-let animating = false;
-
-function indexFromScroll() {
-  const navH = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue("--nav-h")
-  );
-  const probe = window.scrollY + (window.innerHeight - navH) / 2;
-  let best = 0,
-    bestDist = Infinity;
-  sections.forEach((sec, i) => {
-    const top = sec.offsetTop - navH;
-    const dist = Math.abs(probe - top);
-    if (dist < bestDist) {
-      bestDist = dist;
-      best = i;
-    }
-  });
-  return best;
-}
-function scrollToIndex(i) {
-  i = Math.max(0, Math.min(i, sections.length - 1));
-  const target = sections[i];
-  if (!target) return;
-  animating = true;
-  target.scrollIntoView({ block: "start", behavior: "smooth" });
-  currentIndex = i;
-  const id = target.id;
-  if (id) history.replaceState(null, "", `#${id}`);
-  clearTimeout(scrollToIndex._t);
-  scrollToIndex._t = setTimeout(() => (animating = false), 650);
-}
-currentIndex = indexFromScroll();
-
-/* 휠/트랙패드 */
-let wheelLock = false;
-on(
-  window,
-  "wheel",
-  (e) => {
-    if (animating) return;
-    if (Math.abs(e.deltaY) < 20) return;
-    if (wheelLock) return;
-    wheelLock = true;
-
-    if (e.deltaY > 0) scrollToIndex(currentIndex + 1);
-    else scrollToIndex(currentIndex - 1);
-
-    setTimeout(() => {
-      wheelLock = false;
-    }, 420);
-  },
-  { passive: true }
-);
-
-/* 키보드 */
-on(window, "keydown", (e) => {
-  if (e.target.matches("input,textarea,[contenteditable]")) return;
-  if (animating) return;
-  const down = ["PageDown", "ArrowDown", " "];
-  const up = ["PageUp", "ArrowUp"];
-  if (down.includes(e.key)) {
-    e.preventDefault();
-    scrollToIndex(currentIndex + 1);
-  } else if (up.includes(e.key)) {
-    e.preventDefault();
-    scrollToIndex(currentIndex - 1);
-  } else if (e.key === "Home") {
-    e.preventDefault();
-    scrollToIndex(0);
-  } else if (e.key === "End") {
-    e.preventDefault();
-    scrollToIndex(sections.length - 1);
-  }
-});
-
-/* 터치 스와이프 */
-let touchY = null;
-on(
-  window,
-  "touchstart",
-  (e) => {
-    touchY = e.changedTouches[0].clientY;
-  },
-  { passive: true }
-);
-on(
-  window,
-  "touchend",
-  (e) => {
-    if (touchY == null || animating) return;
-    const dy = e.changedTouches[0].clientY - touchY;
-    if (Math.abs(dy) < 60) return;
-    if (dy < 0) scrollToIndex(currentIndex + 1);
-    else scrollToIndex(currentIndex - 1);
-    touchY = null;
-  },
-  { passive: true }
-);
-
-/* 메뉴/앵커 클릭 */
-on(document, "click", (e) => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a) return;
-  const id = a.getAttribute("href").slice(1);
-  const target = document.getElementById(id);
-  if (!target) return;
-  e.preventDefault();
-  const idx = sections.indexOf(target);
-  if (idx >= 0) scrollToIndex(idx);
-});
-
-/* 스크롤 스파이(네비 하이라이트) */
 const spy = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -165,40 +47,30 @@ const spy = new IntersectionObserver(
 );
 sections.forEach((s) => spy.observe(s));
 
-/* 스크롤 시 현재 인덱스 보정 */
-let syncT;
-on(window, "scroll", () => {
-  clearTimeout(syncT);
-  syncT = setTimeout(() => {
-    currentIndex = indexFromScroll();
-  }, 100);
-});
-
-/* ---------- Reveal ---------- */
+/* Reveal */
 const reveals = $$(".reveal");
 const ro = new IntersectionObserver(
-  (ents) => {
+  (ents) =>
     ents.forEach((e) => {
       if (e.isIntersecting) {
         e.target.classList.add("visible");
         ro.unobserve(e.target);
       }
-    });
-  },
+    }),
   { root: null, threshold: 0.15 }
 );
 reveals.forEach((el) => ro.observe(el));
 
-/* ---------- FAB ---------- */
+/* ToTop */
 const toTopBtn = $(".fab .to-top");
 function updateToTopVisibility() {
   toTopBtn?.classList.toggle("show", (window.scrollY || 0) > 260);
 }
 on(window, "scroll", updateToTopVisibility);
 updateToTopVisibility();
-on(toTopBtn, "click", () => scrollToIndex(0));
+on(toTopBtn, "click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-/* ---------- 토스트 & 이메일 복사 ---------- */
+/* 토스트 & 이메일 복사 */
 const toast = $("#toast");
 function showToast(message, timeout = 2000) {
   toast.textContent = message;
@@ -235,7 +107,7 @@ on($(".fab .email-btn"), "click", async () => {
   );
 });
 
-/* ---------- 테마 전환 ---------- */
+/* 테마 전환 */
 const THEME_KEY = "hojun.theme";
 (function () {
   const saved = localStorage.getItem(THEME_KEY);
@@ -249,7 +121,7 @@ on(themeBtn, "click", () => {
   localStorage.setItem(THEME_KEY, next);
 });
 
-/* ---------- Contact 데모 폼 ---------- */
+/* Contact 데모 폼 */
 const form = $("#contact-form");
 on(form, "submit", (e) => {
   e.preventDefault();
@@ -275,7 +147,7 @@ on(form, "submit", (e) => {
   form.reset();
 });
 
-/* ---------- Projects: 필터/검색/페이징 ---------- */
+/* Projects: 필터/검색/페이징 (동일) */
 const PAGE_SIZE = 6;
 let currentFilter = "all";
 let currentPage = 1;
@@ -283,7 +155,6 @@ let currentQuery = "";
 
 const segContainer = $(".segmented");
 const segButtons = $$(".seg-btn");
-const gridEl = $("#project-grid");
 const projectCards = $$("#project-grid .project");
 
 const pagerEl = $("#project-pager");

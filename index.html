@@ -57,7 +57,7 @@
       </div>
     </nav>
 
-    <!-- ===== 풀페이지 섹션들 ===== -->
+    <!-- ===== 섹션들 (부드러운 proximity 스냅) ===== -->
     <main id="page" aria-live="polite">
       <!-- 1. HOME -->
       <header id="home" class="section hero reveal">
@@ -324,7 +324,7 @@
 
           <div class="projects-window" role="region" aria-label="프로젝트 목록">
             <div id="project-grid" class="grid projects-grid">
-              <!-- 카드들 -->
+              <!-- (예시 카드 6개) 6개 초과 시 페이징 -->
               <article
                 class="card project"
                 data-type="team"
@@ -568,32 +568,30 @@
           </div>
         </div>
       </section>
-
-      <!-- 6. FOOTER(풀페이지 섹션) -->
-      <section id="footer" class="section footer-section" aria-label="푸터">
-        <footer class="footer">
-          <div class="container footer__inner">
-            <p>© 2025 오호준</p>
-            <div class="socials">
-              <a
-                href="https://github.com/jflower52"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                ><i class="fa-brands fa-github"></i
-              ></a>
-              <a
-                href="https://velog.io/@jflower/posts"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Velog"
-                ><i class="fa-solid fa-blog"></i
-              ></a>
-            </div>
-          </div>
-        </footer>
-      </section>
     </main>
+
+    <!-- ===== 일반 푸터(풀페이지 아님) ===== -->
+    <footer id="footer" class="footer" aria-label="푸터">
+      <div class="container footer__inner">
+        <p>© 2025 오호준</p>
+        <div class="socials">
+          <a
+            href="https://github.com/jflower52"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://velog.io/@jflower/posts"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Velog"
+            ><i class="fa-solid fa-blog"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
 
     <!-- FAB -->
     <div class="fab" aria-label="빠른 동작">
