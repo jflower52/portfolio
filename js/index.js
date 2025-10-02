@@ -107,18 +107,31 @@ on($(".fab .email-btn"), "click", async () => {
   );
 });
 
-/* 테마 전환 */
+/* ===== 테마 전환 (아이콘 버튼 스타일 + 상태반영) ===== */
 const THEME_KEY = "hojun.theme";
+
+/* 버튼 상태 반영: 라이트 = pressed:true */
+function reflectThemeButton() {
+  const isLight =
+    (document.documentElement.getAttribute("data-theme") || "dark") === "light";
+  themeBtn?.setAttribute("aria-pressed", String(isLight));
+}
+
+/* 초기 로드: 저장된 테마 적용 + 상태 반영 */
 (function () {
   const saved = localStorage.getItem(THEME_KEY);
   if (saved) document.documentElement.setAttribute("data-theme", saved);
+  reflectThemeButton();
 })();
+
+/* 클릭 시 토글 + 상태 반영 */
 on(themeBtn, "click", () => {
   const root = document.documentElement;
   const curr = root.getAttribute("data-theme") || "dark";
   const next = curr === "light" ? "dark" : "light";
   root.setAttribute("data-theme", next);
   localStorage.setItem(THEME_KEY, next);
+  reflectThemeButton();
 });
 
 /* Contact 데모 폼 */
