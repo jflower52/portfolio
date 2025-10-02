@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>오호준 · 프론트엔드 포트폴리오</title>
+    <title>오호준 · 포트폴리오</title>
     <meta
       name="description"
-      content="프론트엔드 개발자 오호준 — 프로젝트, 기술 스택, 연락처"
+      content="개발자 오호준 — 프로젝트, 기술 스택, 연락처"
     />
     <meta name="theme-color" content="#0b0d12" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +27,7 @@
     <!-- ===== 고정 네비게이션 ===== -->
     <nav class="navbar" aria-label="주요">
       <div class="container nav__inner">
-        <a href="#home" class="logo" aria-label="홈으로">Hojun.dev</a>
+        <a href="#home" class="logo" aria-label="홈으로">오호준의 포트폴리오</a>
 
         <button
           class="menu-toggle"
@@ -63,15 +63,10 @@
       <header id="home" class="section hero reveal">
         <div class="container hero__grid">
           <div class="hero__copy">
-            <p class="eyebrow">Frontend · UI Engineering</p>
-            <h1>
-              사용자 경험에 진심인<br /><strong
-                >프론트엔드 개발자 오호준</strong
-              >
-            </h1>
+            <h1>프론트엔드 개발자<br /><strong>오호준</strong>입니다.</h1>
             <p class="lead">
-              접근성, 성능, 유지보수성을 바탕으로 팀이 오래 쓰는 프론트엔드를
-              만듭니다.
+              사용자와의 대화에서 시작해, 본질을 정의하고 접근성·성능·안정성을
+              갖춘 프론트엔드를 만듭니다.
             </p>
             <div class="hero__cta">
               <a class="btn primary nav-jump" href="#projects"
@@ -81,11 +76,6 @@
                 ><i class="fa-solid fa-paper-plane"></i> 연락하기</a
               >
             </div>
-            <ul class="hero__badges" aria-label="하이라이트">
-              <li><i class="fa-solid fa-bolt"></i> 성능 최적화</li>
-              <li><i class="fa-solid fa-universal-access"></i> 접근성</li>
-              <li><i class="fa-solid fa-cubes"></i> 재사용 컴포넌트</li>
-            </ul>
           </div>
 
           <div class="hero__art" aria-hidden="true">
@@ -216,37 +206,6 @@
                   ></span>
                 </li>
               </ul>
-
-              <ul class="skill-list" aria-label="숙련도">
-                <li class="skill">
-                  <span class="label">Semantic HTML</span>
-                  <div class="bar">
-                    <span class="fill" style="--w: 95%"></span>
-                  </div>
-                  <span class="val">95%</span>
-                </li>
-                <li class="skill">
-                  <span class="label">CSS Architecture</span>
-                  <div class="bar">
-                    <span class="fill" style="--w: 90%"></span>
-                  </div>
-                  <span class="val">90%</span>
-                </li>
-                <li class="skill">
-                  <span class="label">JavaScript (ES+)</span>
-                  <div class="bar">
-                    <span class="fill" style="--w: 88%"></span>
-                  </div>
-                  <span class="val">88%</span>
-                </li>
-                <li class="skill">
-                  <span class="label">React · Hooks</span>
-                  <div class="bar">
-                    <span class="fill" style="--w: 85%"></span>
-                  </div>
-                  <span class="val">85%</span>
-                </li>
-              </ul>
             </div>
 
             <div class="skills__group">
@@ -267,11 +226,6 @@
                     ><i class="fa-brands fa-discord"></i
                   ></span>
                 </li>
-              </ul>
-              <ul class="bullets">
-                <li>PR 템플릿/CI 체크리스트로 코드 품질 표준화</li>
-                <li>스토리북·디자인 토큰으로 UI 일관성 유지</li>
-                <li>Vite/ESBuild로 개발 경험 개선</li>
               </ul>
             </div>
           </div>
@@ -570,26 +524,29 @@
       </section>
     </main>
 
-    <!-- ===== 일반 푸터(풀페이지 아님) ===== -->
     <footer id="footer" class="footer" aria-label="푸터">
       <div class="container footer__inner">
-        <p>© 2025 오호준</p>
-        <div class="socials">
+        <p class="footer-copy">© 2025 오호준</p>
+        <nav class="footer-links" aria-label="푸터 링크">
           <a
             href="https://github.com/jflower52"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            ><i class="fa-brands fa-github"></i
-          ></a>
+            title="GitHub"
+          >
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
           <a
             href="https://velog.io/@jflower/posts"
             target="_blank"
             rel="noreferrer"
             aria-label="Velog"
-            ><i class="fa-solid fa-blog"></i
-          ></a>
-        </div>
+            title="Velog"
+          >
+            <i class="fa-solid fa-blog" aria-hidden="true"></i>
+          </a>
+        </nav>
       </div>
     </footer>
 
