@@ -268,3 +268,13 @@ function escapeHtml(s) {
 
 // 초기 렌더
 render();
+
+// ======== 스크롤 시 헤더 배경 전환 ========
+const header = document.querySelector(".site-header");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 10) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});

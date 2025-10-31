@@ -24,19 +24,9 @@
     <!-- 고정 헤더 -->
     <header class="site-header" role="banner">
       <div class="container nav-inner">
-        <a href="#home" class="logo" aria-label="홈으로 이동">오호준 포트폴리오</a>
+        <!-- (왼쪽 로고 제거됨) -->
 
-        <button
-          class="nav-toggle"
-          aria-label="메뉴 열기"
-          aria-expanded="false"
-          aria-controls="primary-menu"
-        >
-          <span class="bar" aria-hidden="true"></span>
-          <span class="bar" aria-hidden="true"></span>
-          <span class="bar" aria-hidden="true"></span>
-        </button>
-
+        <!-- 가운데 정렬된 내비 -->
         <nav
           id="primary-menu"
           class="primary-nav"
@@ -53,6 +43,18 @@
             <li role="none"><a role="menuitem" href="#end">End</a></li>
           </ul>
         </nav>
+
+        <!-- 모바일 햄버거 (오른쪽) -->
+        <button
+          class="nav-toggle"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+        >
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
       </div>
     </header>
 
@@ -86,7 +88,7 @@
               rel="noopener"
               aria-label="Velog로 이동"
             >
-            <i class="fa-solid fa-blog"></i>
+              <i class="fa-solid fa-blog"></i>
             </a>
           </div>
         </div>
@@ -146,25 +148,39 @@
       <section id="skills" class="section skills">
         <div class="container">
           <h2>Skills & Tools</h2>
-      
+
           <!-- Skills -->
           <div class="skills-group">
             <h3>Skills</h3>
             <div class="chips">
-              <div class="chip" data-name="HTML"><i class="fa-brands fa-html5"></i></div>
-              <div class="chip" data-name="CSS"><i class="fa-brands fa-css3-alt"></i></div>
-              <div class="chip" data-name="JavaScript"><i class="fa-brands fa-js"></i></div>
-              <div class="chip" data-name="React"><i class="fa-brands fa-react"></i></div>
+              <div class="chip" data-name="HTML">
+                <i class="fa-brands fa-html5"></i>
+              </div>
+              <div class="chip" data-name="CSS">
+                <i class="fa-brands fa-css3-alt"></i>
+              </div>
+              <div class="chip" data-name="JavaScript">
+                <i class="fa-brands fa-js"></i>
+              </div>
+              <div class="chip" data-name="React">
+                <i class="fa-brands fa-react"></i>
+              </div>
             </div>
           </div>
-      
+
           <!-- Tools -->
           <div class="skills-group">
             <h3>Tools</h3>
             <div class="chips">
-              <div class="chip" data-name="Figma"><i class="fa-brands fa-figma"></i></div>
-              <div class="chip" data-name="GitHub"><i class="fa-brands fa-github"></i></div>
-              <div class="chip" data-name="Discord"><i class="fa-brands fa-discord"></i></div>
+              <div class="chip" data-name="Figma">
+                <i class="fa-brands fa-figma"></i>
+              </div>
+              <div class="chip" data-name="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </div>
+              <div class="chip" data-name="Discord">
+                <i class="fa-brands fa-discord"></i>
+              </div>
             </div>
           </div>
         </div>
