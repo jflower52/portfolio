@@ -28,8 +28,16 @@ html {
 body {
   margin: 0;
   height: 100%;
-  font-family: "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto,
-    Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+  font-family:
+    "Noto Sans KR",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    Apple Color Emoji,
+    Segoe UI Emoji;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
@@ -71,7 +79,9 @@ body {
   z-index: 999;
   background: transparent; /* 초기 투명 */
   border-bottom: 1px solid transparent;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
     border-color 0.3s ease;
 }
 .site-header.scrolled {
