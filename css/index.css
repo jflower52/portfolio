@@ -2,8 +2,11 @@
   --bg: #ffffff;
   --text: #15181e;
   --muted: #5d6470;
-  --primary: #2952ff;
-  --primary-weak: #e8eeff;
+
+  /* 파란색 대신 차분하고 세련된 틸(Teal/청록색) 계열로 변경 */
+  --primary: #0d9488;
+  --primary-weak: #ccfbf1;
+
   --border: #e7e9ee;
   --card: #f8f9fb;
   --chip: #eef1f6;
@@ -101,7 +104,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 로고는 왼쪽, 메뉴는 오른쪽으로 밀어냅니다 */
+  justify-content: space-between; /* 로고는 왼쪽, 메뉴는 오른쪽 */
   height: var(--header-h);
 }
 
@@ -112,9 +115,9 @@ body {
   color: var(--text);
   text-decoration: none;
   transition: color 0.2s ease;
+  outline: none; /* 클릭 시 테두리 제거 */
 }
-.site-logo:hover,
-.site-logo:focus {
+.site-logo:hover {
   color: var(--primary);
 }
 
@@ -135,11 +138,13 @@ body {
   border-radius: 0.6rem;
   color: var(--muted);
   text-decoration: none;
+  transition: color 0.2s ease; /* 배경색 트랜지션 제거, 텍스트 색상만 */
+  outline: none; /* 클릭 시 테두리(outline) 제거 */
 }
-.menu a:hover,
-.menu a:focus {
-  color: var(--text);
-  background: var(--chip);
+/* 배경 박스 없이 텍스트 색상만 포인트 컬러로 변경 */
+.menu a:hover {
+  color: var(--primary);
+  background: transparent;
 }
 
 /* 햄버거 버튼: 데스크톱 숨김, 모바일 표시 */
@@ -264,6 +269,7 @@ body {
   box-shadow: var(--shadow);
   color: #1f2430;
   text-decoration: none;
+  transition: outline 0.2s;
 }
 .social-btn:hover {
   outline: 2px solid var(--primary-weak);
@@ -481,6 +487,7 @@ summary {
   background: #fff;
   color: #1f2430;
   text-decoration: none;
+  transition: outline 0.2s;
 }
 .btn:hover {
   outline: 2px solid var(--primary-weak);
@@ -540,6 +547,7 @@ summary {
   display: grid;
   place-items: center;
   cursor: pointer;
+  transition: outline 0.2s;
 }
 .util-btn:hover {
   outline: 2px solid var(--primary-weak);
@@ -587,10 +595,18 @@ summary {
 }
 
 /* Focus styles */
-a:focus,
-button:focus,
-input:focus {
+/* 메뉴, 로고 등 일반 링크 탭/클릭 시 아웃라인 강제 제거 */
+a:focus {
+  outline: none;
+}
+/* 접근성을 위해 버튼과 입력창은 키보드 조작 시 테두리 유지 */
+button:focus-visible,
+input:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 10px;
+}
+/* 버튼을 마우스로 클릭할 때는 테두리 숨김 */
+button:focus:not(:focus-visible) {
+  outline: none;
 }
