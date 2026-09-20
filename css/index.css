@@ -3,7 +3,7 @@
   --text: #15181e;
   --muted: #5d6470;
 
-  /* 파란색 대신 차분하고 세련된 틸(Teal/청록색) 계열로 변경 */
+  /* 차분하고 세련된 틸(Teal/청록색) 계열 */
   --primary: #0d9488;
   --primary-weak: #ccfbf1;
 
@@ -138,10 +138,9 @@ body {
   border-radius: 0.6rem;
   color: var(--muted);
   text-decoration: none;
-  transition: color 0.2s ease; /* 배경색 트랜지션 제거, 텍스트 색상만 */
-  outline: none; /* 클릭 시 테두리(outline) 제거 */
+  transition: color 0.2s ease;
+  outline: none;
 }
-/* 배경 박스 없이 텍스트 색상만 포인트 컬러로 변경 */
 .menu a:hover {
   color: var(--primary);
   background: transparent;
@@ -218,9 +217,9 @@ body {
 
 /* Home: 배경은 화면 전체, 내용은 헤더 아래에서 시작 */
 .home {
-  height: 100lvh; /* 배경 꽉 채움 */
+  height: 100lvh;
   min-height: auto;
-  padding-top: var(--header-h); /* 내용 시작점 내리기 */
+  padding-top: var(--header-h);
 }
 @supports (height: 100dvh) {
   .home {
@@ -248,7 +247,7 @@ body {
   font-size: clamp(14px, 2.5vw, 18px);
 }
 
-/* 좌하단 블로그, 우하단 유틸 */
+/* 좌하단 블로그 등 소셜 아이콘 */
 .fixed-social {
   position: fixed;
   left: 20px;
@@ -267,14 +266,20 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  color: #1f2430;
+  color: var(--text);
   text-decoration: none;
-  transition: outline 0.2s;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease; /* 색상 변화 트랜지션 제거 */
 }
 .social-btn:hover {
-  outline: 2px solid var(--primary-weak);
+  border-color: var(--text); /* 부드럽게 짙어지는 테두리 */
+  transform: translateY(-2px); /* 살짝 떠오르는 고급스러운 모션 */
+  outline: none; /* 잔상 완벽 차단 */
+  /* 아이콘 색상은 변하지 않고 기본색(var(--text)) 유지 */
 }
-/* 아이콘 공통 크기(블로그/이메일 등) */
+
+/* 아이콘 공통 크기 */
 .social-btn i,
 .util-btn i {
   font-size: 20px;
@@ -479,6 +484,8 @@ summary {
   display: flex;
   gap: 10px;
 }
+
+/* 프로젝트 버튼 애니메이션 최적화 */
 .btn {
   display: inline-block;
   padding: 0.45rem 0.7rem;
@@ -487,10 +494,16 @@ summary {
   background: #fff;
   color: #1f2430;
   text-decoration: none;
-  transition: outline 0.2s;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 .btn:hover {
-  outline: 2px solid var(--primary-weak);
+  border-color: var(--primary);
+  background-color: var(--primary-weak);
+  color: var(--primary);
+  outline: none;
 }
 .paginator {
   display: flex;
@@ -527,7 +540,7 @@ summary {
   text-align: center;
 }
 
-/* Floating utils (right-bottom) */
+/* Floating utils (우하단 위로가기/복사) */
 .float-utils {
   position: fixed;
   right: 20px;
@@ -543,14 +556,20 @@ summary {
   border-radius: 12px;
   border: 1px solid var(--border);
   background: #fff;
+  color: var(--text);
   box-shadow: var(--shadow);
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: outline 0.2s;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease; /* 색상 변화 트랜지션 제거 */
 }
 .util-btn:hover {
-  outline: 2px solid var(--primary-weak);
+  border-color: var(--text);
+  transform: translateY(-2px);
+  outline: none;
+  /* 아이콘 색상은 변하지 않고 기본색 유지 */
 }
 
 /* Responsive */
@@ -572,7 +591,7 @@ summary {
 
   .nav-toggle {
     display: flex;
-  } /* 모바일에서 햄버거 표시 */
+  }
 
   .primary-nav {
     position: fixed;
@@ -595,18 +614,15 @@ summary {
 }
 
 /* Focus styles */
-/* 메뉴, 로고 등 일반 링크 탭/클릭 시 아웃라인 강제 제거 */
 a:focus {
   outline: none;
 }
-/* 접근성을 위해 버튼과 입력창은 키보드 조작 시 테두리 유지 */
 button:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 10px;
 }
-/* 버튼을 마우스로 클릭할 때는 테두리 숨김 */
 button:focus:not(:focus-visible) {
   outline: none;
 }
