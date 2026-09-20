@@ -17,8 +17,8 @@ navToggle?.addEventListener("click", () => {
   navToggle.setAttribute("aria-expanded", open ? "true" : "false");
 });
 
-// 메뉴 클릭 시: 부드러운 스크롤 + 스냅 정렬 + 모바일 메뉴 닫기
-document.querySelectorAll('.menu a[href^="#"]').forEach((a) => {
+// 메뉴 클릭 시 & 로고 클릭 시: 부드러운 스크롤 + 스냅 정렬 + 모바일 메뉴 닫기
+document.querySelectorAll('.menu a[href^="#"], .site-logo').forEach((a) => {
   a.addEventListener("click", (e) => {
     e.preventDefault();
     const id = a.getAttribute("href");

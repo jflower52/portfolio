@@ -95,15 +95,30 @@ body {
   width: min(1120px, 92%);
   margin: auto;
 }
+
+/* 헤더 내부 레이아웃 (양끝 정렬) */
 .nav-inner {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center; /* 메뉴 가운데 */
+  justify-content: space-between; /* 로고는 왼쪽, 메뉴는 오른쪽으로 밀어냅니다 */
   height: var(--header-h);
 }
 
-/* 가운데 메뉴 */
+/* 왼쪽 로고 */
+.site-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.site-logo:hover,
+.site-logo:focus {
+  color: var(--primary);
+}
+
+/* 우측 메뉴 */
 .primary-nav {
   display: flex;
 }
@@ -127,12 +142,8 @@ body {
   background: var(--chip);
 }
 
-/* 햄버거 버튼: 데스크톱 숨김, 모바일 표시(오른쪽 고정) */
+/* 햄버거 버튼: 데스크톱 숨김, 모바일 표시 */
 .nav-toggle {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   display: none;
   gap: 6px;
   background: transparent;
@@ -554,6 +565,7 @@ summary {
   .nav-toggle {
     display: flex;
   } /* 모바일에서 햄버거 표시 */
+
   .primary-nav {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
