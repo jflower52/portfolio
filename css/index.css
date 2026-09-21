@@ -325,23 +325,22 @@ body {
 #about.section {
   align-items: stretch;
   padding: 0;
-  background: #ffffff; /* 우측 영역의 흰색 배경을 섹션 전체로 확장 */
-  overflow: hidden; /* 배경이 화면 밖으로 넘치는 것 방지 */
+  background: #ffffff;
+  overflow: hidden;
   position: relative;
 }
 
-/* 컨텐츠 래퍼를 메뉴바 컨테이너와 동일한 너비로 제한하여 완벽 정렬 */
 .about-content {
   display: flex;
-  width: min(1120px, 92%); /* 헤더와 정확히 똑같은 제약! */
+  width: min(1120px, 92%);
   margin: 0 auto;
   flex: 1;
 }
 
 /* 좌측 블랙 섹션 */
 .about-left {
-  position: relative; /* 가상 배경의 기준점 */
-  flex: 0 0 300px; /* 로고와 얼추 비슷한 안정적인 고정폭 부여 */
+  position: relative;
+  flex: 0 0 300px;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -351,14 +350,13 @@ body {
   z-index: 1;
 }
 
-/* 마법의 트릭: 컨텐츠 영역 바깥 왼쪽 여백을 검은색으로 무한히 덮음 */
 .about-left::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 0; /* 컨텐츠 박스 우측에 맞춤 */
-  width: 100vw; /* 화면 왼쪽 끝까지 무조건 덮기 */
+  right: 0;
+  width: 100vw;
   background-color: #0b1120;
   z-index: -1;
 }
@@ -387,7 +385,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 130px 40px 60px; /* 고정 패딩으로 안정감 확보 */
+  padding: 130px 40px 60px;
 }
 
 .about-right-inner {
@@ -486,53 +484,100 @@ body {
   word-break: keep-all;
 }
 
-/* Skills */
+/* ===== 새로워진 Skills & Tools ===== */
 .skills .section-title {
   margin-top: 0;
   margin-bottom: 2.5rem;
 }
 .skills-group {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem; /* 각 그룹 간의 여백을 넉넉하게 */
 }
 .skills-group h3 {
-  margin: 0 0 1rem;
-  font-size: 1.15rem;
-  font-weight: 600;
+  margin: 0 0 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--text);
 }
 .skills .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 24px; /* 배경 박스가 없으므로 아이콘 간격 확대 */
 }
+
+/* 배경 박스 제거 및 순수 아이콘 디자인 */
 .chip {
   position: relative;
-  width: 68px;
-  height: 68px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: #fff;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  font-size: 32px;
-  color: #1f2430;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 52px; /* 아이콘 크기 시원하게 확대 */
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
+.chip i {
+  /* 아이콘이 배경에 묻히지 않도록 은은한 그림자 추가 */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
+}
+.chip:hover {
+  transform: translateY(-5px); /* 호버 시 위로 살짝 떠오름 */
+}
+
+/* 툴팁 글자 (Hover 시 나타남) */
 .chip::after {
   content: attr(data-name);
   position: absolute;
-  bottom: -32px;
+  bottom: -28px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--muted);
   opacity: 0;
-  transition: opacity 0.15s;
+  transition: opacity 0.2s;
   white-space: nowrap;
 }
 .chip:hover::after {
   opacity: 1;
 }
+
+/* 브랜드 고유 컬러 세팅 */
+.c-html {
+  color: #e34f26;
+} /* 주황색 */
+.c-css {
+  color: #1572b6;
+} /* 파란색 */
+.c-js {
+  color: #f7df1e;
+} /* 노란색 */
+.c-react {
+  color: #61dafb;
+} /* 하늘색 */
+.c-figma {
+  /* 피그마 무지개 그라데이션 */
+  background: linear-gradient(
+    45deg,
+    #f24e1e,
+    #ff7262,
+    #a259ff,
+    #1abcfe,
+    #0acf83
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.c-github {
+  color: #181717;
+} /* 검은색 */
+.c-discord {
+  color: #5865f2;
+} /* 파란색(Blurple) */
 
 /* Projects */
 .proj-header {
@@ -752,7 +797,6 @@ body {
     padding: 100px 20px 40px;
     flex: auto;
   }
-  /* 모바일(위아래 분리)일 때는 어두운 배경이 좌우 양쪽 끝까지 무한히 확장되도록 덮음 */
   .about-left::before {
     left: -50vw;
     right: -50vw;
@@ -763,7 +807,7 @@ body {
   }
 }
 
-/* [단계 3] 완전 모바일 (720px 이하) */
+/* [단계 3] 완전 모바일 (720px 이하) - 헤더 햄버거 메뉴 등장, 글자 크기 등 미세조정 */
 @media (max-width: 720px) {
   .nav-toggle {
     display: flex;
@@ -795,7 +839,6 @@ body {
     word-break: keep-all;
   }
 
-  /* 극도로 좁은 모바일에서는 1열로 변경 및 텍스트 줄바꿈 허용 */
   .info-list {
     grid-template-columns: 1fr;
   }
