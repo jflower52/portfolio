@@ -15,7 +15,8 @@
 
   /* Section backgrounds */
   --bg-home: #f7faff;
-  --bg-skills: #f2fff7;
+  /* 컬러풀한 아이콘들을 살려주고 메인 컬러와 어울리는 은은한 민트 그레이 톤 */
+  --bg-skills: #f0fdfa;
   --bg-projects: #f6f6ff;
   --bg-end: #f8fafc;
 }
@@ -484,16 +485,43 @@ body {
   word-break: keep-all;
 }
 
-/* ===== 새로워진 Skills & Tools ===== */
+/* ===== 새로워진 Skills & Tools (가로 배치 & 상단 완벽 고정) ===== */
+#skills.section {
+  align-items: flex-start; /* 상단 정렬 */
+  padding: 0;
+}
+
+/* 아래 위 마진을 강제로 분리하여 중앙정렬을 무력화 */
+#skills.section > .container {
+  margin-top: 140px; /* 여기서 헤더와 컨텐츠 사이의 거리를 조절합니다 */
+  margin-bottom: auto; /* 남는 여백은 무조건 아래로 몰아줍니다 */
+}
+
 .skills .section-title {
   margin-top: 0;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
 }
+
+/* 3개 그룹을 감싸서 가로로 배치하는 래퍼 */
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* 화면이 좁아지면 자연스럽게 줄바꿈되도록 */
+  justify-content: center;
+  gap: 60px; /* 각 카테고리 사이의 넉넉한 가로 간격 */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .skills-group {
-  margin-bottom: 3rem; /* 각 그룹 간의 여백을 넉넉하게 */
+  flex: 1; /* 비율대로 균등하게 공간 차지 */
+  min-width: 220px; /* 너무 좁아져 뭉치지 않게 최소 너비 보장 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 카테고리별 콘텐츠 중앙 정렬 */
 }
+
 .skills-group h3 {
-  margin: 0 0 1.2rem;
+  margin: 0 0 1.5rem;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--text);
@@ -501,7 +529,8 @@ body {
 .skills .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px; /* 배경 박스가 없으므로 아이콘 간격 확대 */
+  justify-content: center;
+  gap: 24px;
 }
 
 /* 배경 박스 제거 및 순수 아이콘 디자인 */
@@ -520,7 +549,7 @@ body {
   cursor: pointer;
 }
 .chip i {
-  /* 아이콘이 배경에 묻히지 않도록 은은한 그림자 추가 */
+  /* 아이콘이 묻히지 않도록 은은한 그림자 추가 */
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
 }
 .chip:hover {
@@ -548,18 +577,17 @@ body {
 /* 브랜드 고유 컬러 세팅 */
 .c-html {
   color: #e34f26;
-} /* 주황색 */
+}
 .c-css {
   color: #1572b6;
-} /* 파란색 */
+}
 .c-js {
   color: #f7df1e;
-} /* 노란색 */
+}
 .c-react {
   color: #61dafb;
-} /* 하늘색 */
+}
 .c-figma {
-  /* 피그마 무지개 그라데이션 */
   background: linear-gradient(
     45deg,
     #f24e1e,
@@ -574,10 +602,10 @@ body {
 }
 .c-github {
   color: #181717;
-} /* 검은색 */
+}
 .c-discord {
   color: #5865f2;
-} /* 파란색(Blurple) */
+}
 
 /* Projects */
 .proj-header {
@@ -805,6 +833,11 @@ body {
   .about-right {
     padding: 40px 20px 60px;
   }
+
+  /* Skills 영역이 모바일 진입 시 세로 간격 확보를 위해 갭 조절 */
+  .skills-wrapper {
+    gap: 40px;
+  }
 }
 
 /* [단계 3] 완전 모바일 (720px 이하) - 헤더 햄버거 메뉴 등장, 글자 크기 등 미세조정 */
@@ -852,6 +885,11 @@ body {
   }
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  /* 모바일 화면에서 Skills 상단 여백 재조정 */
+  #skills.section > .container {
+    margin-top: 100px;
   }
 }
 
