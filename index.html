@@ -100,13 +100,12 @@
         </a>
       </section>
 
-      <!-- About Me -->
+      <!-- About Me (섹션 전체를 스플릿 레이아웃으로 변경) -->
       <section id="about" class="section about" aria-label="소개">
-        <div class="container">
-          <h2 class="section-title">About Me</h2>
-
-          <div class="about-content">
-            <!-- 좌측: 프로필 이미지 (3:4 비율 반영) -->
+        <div class="about-content">
+          <!-- 좌측: 화면 전체 높이의 어두운 배경 -->
+          <div class="about-left">
+            <h2 class="about-title">About Me</h2>
             <img
               src="img/profile.jpg"
               alt="오호준 프로필 사진"
@@ -114,54 +113,58 @@
               width="210"
               height="280"
             />
+          </div>
 
-            <!-- 우측: 정보 리스트 (2열 그리드) -->
-            <ul class="info-list">
-              <li>
-                <i class="fa-solid fa-user"></i>
-                <div>
-                  <strong>이름</strong>
-                  <span>오호준</span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-calendar-days"></i>
-                <div>
-                  <strong>생년월일</strong>
-                  <span>2001.05.02</span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-graduation-cap"></i>
-                <div>
-                  <strong>학력</strong>
-                  <span>영진전문대학교 컴퓨터정보계열 (학사)</span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-location-dot"></i>
-                <div>
-                  <strong>위치</strong>
-                  <span>서울특별시 송파구</span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-phone"></i>
-                <div>
-                  <strong>연락처</strong>
-                  <span>010-3259-4824</span>
-                </div>
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope"></i>
-                <div>
-                  <strong>이메일</strong>
-                  <a href="mailto:jflower0502@gmail.com"
-                    >jflower0502@gmail.com</a
-                  >
-                </div>
-              </li>
-            </ul>
+          <!-- 우측: 화면 전체 높이의 밝은 배경 -->
+          <div class="about-right">
+            <div class="about-right-inner">
+              <ul class="info-list">
+                <li>
+                  <i class="fa-solid fa-user"></i>
+                  <div>
+                    <strong>이름</strong>
+                    <span>오호준</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-calendar-days"></i>
+                  <div>
+                    <strong>생년월일</strong>
+                    <span>2001.05.02</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <strong>학력</strong>
+                    <span>영진전문대학교 컴퓨터정보계열 (학사)</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <strong>위치</strong>
+                    <span>서울특별시 송파구</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <div>
+                    <strong>연락처</strong>
+                    <span>010-3259-4824</span>
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <div>
+                    <strong>이메일</strong>
+                    <a href="mailto:jflower0502@gmail.com"
+                      >jflower0502@gmail.com</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
