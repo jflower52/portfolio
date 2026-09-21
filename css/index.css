@@ -217,6 +217,7 @@ body {
 
 /* Home: 배경은 화면 전체, 내용은 헤더 아래에서 시작 */
 .home {
+  position: relative; /* 화살표 배치를 위해 추가 */
   height: 100lvh;
   min-height: auto;
   padding-top: var(--header-h);
@@ -247,6 +248,42 @@ body {
   font-size: clamp(14px, 2.5vw, 18px);
 }
 
+/* 하단 스크롤 화살표 (바운스 애니메이션) */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: var(--muted);
+  text-decoration: none;
+  animation: bounce 2s infinite ease-in-out;
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
+  z-index: 10;
+  outline: none;
+}
+.scroll-indicator:hover {
+  color: var(--primary);
+}
+/* 스크롤 시 사라지는 클래스 */
+.scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none; /* 클릭 방지 */
+}
+
+/* 바운스 키프레임 */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 12px);
+  }
+}
+
 /* 좌하단 블로그 등 소셜 아이콘 */
 .fixed-social {
   position: fixed;
@@ -270,13 +307,12 @@ body {
   text-decoration: none;
   transition:
     border-color 0.2s ease,
-    transform 0.2s ease; /* 색상 변화 트랜지션 제거 */
+    transform 0.2s ease;
 }
 .social-btn:hover {
-  border-color: var(--text); /* 부드럽게 짙어지는 테두리 */
-  transform: translateY(-2px); /* 살짝 떠오르는 고급스러운 모션 */
-  outline: none; /* 잔상 완벽 차단 */
-  /* 아이콘 색상은 변하지 않고 기본색(var(--text)) 유지 */
+  border-color: var(--text);
+  transform: translateY(-2px);
+  outline: none;
 }
 
 /* 아이콘 공통 크기 */
@@ -563,13 +599,12 @@ summary {
   cursor: pointer;
   transition:
     border-color 0.2s ease,
-    transform 0.2s ease; /* 색상 변화 트랜지션 제거 */
+    transform 0.2s ease;
 }
 .util-btn:hover {
   border-color: var(--text);
   transform: translateY(-2px);
   outline: none;
-  /* 아이콘 색상은 변하지 않고 기본색 유지 */
 }
 
 /* Responsive */

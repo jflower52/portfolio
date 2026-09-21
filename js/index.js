@@ -269,12 +269,24 @@ function escapeHtml(s) {
 // 초기 렌더
 render();
 
-// ======== 스크롤 시 헤더 배경 전환 ========
+// ======== 스크롤 시 이벤트 처리 ========
 const header = document.querySelector(".site-header");
+const scrollIndicator = document.querySelector(".scroll-indicator");
+
 window.addEventListener("scroll", () => {
+  // 헤더 배경 전환 로직
   if (window.scrollY > 10) {
     header.classList.add("scrolled");
   } else {
     header.classList.remove("scrolled");
+  }
+
+  // 스크롤 화살표 숨김/표시 로직 (스크롤 50px 이상 내리면 숨김)
+  if (scrollIndicator) {
+    if (window.scrollY > 50) {
+      scrollIndicator.classList.add("hidden");
+    } else {
+      scrollIndicator.classList.remove("hidden");
+    }
   }
 });
