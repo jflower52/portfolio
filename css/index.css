@@ -15,7 +15,6 @@
 
   /* Section backgrounds */
   --bg-home: #f7faff;
-  /* --bg-about은 Full-bleed 스플릿 레이아웃이므로 별도 사용 안함 */
   --bg-skills: #f2fff7;
   --bg-projects: #f6f6ff;
   --bg-end: #f8fafc;
@@ -127,16 +126,18 @@ body {
 }
 .menu {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .menu a {
   display: inline-block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.8rem;
   border-radius: 0.6rem;
   color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
   outline: none;
@@ -206,7 +207,7 @@ body {
   background: var(--bg-end);
 }
 
-/* 아래쪽 구분선 (about의 경우 전체 스플릿이므로 제외) */
+/* 아래쪽 구분선 */
 .skills,
 .projects,
 .end {
@@ -317,7 +318,7 @@ body {
 
 /* ===== 새로워진 About Me (Full-bleed 스플릿 레이아웃) ===== */
 #about.section {
-  align-items: stretch; /* 자식 요소가 위아래로 꽉 차게 */
+  align-items: stretch;
   padding: 0;
   background: transparent;
 }
@@ -328,35 +329,35 @@ body {
   flex: 1;
 }
 
-/* 좌측 블랙 섹션 - 넓이 축소 및 텍스트 상단 배치 */
+/* 좌측 블랙 섹션 */
 .about-left {
-  flex: 0 0 28%; /* 너비 28%로 축소 (기존 35%) */
-  min-width: 280px; /* 너무 좁아지는 것 방지 */
+  flex: 0 0 20%;
+  min-width: 260px;
   background-color: #0b1120;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* 중앙 정렬에서 위쪽 정렬로 변경 */
-  padding: 140px 30px 60px; /* 상단 여백을 넓게 주어 보기 좋게 배치 */
+  justify-content: flex-start;
+  padding: 120px 20px 60px;
 }
 
 .about-title {
   font-size: clamp(32px, 4vw, 44px);
   font-weight: 800;
-  margin: 0 0 40px 0;
+  margin: 0 0 24px 0;
   letter-spacing: 1px;
 }
 
-/* 프로필 이미지 (아치형) */
+/* 프로필 이미지 */
 .profile {
-  width: 210px;
+  width: 220px;
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 150px 150px 0 0;
-  border: 3px solid #ffffff;
-  background: #f1f5f9;
+  border: none;
+  background: transparent;
   flex-shrink: 0;
 }
 
@@ -365,43 +366,45 @@ body {
   flex: 1;
   background-color: #ffffff;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 60px 5%;
+  padding: 120px 4% 60px;
 }
 
 .about-right-inner {
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
 }
 
-/* 우측 정보 리스트: 2열 그리드 */
+/* 우측 정보 리스트: 3열 2행 그리드 */
 .info-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 40px 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 20px;
   width: 100%;
 }
 .info-list li {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: center; /* 아이콘과 텍스트 수직 중앙 정렬 */
+  gap: 14px;
 }
+
+/* 아이콘 배경 박스 제거 및 고정폭 부여로 정렬 통일 */
 .info-list i {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--primary-weak);
-  color: var(--primary);
-  border-radius: 12px;
-  font-size: 1.2rem;
+  width: 28px; /* 배경 상자가 사라졌으므로, 텍스트 줄맞춤을 위해 공간 고정 */
+  height: 28px;
+  background: transparent;
+  color: var(--primary); /* 청록색 포인트 유지 */
+  font-size: 1.4rem; /* 박스가 없으므로 아이콘 자체 크기를 살짝 더 키움 */
   flex-shrink: 0;
 }
+
 .info-list div {
   display: flex;
   flex-direction: column;
@@ -419,12 +422,52 @@ body {
   font-weight: 600;
   text-decoration: none;
   outline: none;
+  white-space: nowrap;
 }
 .info-list a {
   transition: color 0.2s;
 }
 .info-list a:hover {
   color: var(--primary);
+}
+
+/* Interview 영역 (텍스트 나열 형태) */
+.interview-section {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.interview-section h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 28px 0;
+  letter-spacing: 0.5px;
+}
+.interview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.interview-item .q {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.interview-item .q-mark {
+  color: var(--primary);
+  margin-right: 6px;
+  font-weight: 800;
+}
+.interview-item .a {
+  margin: 0;
+  color: #3a4250;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  word-break: keep-all;
 }
 
 /* Skills */
@@ -581,7 +624,6 @@ body {
   gap: 10px;
 }
 
-/* 프로젝트 버튼 애니메이션 최적화 */
 .btn {
   display: inline-block;
   padding: 0.5rem 0.8rem;
@@ -677,21 +719,32 @@ body {
   }
 }
 @media (max-width: 720px) {
-  /* About 모바일 대응 */
   .about-content {
     flex-direction: column;
   }
   .about-left {
     flex: auto;
     width: 100%;
-    padding: 100px 20px 40px; /* 모바일에서도 상단 여백 확보 */
+    padding: 100px 20px 40px;
   }
+  .about-title {
+    margin: 0 0 24px 0;
+  }
+  .profile {
+    width: 160px;
+  }
+
   .about-right {
     width: 100%;
     padding: 40px 20px 60px;
   }
   .info-list {
-    grid-template-columns: 1fr; /* 모바일에서는 1열 */
+    grid-template-columns: 1fr;
+  }
+  .info-list span,
+  .info-list a {
+    white-space: normal;
+    word-break: keep-all;
   }
 
   .grid {
