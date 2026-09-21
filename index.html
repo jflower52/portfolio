@@ -105,87 +105,63 @@
         <div class="container">
           <h2 class="section-title">About Me</h2>
 
-          <div class="about-grid">
-            <!-- 좌측: 프로필 및 인적사항 -->
-            <div class="about-card">
-              <img
-                src="img/profile.jpg"
-                alt="오호준 프로필 사진"
-                class="profile"
-                width="140"
-                height="140"
-              />
-              <ul class="info-list">
-                <li>
-                  <i class="fa-solid fa-user"></i>
-                  <div>
-                    <strong>이름</strong>
-                    <span>오호준</span>
-                  </div>
-                </li>
-                <li>
-                  <i class="fa-solid fa-calendar-days"></i>
-                  <div>
-                    <strong>생년월일</strong>
-                    <span>01.05.02</span>
-                  </div>
-                </li>
-                <li>
-                  <i class="fa-solid fa-location-dot"></i>
-                  <div>
-                    <strong>위치</strong>
-                    <span>서울특별시 송파구</span>
-                  </div>
-                </li>
-                <li>
-                  <i class="fa-solid fa-phone"></i>
-                  <div>
-                    <strong>연락처</strong>
-                    <span>010-3259-4824</span>
-                  </div>
-                </li>
-                <li>
-                  <i class="fa-solid fa-envelope"></i>
-                  <div>
-                    <strong>이메일</strong>
-                    <a href="mailto:jflower0502@gmail.com"
-                      >jflower0502@gmail.com</a
-                    >
-                  </div>
-                </li>
-              </ul>
-            </div>
+          <div class="about-content">
+            <!-- 좌측: 프로필 이미지 (3:4 비율 반영) -->
+            <img
+              src="img/profile.jpg"
+              alt="오호준 프로필 사진"
+              class="profile"
+              width="210"
+              height="280"
+            />
 
-            <!-- 우측: 인터뷰 Q&A -->
-            <div class="interview-card">
-              <h3>Interview</h3>
-              <details class="interview-item" open>
-                <summary>프론트엔드 개발자를 선택한 이유는?</summary>
-                <p>
-                  눈에 보이는 성취감과 사용자가 제가 만든 결과물을 직접 경험하며
-                  편리함을 느끼는 데서 오는 만족감 때문에 프론트엔드 개발을
-                  선택했습니다.
-                </p>
-              </details>
-              <details class="interview-item">
-                <summary>개발 시 가장 중요하게 여기는 가치는?</summary>
-                <p>
-                  '접근성', '성능', 그리고 동료를 배려하는 '유지보수성'입니다.
-                  모두가 차별 없이 편리하게 사용할 수 있는 서비스를 만들고,
-                  팀원이 오랜 기간 안정적으로 이어받아 쓸 수 있는 클린 코드를
-                  지향합니다.
-                </p>
-              </details>
-              <details class="interview-item">
-                <summary>선호하는 협업 방식은 무엇인가요?</summary>
-                <p>
-                  명확한 이슈 트래킹과 적극적인 PR 리뷰 문화를 좋아합니다. 개발
-                  파트뿐만 아니라 기획, 디자인 파트와도 긴밀하고 열린
-                  커뮤니케이션을 통해 단순한 구현을 넘어 프로덕트의 가치를 함께
-                  높이는 것을 선호합니다.
-                </p>
-              </details>
-            </div>
+            <!-- 우측: 정보 리스트 (2열 그리드) -->
+            <ul class="info-list">
+              <li>
+                <i class="fa-solid fa-user"></i>
+                <div>
+                  <strong>이름</strong>
+                  <span>오호준</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-calendar-days"></i>
+                <div>
+                  <strong>생년월일</strong>
+                  <span>2001.05.02</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                  <strong>학력</strong>
+                  <span>영진전문대학교 컴퓨터정보계열 (학사)</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <strong>위치</strong>
+                  <span>서울특별시 송파구</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <strong>연락처</strong>
+                  <span>010-3259-4824</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <strong>이메일</strong>
+                  <a href="mailto:jflower0502@gmail.com"
+                    >jflower0502@gmail.com</a
+                  >
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -235,6 +211,7 @@
       <!-- Projects -->
       <section id="projects" class="section projects" aria-label="프로젝트">
         <div class="container">
+          <h2 class="section-title" style="display: none">Projects</h2>
           <div class="proj-header">
             <div class="tabs" role="tablist" aria-label="프로젝트 분류">
               <button

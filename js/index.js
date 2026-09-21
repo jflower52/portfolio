@@ -283,7 +283,7 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 
-  // 스크롤 화살표 숨김/표시 로직 (화면을 조금만 내려도 투명해집니다)
+  // 스크롤 화살표 숨김/표시 로직
   if (scrollIndicator) {
     if (window.scrollY > 50) {
       scrollIndicator.classList.add("hidden");
