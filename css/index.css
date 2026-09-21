@@ -246,6 +246,11 @@ body {
   font-size: clamp(14px, 2.5vw, 18px);
 }
 
+/* 모바일 전용 줄바꿈 태그 (평소엔 숨김) */
+.mobile-br {
+  display: none;
+}
+
 /* 스크롤 화살표 */
 .scroll-indicator {
   position: absolute;
@@ -758,7 +763,7 @@ body {
   }
 }
 
-/* [단계 3] 완전 모바일 (720px 이하) - 헤더 햄버거 메뉴 등장, 글자 크기 등 미세조정 */
+/* [단계 3] 완전 모바일 (720px 이하) */
 @media (max-width: 720px) {
   .nav-toggle {
     display: flex;
@@ -779,6 +784,15 @@ body {
   }
   .menu a {
     padding: 0.8rem 1rem;
+  }
+
+  /* 메인 텍스트 모바일 전용 줄바꿈 활성화 */
+  .mobile-br {
+    display: block;
+  }
+  .hero-title,
+  .hero-sub {
+    word-break: keep-all;
   }
 
   /* 극도로 좁은 모바일에서는 1열로 변경 및 텍스트 줄바꿈 허용 */
