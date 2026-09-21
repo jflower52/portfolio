@@ -1,7 +1,7 @@
 // ======== 헤더 실제 높이로 CSS 변수 동기화 ========
 const headerEl = document.querySelector(".site-header");
 function syncHeaderHeightVar() {
-  const h = headerEl ? headerEl.offsetHeight : 64; // border 포함 실제 렌더 높이
+  const h = headerEl ? headerEl.offsetHeight : 64;
   document.documentElement.style.setProperty("--header-h", `${h}px`);
 }
 window.addEventListener("load", syncHeaderHeightVar);
@@ -18,21 +18,23 @@ navToggle?.addEventListener("click", () => {
 });
 
 // 메뉴 클릭 시 & 로고 클릭 시: 부드러운 스크롤 + 스냅 정렬 + 모바일 메뉴 닫기
-document.querySelectorAll('.menu a[href^="#"], .site-logo').forEach((a) => {
-  a.addEventListener("click", (e) => {
-    e.preventDefault();
-    const id = a.getAttribute("href");
-    const el = document.querySelector(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.pushState(null, "", id);
-    }
-    if (primaryNav?.classList.contains("open")) {
-      primaryNav.classList.remove("open");
-      navToggle?.setAttribute("aria-expanded", "false");
-    }
+document
+  .querySelectorAll('.menu a[href^="#"], .site-logo, .scroll-indicator')
+  .forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = a.getAttribute("href");
+      const el = document.querySelector(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.pushState(null, "", id);
+      }
+      if (primaryNav?.classList.contains("open")) {
+        primaryNav.classList.remove("open");
+        navToggle?.setAttribute("aria-expanded", "false");
+      }
+    });
   });
-});
 
 // ======== 우하단 버튼 ========
 document.getElementById("toTopBtn")?.addEventListener("click", () => {
@@ -281,7 +283,7 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 
-  // 스크롤 화살표 숨김/표시 로직 (스크롤 50px 이상 내리면 숨김)
+  // 스크롤 화살표 숨김/표시 로직 (화면을 조금만 내려도 투명해집니다)
   if (scrollIndicator) {
     if (window.scrollY > 50) {
       scrollIndicator.classList.add("hidden");
