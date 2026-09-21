@@ -15,7 +15,7 @@
 
   /* Section backgrounds */
   --bg-home: #f7faff;
-  --bg-about: #fff7f2;
+  /* --bg-about은 Full-bleed 스플릿 레이아웃이므로 별도 사용 안함 */
   --bg-skills: #f2fff7;
   --bg-projects: #f6f6ff;
   --bg-end: #f8fafc;
@@ -196,7 +196,6 @@ body {
 .home {
   background: var(--bg-home);
 }
-/* .about 배경은 아래에서 지정 */
 .skills {
   background: var(--bg-skills);
 }
@@ -317,7 +316,6 @@ body {
 }
 
 /* ===== 새로워진 About Me (Full-bleed 스플릿 레이아웃) ===== */
-/* 섹션 자체가 화면 높이 전체를 꽉 채우도록 설정 */
 #about.section {
   align-items: stretch; /* 자식 요소가 위아래로 꽉 차게 */
   padding: 0;
@@ -327,19 +325,20 @@ body {
 .about-content {
   display: flex;
   width: 100%;
-  flex: 1; /* 부모 섹션(.section) 높이를 꽉 채움 */
+  flex: 1;
 }
 
-/* 좌측 블랙 섹션 */
+/* 좌측 블랙 섹션 - 넓이 축소 및 텍스트 상단 배치 */
 .about-left {
-  flex: 0 0 35%; /* 화면 너비의 약 35% 차지 */
-  background-color: #0b1120; /* 깊이감 있는 어두운 블랙 */
+  flex: 0 0 28%; /* 너비 28%로 축소 (기존 35%) */
+  min-width: 280px; /* 너무 좁아지는 것 방지 */
+  background-color: #0b1120;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 60px 40px;
+  justify-content: flex-start; /* 중앙 정렬에서 위쪽 정렬로 변경 */
+  padding: 140px 30px 60px; /* 상단 여백을 넓게 주어 보기 좋게 배치 */
 }
 
 .about-title {
@@ -355,25 +354,25 @@ body {
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 150px 150px 0 0; /* 상단만 둥근 아치형 */
-  border: 3px solid #ffffff; /* 흰색 테두리로 분리감 추가 */
+  border-radius: 150px 150px 0 0;
+  border: 3px solid #ffffff;
   background: #f1f5f9;
   flex-shrink: 0;
 }
 
 /* 우측 화이트 섹션 */
 .about-right {
-  flex: 1; /* 나머지 공간 전체 차지 */
+  flex: 1;
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: center; /* 내용 중앙 정렬 */
+  justify-content: center;
   padding: 60px 5%;
 }
 
 .about-right-inner {
   width: 100%;
-  max-width: 600px; /* 오른쪽 정보가 너무 양옆으로 퍼지지 않게 제한 */
+  max-width: 600px;
 }
 
 /* 우측 정보 리스트: 2열 그리드 */
@@ -582,6 +581,7 @@ body {
   gap: 10px;
 }
 
+/* 프로젝트 버튼 애니메이션 최적화 */
 .btn {
   display: inline-block;
   padding: 0.5rem 0.8rem;
@@ -677,14 +677,14 @@ body {
   }
 }
 @media (max-width: 720px) {
-  /* About 모바일 대응: 좌우 스플릿을 상하 스플릿으로 변경 */
+  /* About 모바일 대응 */
   .about-content {
     flex-direction: column;
   }
   .about-left {
     flex: auto;
     width: 100%;
-    padding: 60px 20px 40px;
+    padding: 100px 20px 40px; /* 모바일에서도 상단 여백 확보 */
   }
   .about-right {
     width: 100%;
