@@ -292,3 +292,40 @@ window.addEventListener("scroll", () => {
     }
   }
 });
+
+// ======== 이력서 팝업 모달 & 이메일 폼 제어 ========
+const resumeModalBtn = document.getElementById("resumeModalBtn");
+const resumeModal = document.getElementById("resumeModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
+if (resumeModalBtn && resumeModal) {
+  resumeModalBtn.addEventListener("click", () => {
+    resumeModal.classList.add("active");
+    document.body.style.overflow = "hidden"; // 배경 스크롤 멈춤
+  });
+}
+if (closeModalBtn && resumeModal) {
+  closeModalBtn.addEventListener("click", () => {
+    resumeModal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+}
+if (resumeModal) {
+  resumeModal.addEventListener("click", (e) => {
+    if (e.target === resumeModal) {
+      resumeModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+}
+
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert(
+      "현재 폼 전송 기능이 준비 중입니다. \n실제 연동 시 이메일이 정상적으로 발송됩니다!",
+    );
+    contactForm.reset();
+  });
+}
