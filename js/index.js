@@ -293,7 +293,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ======== 이력서 팝업 모달 & 이메일 폼 제어 ========
+// ======== 이력서 팝업 모달창 (Modal) ========
 const resumeModalBtn = document.getElementById("resumeModalBtn");
 const resumeModal = document.getElementById("resumeModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
@@ -319,13 +319,41 @@ if (resumeModal) {
   });
 }
 
+// ======== 다이렉트 이메일 폼 실제 동작 로직 (EmailJS) ========
+// 1. 발급받은 Public Key를 입력하여 초기화합니다.
+emailjs.init("ezf6zr_fAcqDybjpi");
+
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert(
-      "현재 폼 전송 기능이 준비 중입니다. \n실제 연동 시 이메일이 정상적으로 발송됩니다!",
-    );
-    contactForm.reset();
+
+    // 메일 전송 중임을 알리기 위해 버튼 디자인 변경
+    const submitBtn = contactForm.querySelector(".submit-btn");
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML =
+      '전송 중... <i class="fa-solid fa-spinner fa-spin"></i>';
+    submitBtn.disabled = true;
+
+    // 2. 발급받은 Service ID와 Template ID를 입력합니다.
+    emailjs
+      .sendForm("service_jflower0502", "template_kjt4qz2", contactForm)
+      .then(() => {
+        // 성공 시 알림창 및 폼 초기화
+        alert(
+          "성공적으로 메일이 전송되었습니다! 빠른 시일 내에 회신드리겠습니다.",
+        );
+        contactForm.reset();
+      })
+      .catch((error) => {
+        // 실패 시 알림창
+        alert("메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
+        console.error("EmailJS Error:", error);
+      })
+      .finally(() => {
+        // 성공/실패 여부와 상관없이 버튼을 다시 원래대로 복구
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+      });
   });
 }

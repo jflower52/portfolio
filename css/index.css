@@ -15,10 +15,8 @@
 
   /* Section backgrounds */
   --bg-home: #f7faff;
-  /* 알록달록한 아이콘들을 가장 깔끔하게 돋보이게 해주는 모던 라이트 그레이 */
   --bg-skills: #f9fafb;
   --bg-projects: #f6f6ff;
-  /* End 배경을 부드러운 화이트그레이 톤으로 설정 */
   --bg-end: #f4f6f9;
 }
 
@@ -45,8 +43,6 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
-
-  /* === Fullpage Snap 컨테이너 === */
   overflow-y: auto;
   scroll-snap-type: y mandatory;
 }
@@ -88,20 +84,15 @@ body {
     box-shadow 0.3s ease,
     border-color 0.3s ease;
 }
-
-/* 스크롤 시 나타나는 헤더 배경을 완전 불투명(Solid White)으로 변경 */
 .site-header.scrolled {
   background: #ffffff;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-
 .container {
   width: min(1120px, 92%);
   margin: auto;
 }
-
-/* 헤더 내부 레이아웃 */
 .nav-inner {
   position: relative;
   display: flex;
@@ -109,8 +100,6 @@ body {
   justify-content: space-between;
   height: var(--header-h);
 }
-
-/* 왼쪽 로고 */
 .site-logo {
   font-size: 1.25rem;
   font-weight: 800;
@@ -122,8 +111,6 @@ body {
 .site-logo:hover {
   color: var(--primary);
 }
-
-/* 우측 메뉴 */
 .primary-nav {
   display: flex;
 }
@@ -149,8 +136,6 @@ body {
   color: var(--primary);
   background: transparent;
 }
-
-/* 햄버거 버튼 */
 .nav-toggle {
   display: none;
   gap: 6px;
@@ -166,7 +151,7 @@ body {
   border-radius: 2px;
 }
 
-/* === Fullpage Sections === */
+/* Sections */
 .section {
   min-height: calc(100svh - var(--header-h));
   scroll-snap-align: start;
@@ -186,8 +171,6 @@ body {
   margin: auto;
   padding: 24px 0;
 }
-
-/* 공통 섹션 타이틀 */
 .section-title {
   font-size: clamp(32px, 4vw, 44px);
   font-weight: 800;
@@ -195,8 +178,6 @@ body {
   margin: 0 0 3.5rem 0;
   color: var(--text);
 }
-
-/* Section backgrounds */
 .home {
   background: var(--bg-home);
 }
@@ -209,8 +190,6 @@ body {
 .end {
   background: var(--bg-end);
 }
-
-/* 아래쪽 구분선 */
 .skills,
 .projects,
 .end {
@@ -232,7 +211,6 @@ body {
 .home > .container {
   padding-block: 0;
 }
-
 .home-inner {
   text-align: center;
 }
@@ -248,13 +226,9 @@ body {
   color: var(--muted);
   font-size: clamp(14px, 2.5vw, 18px);
 }
-
-/* 모바일 전용 줄바꿈 태그 (평소엔 숨김) */
 .mobile-br {
   display: none;
 }
-
-/* 스크롤 화살표 */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -277,7 +251,6 @@ body {
   opacity: 0;
   pointer-events: none;
 }
-
 @keyframes bounce {
   0%,
   100% {
@@ -288,7 +261,7 @@ body {
   }
 }
 
-/* 소셜 아이콘 */
+/* Social Icons */
 .fixed-social {
   position: fixed;
   left: 20px;
@@ -324,7 +297,7 @@ body {
   line-height: 1;
 }
 
-/* ===== 완벽하게 해결된 About Me 레이아웃 ===== */
+/* About Me */
 #about.section {
   align-items: stretch;
   padding: 0;
@@ -332,15 +305,12 @@ body {
   overflow: hidden;
   position: relative;
 }
-
 .about-content {
   display: flex;
   width: min(1120px, 92%);
   margin: 0 auto;
   flex: 1;
 }
-
-/* 좌측 블랙 섹션 */
 .about-left {
   position: relative;
   flex: 0 0 300px;
@@ -352,7 +322,6 @@ body {
   padding: 86px 20px 60px;
   z-index: 1;
 }
-
 .about-left::before {
   content: "";
   position: absolute;
@@ -363,14 +332,12 @@ body {
   background-color: #0b1120;
   z-index: -1;
 }
-
 .about-title {
   font-size: clamp(32px, 4vw, 44px);
   font-weight: 800;
   margin: 0 0 24px 0;
   letter-spacing: 1px;
 }
-
 .profile {
   width: 220px;
   height: auto;
@@ -381,8 +348,6 @@ body {
   background: transparent;
   flex-shrink: 0;
 }
-
-/* 우측 화이트 섹션 */
 .about-right {
   flex: 1;
   display: flex;
@@ -390,13 +355,10 @@ body {
   justify-content: center;
   padding: 130px 40px 60px;
 }
-
 .about-right-inner {
   width: 100%;
   max-width: 1000px;
 }
-
-/* 정보 리스트: 기본 3열 설정 */
 .info-list {
   list-style: none;
   padding: 0;
@@ -447,8 +409,6 @@ body {
 .info-list a:hover {
   color: var(--primary);
 }
-
-/* Interview 영역 */
 .interview-section {
   margin-top: 48px;
   padding-top: 40px;
@@ -487,41 +447,34 @@ body {
   word-break: keep-all;
 }
 
-/* ===== 새로워진 Skills & Tools (가로 배치 & 상단 완벽 고정) ===== */
+/* Skills & Tools */
 #skills.section {
-  align-items: flex-start; /* 상단 정렬 */
+  align-items: flex-start;
   padding: 0;
 }
-
-/* 아래 위 마진을 강제로 분리하여 중앙정렬 무력화 */
 #skills.section > .container {
   margin-top: 140px;
   margin-bottom: auto;
 }
-
 .skills .section-title {
   margin-top: 0;
   margin-bottom: 3.5rem;
 }
-
-/* 3개 그룹을 감싸서 가로로 배치하는 래퍼 */
 .skills-wrapper {
   display: flex;
-  flex-wrap: wrap; /* 화면이 좁아지면 자연스럽게 줄바꿈되도록 */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 60px; /* 각 카테고리 사이의 넉넉한 가로 간격 */
+  gap: 60px;
   max-width: 900px;
   margin: 0 auto;
 }
-
 .skills-group {
-  flex: 1; /* 비율대로 균등하게 공간 차지 */
-  min-width: 220px; /* 너무 좁아져 뭉치지 않게 최소 너비 보장 */
+  flex: 1;
+  min-width: 220px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 카테고리별 콘텐츠 중앙 정렬 */
+  align-items: center;
 }
-
 .skills-group h3 {
   margin: 0 0 1.5rem;
   font-size: 1.2rem;
@@ -534,8 +487,6 @@ body {
   justify-content: center;
   gap: 24px;
 }
-
-/* 배경 박스 제거 및 순수 아이콘 디자인 */
 .chip {
   position: relative;
   width: auto;
@@ -546,19 +497,16 @@ body {
   background: transparent;
   border: none;
   box-shadow: none;
-  font-size: 52px; /* 아이콘 크기 시원하게 확대 */
+  font-size: 52px;
   transition: transform 0.2s ease;
   cursor: pointer;
 }
 .chip i {
-  /* 아이콘이 배경에 묻히지 않도록 은은한 그림자 추가 */
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
 }
 .chip:hover {
-  transform: translateY(-5px); /* 호버 시 위로 살짝 떠오름 */
+  transform: translateY(-5px);
 }
-
-/* 툴팁 글자 (Hover 시 나타남) */
 .chip::after {
   content: attr(data-name);
   position: absolute;
@@ -575,8 +523,6 @@ body {
 .chip:hover::after {
   opacity: 1;
 }
-
-/* 브랜드 고유 컬러 세팅 */
 .c-html {
   color: #e34f26;
 }
@@ -714,7 +660,6 @@ body {
   display: flex;
   gap: 10px;
 }
-
 .btn {
   display: inline-block;
   padding: 0.5rem 0.8rem;
@@ -793,11 +738,18 @@ body {
 /* ==================================================
    새로 추가된 End / Contact 섹션 & 모달창 스타일
    ================================================== */
+#end.section {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+}
 .end-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+  width: min(1120px, 92%);
+  margin: 0 auto;
 }
 .end-content {
   display: grid;
@@ -827,8 +779,6 @@ body {
   margin: 0 0 24px 0;
   word-break: keep-all;
 }
-
-/* 폼 디자인 */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -886,8 +836,6 @@ body {
   background: #0f766e;
   transform: translateY(-2px);
 }
-
-/* 우측 정보 패널 & 다운로드 버튼 */
 .info-area {
   justify-content: center;
 }
@@ -940,13 +888,19 @@ body {
 .direct-contact a:hover {
   color: var(--primary);
 }
-.end .copy {
+.site-footer {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  text-align: center;
+  width: 100%;
+}
+.site-footer .copy {
   margin: 0;
   color: var(--muted);
-  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
-
-/* 이력서 모달창(팝업) */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1050,10 +1004,8 @@ body {
 }
 
 /* ==================================================
-   반응형 처리 (3단계 구조 완벽 세팅)
+   반응형 처리
    ================================================== */
-
-/* [단계 1] 창이 살짝 줄어들면, 깨지기 전에 우측 정보 3열 -> 2열로 자연스럽게 변경 */
 @media (max-width: 1150px) {
   .info-list {
     grid-template-columns: repeat(2, 1fr);
@@ -1062,8 +1014,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* [단계 2] 공간이 좁아지면 About 섹션을 상하(모바일 뷰)로 깔끔하게 전환 */
 @media (max-width: 850px) {
   .about-content {
     flex-direction: column;
@@ -1081,25 +1031,18 @@ body {
   .about-right {
     padding: 40px 20px 60px;
   }
-
-  /* Skills 영역이 모바일 진입 시 세로 간격 확보를 위해 갭 조절 */
   .skills-wrapper {
     gap: 40px;
   }
-
-  /* End 섹션 모바일 전환 시 상하 배치 */
   .end-content {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 }
-
-/* [단계 3] 완전 모바일 (720px 이하) - 헤더 햄버거 메뉴 등장, 글자 크기 등 미세조정 */
 @media (max-width: 720px) {
   .nav-toggle {
     display: flex;
   }
-  /* 모바일 헤더 배경 역시 불투명하게 수정 */
   .primary-nav {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
@@ -1117,8 +1060,6 @@ body {
   .menu a {
     padding: 0.8rem 1rem;
   }
-
-  /* 메인 텍스트 모바일 전용 줄바꿈 활성화 */
   .mobile-br {
     display: block;
   }
@@ -1126,7 +1067,6 @@ body {
   .hero-sub {
     word-break: keep-all;
   }
-
   .info-list {
     grid-template-columns: 1fr;
   }
@@ -1141,21 +1081,15 @@ body {
   .grid {
     grid-template-columns: 1fr;
   }
-
-  /* 모바일 화면에서 Skills 상단 여백 재조정 */
   #skills.section > .container {
     margin-top: 100px;
   }
-
-  /* 모바일 모달 꽉 차게 */
   .modal-content {
     width: 100%;
     height: 100vh;
     border-radius: 0;
   }
 }
-
-/* Focus styles */
 a:focus {
   outline: none;
 }

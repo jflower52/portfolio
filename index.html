@@ -42,7 +42,6 @@
             <li role="none">
               <a role="menuitem" href="#projects">Projects</a>
             </li>
-            <!-- 메뉴 이름을 End 에서 Contact로 변경 -->
             <li role="none"><a role="menuitem" href="#end">Contact</a></li>
           </ul>
         </nav>
@@ -216,7 +215,7 @@
         </div>
       </section>
 
-      <!-- Skills (가로 배치로 개편) -->
+      <!-- Skills (가로 배치) -->
       <section id="skills" class="section skills">
         <div class="container">
           <h2 class="section-title">Skills</h2>
@@ -324,13 +323,14 @@
 
       <!-- ===== 새로 개편된 End / Contact 섹션 ===== -->
       <section id="end" class="section end" aria-label="연락처 및 마무리">
+        <!-- 폼 & 정보 영역 (수직 중앙 정렬됨) -->
         <div class="container end-container">
-          <h2 class="section-title">Let's Work Together</h2>
+          <h2 class="section-title">Contact Me</h2>
 
           <div class="end-content">
             <!-- 좌측: 다이렉트 이메일 폼 -->
             <div class="contact-card form-area">
-              <h3>Send Message</h3>
+              <h3>메일로 연락하기</h3>
               <p class="form-desc">
                 궁금한 점이 있으시거나 면접 제안이 있으시다면 언제든 연락
                 주세요.
@@ -358,6 +358,16 @@
                   />
                 </div>
                 <div class="form-group">
+                  <label for="senderSubject">제목</label>
+                  <input
+                    type="text"
+                    id="senderSubject"
+                    name="subject"
+                    placeholder="어떤 일로 연락주셨나요?"
+                    required
+                  />
+                </div>
+                <div class="form-group">
                   <label for="senderMessage">내용</label>
                   <textarea
                     id="senderMessage"
@@ -375,7 +385,7 @@
 
             <!-- 우측: 이력서 모달 띄우기 및 기타 정보 -->
             <div class="contact-card info-area">
-              <h3>Resume & Info</h3>
+              <h3>이력서</h3>
               <p class="info-desc">
                 저에 대해 더 자세히 알고 싶으시다면 이력서를 확인해 주세요.
               </p>
@@ -397,9 +407,12 @@
               </div>
             </div>
           </div>
-
-          <p class="copy">©2025 오호준. All rights reserved.</p>
         </div>
+
+        <!-- 하단: 카피라이트 영역 -->
+        <footer class="site-footer">
+          <p class="copy">©2026 오호준. All rights reserved.</p>
+        </footer>
       </section>
     </main>
 
@@ -438,6 +451,11 @@
       </div>
     </div>
 
+    <!-- EmailJS SDK 추가 -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <script src="js/index.js"></script>
 
     <!-- JSON-LD Person -->
