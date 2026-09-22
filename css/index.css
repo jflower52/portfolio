@@ -15,8 +15,8 @@
 
   /* Section backgrounds */
   --bg-home: #f7faff;
-  /* 컬러풀한 아이콘들을 살려주고 메인 컬러와 어울리는 은은한 민트 그레이 톤 */
-  --bg-skills: #f0fdfa;
+  /* 알록달록한 아이콘들을 가장 깔끔하게 돋보이게 해주는 모던 라이트 그레이 */
+  --bg-skills: #f9fafb;
   --bg-projects: #f6f6ff;
   --bg-end: #f8fafc;
 }
@@ -87,11 +87,12 @@ body {
     box-shadow 0.3s ease,
     border-color 0.3s ease;
 }
+
+/* 스크롤 시 나타나는 헤더 배경을 완전 불투명(Solid White)으로 변경 */
 .site-header.scrolled {
-  background: rgba(255, 255, 255, 0.85);
+  background: #ffffff;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  backdrop-filter: saturate(180%) blur(12px);
 }
 
 .container {
@@ -491,10 +492,10 @@ body {
   padding: 0;
 }
 
-/* 아래 위 마진을 강제로 분리하여 중앙정렬을 무력화 */
+/* 아래 위 마진을 강제로 분리하여 중앙정렬 무력화 */
 #skills.section > .container {
-  margin-top: 140px; /* 여기서 헤더와 컨텐츠 사이의 거리를 조절합니다 */
-  margin-bottom: auto; /* 남는 여백은 무조건 아래로 몰아줍니다 */
+  margin-top: 140px;
+  margin-bottom: auto;
 }
 
 .skills .section-title {
@@ -549,7 +550,7 @@ body {
   cursor: pointer;
 }
 .chip i {
-  /* 아이콘이 묻히지 않도록 은은한 그림자 추가 */
+  /* 아이콘이 배경에 묻히지 않도록 은은한 그림자 추가 */
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
 }
 .chip:hover {
@@ -845,10 +846,11 @@ body {
   .nav-toggle {
     display: flex;
   }
+  /* 모바일 헤더 배경 역시 불투명하게 수정 */
   .primary-nav {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
-    background: #fff;
+    background: #ffffff;
     border-bottom: 1px solid var(--border);
     display: none;
   }
