@@ -79,7 +79,7 @@ const PROJECTS = [
     role: "프론트엔드, UI 디자인 및 구현",
     tags: ["Figma", "React", "JS", "Node.js", "PostgreSQL"],
     github: "https://github.com/movieStudioTalk/project",
-    deploy: "",
+    deploy: "https://good-ping.onrender.com",
     image: "img/goodping.png",
     video: "video/goodping.mp4",
     report: "report/goodping.pdf",
@@ -240,7 +240,6 @@ function render() {
 function cardHTML(p) {
   const typeLabel = p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
 
-  // 💡 웹사이트 캡처 이미지가 윗부분을 기준으로 꽉 차도록 "center top" 설정 추가
   const bgStyle = p.image
     ? `background: url('${p.image}') center top / cover no-repeat;`
     : `background: linear-gradient(135deg, ${p.color[0]}, ${p.color[1]});`;
