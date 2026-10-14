@@ -64,7 +64,6 @@
       <!-- Home -->
       <section id="home" class="section home" aria-label="홈">
         <div class="container home-inner">
-          <!-- 모바일에서만 작동하는 줄바꿈 적용 -->
           <h1 class="hero-title">
             프론트엔드 개발자 <br class="mobile-br" /><strong>오호준</strong>
             입니다.
@@ -74,7 +73,6 @@
             <br class="mobile-br" />개발자입니다.
           </p>
 
-          <!-- 좌하단 고정: GitHub / Velog -->
           <div class="fixed-social" aria-label="소셜 바로가기">
             <a
               class="social-btn github"
@@ -97,7 +95,6 @@
           </div>
         </div>
 
-        <!-- 하단 스크롤 바운스 유도 화살표 -->
         <a href="#about" class="scroll-indicator" aria-label="아래로 스크롤">
           <i class="fa-solid fa-chevron-down"></i>
         </a>
@@ -106,7 +103,6 @@
       <!-- About Me -->
       <section id="about" class="section about" aria-label="소개">
         <div class="about-content">
-          <!-- 좌측: 어두운 배경 -->
           <div class="about-left">
             <h2 class="about-title">About Me</h2>
             <img
@@ -118,44 +114,30 @@
             />
           </div>
 
-          <!-- 우측: 밝은 배경 -->
           <div class="about-right">
             <div class="about-right-inner">
-              <!-- 정보 리스트 -->
               <ul class="info-list">
                 <li>
                   <i class="fa-solid fa-user"></i>
-                  <div>
-                    <strong>이름</strong>
-                    <span>오호준</span>
-                  </div>
+                  <div><strong>이름</strong><span>오호준</span></div>
                 </li>
                 <li>
                   <i class="fa-solid fa-calendar"></i>
-                  <div>
-                    <strong>생년월일</strong>
-                    <span>2001.05.02</span>
-                  </div>
+                  <div><strong>생년월일</strong><span>2001.05.02</span></div>
                 </li>
                 <li>
                   <i class="fa-solid fa-location-dot"></i>
-                  <div>
-                    <strong>위치</strong>
-                    <span>서울특별시 송파구</span>
-                  </div>
+                  <div><strong>위치</strong><span>서울특별시 송파구</span></div>
                 </li>
                 <li>
                   <i class="fa-solid fa-phone"></i>
-                  <div>
-                    <strong>연락처</strong>
-                    <span>010-3259-4824</span>
-                  </div>
+                  <div><strong>연락처</strong><span>010-3259-4824</span></div>
                 </li>
                 <li>
                   <i class="fa-solid fa-envelope"></i>
                   <div>
-                    <strong>이메일</strong>
-                    <a href="mailto:jflower0502@gmail.com"
+                    <strong>이메일</strong
+                    ><a href="mailto:jflower0502@gmail.com"
                       >jflower0502@gmail.com</a
                     >
                   </div>
@@ -163,13 +145,12 @@
                 <li>
                   <i class="fa-solid fa-pen"></i>
                   <div>
-                    <strong>학력</strong>
-                    <span>영진전문대학교 컴퓨터정보계열 (학사)</span>
+                    <strong>학력</strong
+                    ><span>영진전문대학교 컴퓨터정보계열 (학사)</span>
                   </div>
                 </li>
               </ul>
 
-              <!-- Interview 영역 -->
               <div class="interview-section">
                 <h3>Interview</h3>
                 <div class="interview-list">
@@ -215,14 +196,11 @@
         </div>
       </section>
 
-      <!-- Skills (가로 배치) -->
+      <!-- Skills -->
       <section id="skills" class="section skills">
         <div class="container">
           <h2 class="section-title">Skills</h2>
-
-          <!-- 가로 배치를 위한 래퍼 추가 -->
           <div class="skills-wrapper">
-            <!-- 1. Skills -->
             <div class="skills-group">
               <h3>Skills</h3>
               <div class="chips">
@@ -240,8 +218,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- 2. Design -->
             <div class="skills-group">
               <h3>Design</h3>
               <div class="chips">
@@ -250,8 +226,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- 3. Tools -->
             <div class="skills-group">
               <h3>Tools</h3>
               <div class="chips">
@@ -264,7 +238,6 @@
               </div>
             </div>
           </div>
-          <!-- // 래퍼 끝 -->
         </div>
       </section>
 
@@ -299,7 +272,6 @@
                 Single
               </button>
             </div>
-
             <div class="search">
               <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
               <input
@@ -321,14 +293,11 @@
         </div>
       </section>
 
-      <!-- ===== 새로 개편된 End / Contact 섹션 ===== -->
+      <!-- End / Contact -->
       <section id="end" class="section end" aria-label="연락처 및 마무리">
-        <!-- 폼 & 정보 영역 (수직 중앙 정렬됨) -->
         <div class="container end-container">
           <h2 class="section-title">Contact Me</h2>
-
           <div class="end-content">
-            <!-- 좌측: 다이렉트 이메일 폼 -->
             <div class="contact-card form-area">
               <h3>메일로 연락하기</h3>
               <p class="form-desc">
@@ -383,17 +352,14 @@
               </form>
             </div>
 
-            <!-- 우측: 이력서 모달 띄우기 및 기타 정보 -->
             <div class="contact-card info-area">
               <h3>이력서</h3>
               <p class="info-desc">
                 저에 대해 더 자세히 알고 싶으시다면 이력서를 확인해 주세요.
               </p>
-
               <button id="resumeModalBtn" class="resume-btn">
                 이력서 보기 및 다운로드 <i class="fa-solid fa-file-lines"></i>
               </button>
-
               <div class="direct-contact">
                 <p>
                   <i class="fa-solid fa-envelope"></i>
@@ -409,14 +375,12 @@
           </div>
         </div>
 
-        <!-- 하단: 카피라이트 영역 -->
         <footer class="site-footer">
           <p class="copy">©2026 오호준. All rights reserved.</p>
         </footer>
       </section>
     </main>
 
-    <!-- 우하단 유틸 -->
     <div class="float-utils" aria-label="빠른 동작">
       <button id="toTopBtn" class="util-btn" aria-label="최상단으로 이동">
         <i class="fa-solid fa-arrow-up"></i>
@@ -426,7 +390,49 @@
       </button>
     </div>
 
-    <!-- ===== 이력서 팝업 모달창 (Modal) ===== -->
+    <!-- ===== 프로젝트 팝업 모달창 (새로 추가됨) ===== -->
+    <div id="projectModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-content project-modal-content">
+        <div class="modal-header">
+          <h3 id="pm-title">프로젝트 제목</h3>
+          <button
+            id="closeProjectModalBtn"
+            class="modal-close-btn"
+            aria-label="닫기"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-body pm-body">
+          <div class="pm-visual" id="pm-visual">
+            <!-- 이미지/영상이 동적으로 들어갑니다 -->
+          </div>
+          <div class="pm-details">
+            <ul class="pm-info-list">
+              <li><strong>구분</strong> <span id="pm-type">팀/개인</span></li>
+              <li>
+                <strong>제작기간</strong>
+                <span id="pm-duration">0000.00 ~ 0000.00</span>
+              </li>
+              <li>
+                <strong>사용기술</strong>
+                <div id="pm-tags" class="tags"></div>
+              </li>
+              <li id="pm-github-wrapper">
+                <strong>GitHub</strong>
+                <a href="#" id="pm-github" target="_blank">링크</a>
+              </li>
+              <li id="pm-deploy-wrapper">
+                <strong>배포주소</strong>
+                <a href="#" id="pm-deploy" target="_blank">링크</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 이력서 팝업 모달창 ===== -->
     <div id="resumeModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content">
         <div class="modal-header">
@@ -436,14 +442,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <!-- 이력서 이미지가 들어갈 공간 -->
           <div class="resume-placeholder">
             <i class="fa-solid fa-file-pdf"></i>
             <p>이력서 이미지가 이곳에 표시됩니다.</p>
           </div>
         </div>
         <div class="modal-footer">
-          <!-- 실제 이력서 파일 경로 연결 -->
           <a href="#" download="오호준_이력서.pdf" class="download-btn">
             PDF 다운로드 <i class="fa-solid fa-download"></i>
           </a>
@@ -451,27 +455,11 @@
       </div>
     </div>
 
-    <!-- EmailJS SDK 추가 -->
+    <!-- EmailJS SDK -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
     <script src="js/index.js"></script>
-
-    <!-- JSON-LD Person -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "오호준",
-        "jobTitle": "Frontend Developer",
-        "email": "mailto:jflower0502@gmail.com",
-        "url": "https://github.com/jflower52",
-        "sameAs": [
-          "https://github.com/jflower52",
-          "https://velog.io/@jflower/posts"
-        ]
-      }
-    </script>
   </body>
 </html>

@@ -17,7 +17,6 @@ navToggle?.addEventListener("click", () => {
   navToggle.setAttribute("aria-expanded", open ? "true" : "false");
 });
 
-// 메뉴 클릭 시 & 로고 클릭 시: 부드러운 스크롤 + 스냅 정렬 + 모바일 메뉴 닫기
 document
   .querySelectorAll('.menu a[href^="#"], .site-logo, .scroll-indicator')
   .forEach((a) => {
@@ -68,16 +67,19 @@ function toast(msg) {
   setTimeout(() => el.remove(), 1500);
 }
 
-// ======== 프로젝트 데이터 ========
+// ======== 프로젝트 데이터 (상세 정보 확장) ========
 const PROJECTS = [
   {
     id: 1,
     title: "UI 컴포넌트 시스템",
     desc: "재사용 가능한 컴포넌트와 스토리북 기반 설계",
     type: "team",
+    duration: "2023.09 ~ 2023.11 (2개월)",
     tags: ["HTML", "CSS", "JavaScript"],
-    demo: "#",
-    code: "#",
+    github: "https://github.com/jflower52/project1",
+    deploy: "https://project1-deploy.com",
+    image: "", // 실제 이미지가 있다면 "img/project1.png" 처럼 입력 (없으면 컬러 그라데이션)
+    video: "", // 영상 파일 경로가 있다면 입력 ("video/sample.mp4")
     color: ["#e3efff", "#f0f5ff"],
   },
   {
@@ -85,9 +87,11 @@ const PROJECTS = [
     title: "실시간 채팅",
     desc: "WebSocket을 사용한 실시간 메시징",
     type: "single",
+    duration: "2023.12 (1개월)",
     tags: ["WebSocket", "JS"],
-    demo: "#",
-    code: "#",
+    github: "https://github.com/jflower52/project2",
+    deploy: "", // 배포 주소가 없다면 비워두기
+    image: "",
     color: ["#e6fff4", "#effff8"],
   },
   {
@@ -95,9 +99,11 @@ const PROJECTS = [
     title: "API 대시보드",
     desc: "Fetch + 차트 시각화",
     type: "team",
+    duration: "2024.01 ~ 2024.03 (3개월)",
     tags: ["JavaScript", "Fetch"],
-    demo: "#",
-    code: "#",
+    github: "https://github.com/jflower52/project3",
+    deploy: "https://project3.com",
+    image: "",
     color: ["#ffeaf6", "#fff2fb"],
   },
   {
@@ -105,9 +111,11 @@ const PROJECTS = [
     title: "반응형 랜딩 페이지",
     desc: "접근성과 성능 최적화",
     type: "single",
+    duration: "2024.04 (2주)",
     tags: ["HTML", "CSS"],
-    demo: "#",
-    code: "#",
+    github: "https://github.com/jflower52/project4",
+    deploy: "https://project4.com",
+    image: "",
     color: ["#e6fff4", "#effff8"],
   },
   {
@@ -115,50 +123,12 @@ const PROJECTS = [
     title: "훅 기반 상태관리",
     desc: "React Hooks로 전역 상태 최소화",
     type: "team",
+    duration: "2024.05 ~ 2024.06",
     tags: ["React", "Hooks"],
-    demo: "#",
-    code: "#",
+    github: "https://github.com/jflower52/project5",
+    deploy: "",
+    image: "",
     color: ["#e3efff", "#f0f5ff"],
-  },
-  {
-    id: 6,
-    title: "마크다운 블로그",
-    desc: "정적 생성 & 검색",
-    type: "single",
-    tags: ["JavaScript"],
-    demo: "#",
-    code: "#",
-    color: ["#ffeaf6", "#fff2fb"],
-  },
-  {
-    id: 7,
-    title: "디자인 협업 템플릿",
-    desc: "Figma → 코드 핸드오프",
-    type: "team",
-    tags: ["Figma", "HTML", "CSS"],
-    demo: "#",
-    code: "#",
-    color: ["#e3efff", "#f0f5ff"],
-  },
-  {
-    id: 8,
-    title: "알고리즘 비주얼라이저",
-    desc: "정렬/그래프 시각화",
-    type: "single",
-    tags: ["JavaScript"],
-    demo: "#",
-    code: "#",
-    color: ["#e6fff4", "#effff8"],
-  },
-  {
-    id: 9,
-    title: "폼 빌더",
-    desc: "드래그앤드롭 + 검증",
-    type: "team",
-    tags: ["React", "JS"],
-    demo: "#",
-    code: "#",
-    color: ["#ffeaf6", "#fff2fb"],
   },
 ];
 
@@ -234,22 +204,26 @@ function render() {
   pageInd.textContent = `${state.page} / ${totalPages}`;
 }
 
+// Hover시 반투명 오버레이로 나타나는 새 카드 UI
 function cardHTML(p) {
-  const tags = p.tags
-    .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
-    .join("");
-  const bg = `background:linear-gradient(135deg, ${p.color[0]}, ${p.color[1]});`;
+  const typeLabel = p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
+
+  // 이미지가 있으면 이미지를 띄우고, 없으면 설정된 색상의 그라데이션으로 띄움
+  const bgStyle = p.image
+    ? `background: url('${p.image}') center/cover no-repeat;`
+    : `background: linear-gradient(135deg, ${p.color[0]}, ${p.color[1]});`;
+
   return `
   <article class="card" aria-label="${escapeHtml(p.title)} 카드">
-    <div class="thumb" style="${bg}"></div>
-    <div class="card-body">
+    <div class="thumb" style="${bgStyle}"></div>
+    
+    <!-- Hover 시 나타나는 반투명 오버레이 -->
+    <div class="card-overlay">
+      <span class="proj-type">${typeLabel}</span>
       <h4>${escapeHtml(p.title)}</h4>
       <p>${escapeHtml(p.desc)}</p>
-      <div class="tags">${tags}</div>
-      <div class="actions">
-        <a class="btn" href="${p.demo}" target="_blank" rel="noopener">Demo</a>
-        <a class="btn" href="${p.code}" target="_blank" rel="noopener">Code</a>
-      </div>
+      <!-- 더보기 버튼 클릭 시 id 값으로 정보를 찾아서 모달을 띄웁니다 -->
+      <button class="more-btn" data-id="${p.id}">자세히 보기</button>
     </div>
   </article>`;
 }
@@ -268,22 +242,20 @@ function escapeHtml(s) {
   );
 }
 
-// 초기 렌더
+// 초기 프로젝트 렌더링 실행
 render();
 
-// ======== 스크롤 시 이벤트 처리 ========
+// ======== 스크롤 이벤트 처리 ========
 const header = document.querySelector(".site-header");
 const scrollIndicator = document.querySelector(".scroll-indicator");
 
 window.addEventListener("scroll", () => {
-  // 헤더 배경 전환 로직
   if (window.scrollY > 10) {
     header.classList.add("scrolled");
   } else {
     header.classList.remove("scrolled");
   }
 
-  // 스크롤 화살표 숨김/표시 로직
   if (scrollIndicator) {
     if (window.scrollY > 50) {
       scrollIndicator.classList.add("hidden");
@@ -293,7 +265,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ======== 이력서 팝업 모달창 (Modal) ========
+// ======== 이력서 모달창 제어 ========
 const resumeModalBtn = document.getElementById("resumeModalBtn");
 const resumeModal = document.getElementById("resumeModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
@@ -301,7 +273,7 @@ const closeModalBtn = document.getElementById("closeModalBtn");
 if (resumeModalBtn && resumeModal) {
   resumeModalBtn.addEventListener("click", () => {
     resumeModal.classList.add("active");
-    document.body.style.overflow = "hidden"; // 배경 스크롤 멈춤
+    document.body.style.overflow = "hidden";
   });
 }
 if (closeModalBtn && resumeModal) {
@@ -319,8 +291,92 @@ if (resumeModal) {
   });
 }
 
-// ======== 다이렉트 이메일 폼 실제 동작 로직 (EmailJS) ========
-// 1. 발급받은 Public Key를 입력하여 초기화합니다.
+// ======== 프로젝트 전용 모달창 제어 ========
+const projectModal = document.getElementById("projectModal");
+const closeProjectModalBtn = document.getElementById("closeProjectModalBtn");
+
+// 모달 닫기
+if (closeProjectModalBtn && projectModal) {
+  closeProjectModalBtn.addEventListener("click", () => {
+    projectModal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+}
+if (projectModal) {
+  projectModal.addEventListener("click", (e) => {
+    if (e.target === projectModal) {
+      projectModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+}
+
+// 그리드 안에서 "자세히 보기" 버튼을 클릭했을 때 모달을 열어주는 이벤트 위임
+if (grid) {
+  grid.addEventListener("click", (e) => {
+    const btn = e.target.closest(".more-btn");
+    if (btn) {
+      const id = parseInt(btn.dataset.id, 10);
+      const proj = PROJECTS.find((p) => p.id === id);
+      if (proj) {
+        openProjectModal(proj);
+      }
+    }
+  });
+}
+
+// 선택된 프로젝트 정보를 바탕으로 모달 내용 채우고 띄우기
+function openProjectModal(p) {
+  document.getElementById("pm-title").textContent = p.title;
+  document.getElementById("pm-type").textContent =
+    p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
+  document.getElementById("pm-duration").textContent =
+    p.duration || "기간 미상";
+
+  // 사용 기술 태그 렌더링
+  const tagsContainer = document.getElementById("pm-tags");
+  tagsContainer.innerHTML = p.tags
+    .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+    .join("");
+
+  // 깃허브 링크 유무 처리
+  const gitLink = document.getElementById("pm-github");
+  const gitWrapper = document.getElementById("pm-github-wrapper");
+  if (p.github) {
+    gitLink.href = p.github;
+    gitLink.textContent = p.github;
+    gitWrapper.style.display = "flex";
+  } else {
+    gitWrapper.style.display = "none";
+  }
+
+  // 배포 링크 유무 처리
+  const depLink = document.getElementById("pm-deploy");
+  const depWrapper = document.getElementById("pm-deploy-wrapper");
+  if (p.deploy) {
+    depLink.href = p.deploy;
+    depLink.textContent = p.deploy;
+    depWrapper.style.display = "flex";
+  } else {
+    depWrapper.style.display = "none";
+  }
+
+  // 비주얼 영역 (영상 > 이미지 > 기본 컬러 순서로 표시)
+  const visual = document.getElementById("pm-visual");
+  if (p.video) {
+    visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop></video>`;
+  } else if (p.image) {
+    visual.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.title)}">`;
+  } else {
+    visual.innerHTML = `<div style="width:100%; height:100%; background:linear-gradient(135deg, ${p.color[0]}, ${p.color[1]}); display:flex; align-items:center; justify-content:center; color:#666;">이미지/영상 준비중</div>`;
+  }
+
+  // 모달 활성화
+  projectModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+// ======== EmailJS 메일 폼 연동 로직 ========
 emailjs.init("ezf6zr_fAcqDybjpi");
 
 const contactForm = document.getElementById("contactForm");
@@ -328,30 +384,25 @@ if (contactForm) {
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // 메일 전송 중임을 알리기 위해 버튼 디자인 변경
     const submitBtn = contactForm.querySelector(".submit-btn");
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.innerHTML =
       '전송 중... <i class="fa-solid fa-spinner fa-spin"></i>';
     submitBtn.disabled = true;
 
-    // 2. 발급받은 Service ID와 Template ID를 입력합니다.
     emailjs
       .sendForm("service_jflower0502", "template_kjt4qz2", contactForm)
       .then(() => {
-        // 성공 시 알림창 및 폼 초기화
         alert(
           "성공적으로 메일이 전송되었습니다! 빠른 시일 내에 회신드리겠습니다.",
         );
         contactForm.reset();
       })
       .catch((error) => {
-        // 실패 시 알림창
         alert("메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
         console.error("EmailJS Error:", error);
       })
       .finally(() => {
-        // 성공/실패 여부와 상관없이 버튼을 다시 원래대로 복구
         submitBtn.innerHTML = originalBtnText;
         submitBtn.disabled = false;
       });
