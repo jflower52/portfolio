@@ -889,9 +889,9 @@ body {
   color: var(--primary);
 }
 
-/* 하단 카피라이트 푸터 영역 (검은색 배경 + 노란색 텍스트) */
+/* 하단 카피라이트 푸터 영역 (조금 더 짙은 다크 그레이 + 노란색 텍스트) */
 .site-footer {
-  background-color: #111111;
+  background-color: #222222;
   padding: 24px 0;
   text-align: center;
   width: 100%;
