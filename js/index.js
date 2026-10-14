@@ -67,67 +67,99 @@ function toast(msg) {
   setTimeout(() => el.remove(), 1500);
 }
 
-// ======== 프로젝트 데이터 (상세 정보 확장) ========
+// ======== 프로젝트 데이터 (오호준 님 실제 프로젝트로 교체됨) ========
 const PROJECTS = [
+  // --- 팀 프로젝트 ---
   {
     id: 1,
-    title: "UI 컴포넌트 시스템",
-    desc: "재사용 가능한 컴포넌트와 스토리북 기반 설계",
+    title: "Good-Ping",
+    desc: "네이버 웹툰 굿즈 리뉴얼 사이트",
     type: "team",
-    duration: "2023.09 ~ 2023.11 (2개월)",
-    tags: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/jflower52/project1",
-    deploy: "https://project1-deploy.com",
-    image: "", // 실제 이미지가 있다면 "img/project1.png" 처럼 입력 (없으면 컬러 그라데이션)
-    video: "", // 영상 파일 경로가 있다면 입력 ("video/sample.mp4")
+    duration: "2025.06.16 ~ 2025.06.27",
+    role: "프론트엔드, UI 디자인 및 구현",
+    tags: ["Figma", "React", "JS", "Node.js", "PostgreSQL"],
+    github: "https://github.com/movieStudioTalk/project",
+    deploy: "",
+    image: "img/goodping.png",
+    video: "video/goodping.mp4",
+    report: "report/goodping.pdf",
     color: ["#e3efff", "#f0f5ff"],
   },
   {
     id: 2,
-    title: "실시간 채팅",
-    desc: "WebSocket을 사용한 실시간 메시징",
-    type: "single",
-    duration: "2023.12 (1개월)",
-    tags: ["WebSocket", "JS"],
-    github: "https://github.com/jflower52/project2",
-    deploy: "", // 배포 주소가 없다면 비워두기
-    image: "",
-    color: ["#e6fff4", "#effff8"],
-  },
-  {
-    id: 3,
-    title: "API 대시보드",
-    desc: "Fetch + 차트 시각화",
+    title: "오늘 한 빵",
+    desc: "빵집 탐방 스탬프 투어 앱",
     type: "team",
-    duration: "2024.01 ~ 2024.03 (3개월)",
-    tags: ["JavaScript", "Fetch"],
-    github: "https://github.com/jflower52/project3",
-    deploy: "https://project3.com",
+    duration: "YYYY.MM ~ YYYY.MM",
+    role: "",
+    tags: ["React Native", "JavaScript"],
+    github: "",
+    deploy: "",
     image: "",
+    video: "",
+    report: "",
     color: ["#ffeaf6", "#fff2fb"],
   },
   {
-    id: 4,
-    title: "반응형 랜딩 페이지",
-    desc: "접근성과 성능 최적화",
-    type: "single",
-    duration: "2024.04 (2주)",
-    tags: ["HTML", "CSS"],
-    github: "https://github.com/jflower52/project4",
-    deploy: "https://project4.com",
+    id: 3,
+    title: "i-Mon",
+    desc: "보안 프로그램 파일 암호화 및 통합 관리자 서버 개발",
+    type: "team",
+    duration: "YYYY.MM ~ YYYY.MM",
+    role: "",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "",
+    deploy: "",
     image: "",
+    video: "",
+    report: "",
     color: ["#e6fff4", "#effff8"],
+  },
+  // --- 개인 프로젝트 ---
+  {
+    id: 4,
+    title: "던데이",
+    desc: "일정 관리 프로그램",
+    type: "single",
+    duration: "2026.09",
+    role: "개인 프로젝트 (전체 개발)",
+    tags: ["Android Studio", "Java"],
+    github: "https://github.com/jflower52/DoneDay_APK",
+    deploy:
+      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk",
+    image: "",
+    video: "",
+    report: "",
+    color: ["#fff2e6", "#fff8f0"],
   },
   {
     id: 5,
-    title: "훅 기반 상태관리",
-    desc: "React Hooks로 전역 상태 최소화",
-    type: "team",
-    duration: "2024.05 ~ 2024.06",
-    tags: ["React", "Hooks"],
-    github: "https://github.com/jflower52/project5",
+    title: "포켓몬 도감",
+    desc: "포켓몬 도감",
+    type: "single",
+    duration: "YYYY.MM ~ YYYY.MM",
+    role: "",
+    tags: ["JavaScript", "API"],
+    github: "",
     deploy: "",
     image: "",
+    video: "",
+    report: "",
+    color: ["#f2ebff", "#f8f5ff"],
+  },
+  {
+    id: 6,
+    title: "ArtB",
+    desc: "커미션, 외주, 웹툰 등 다양한 작가님들의 사용이 편한 플랫폼",
+    type: "single",
+    duration: "YYYY.MM ~ YYYY.MM",
+    role: "",
+    tags: ["HTML", "CSS", "JavaScript", "React"],
+    github: "",
+    deploy: "",
+    image: "",
+    video: "",
+    report: "",
     color: ["#e3efff", "#f0f5ff"],
   },
 ];
@@ -204,25 +236,23 @@ function render() {
   pageInd.textContent = `${state.page} / ${totalPages}`;
 }
 
-// Hover시 반투명 오버레이로 나타나는 새 카드 UI
+// Hover시 반투명 오버레이로 나타나는 썸네일 카드
 function cardHTML(p) {
   const typeLabel = p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
 
-  // 이미지가 있으면 이미지를 띄우고, 없으면 설정된 색상의 그라데이션으로 띄움
+  // 💡 웹사이트 캡처 이미지가 윗부분을 기준으로 꽉 차도록 "center top" 설정 추가
   const bgStyle = p.image
-    ? `background: url('${p.image}') center/cover no-repeat;`
+    ? `background: url('${p.image}') center top / cover no-repeat;`
     : `background: linear-gradient(135deg, ${p.color[0]}, ${p.color[1]});`;
 
   return `
   <article class="card" aria-label="${escapeHtml(p.title)} 카드">
     <div class="thumb" style="${bgStyle}"></div>
-    
-    <!-- Hover 시 나타나는 반투명 오버레이 -->
     <div class="card-overlay">
       <span class="proj-type">${typeLabel}</span>
       <h4>${escapeHtml(p.title)}</h4>
       <p>${escapeHtml(p.desc)}</p>
-      <!-- 더보기 버튼 클릭 시 id 값으로 정보를 찾아서 모달을 띄웁니다 -->
+      <!-- 자세히 보기 버튼 클릭 시 id 값으로 데이터 연동 -->
       <button class="more-btn" data-id="${p.id}">자세히 보기</button>
     </div>
   </article>`;
@@ -295,11 +325,14 @@ if (resumeModal) {
 const projectModal = document.getElementById("projectModal");
 const closeProjectModalBtn = document.getElementById("closeProjectModalBtn");
 
-// 모달 닫기
 if (closeProjectModalBtn && projectModal) {
   closeProjectModalBtn.addEventListener("click", () => {
     projectModal.classList.remove("active");
     document.body.style.overflow = "";
+
+    // 모달 닫을 때 비디오 재생 중지
+    const video = document.querySelector("#pm-visual video");
+    if (video) video.pause();
   });
 }
 if (projectModal) {
@@ -307,11 +340,14 @@ if (projectModal) {
     if (e.target === projectModal) {
       projectModal.classList.remove("active");
       document.body.style.overflow = "";
+
+      const video = document.querySelector("#pm-visual video");
+      if (video) video.pause();
     }
   });
 }
 
-// 그리드 안에서 "자세히 보기" 버튼을 클릭했을 때 모달을 열어주는 이벤트 위임
+// "자세히 보기" 클릭 이벤트 위임
 if (grid) {
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".more-btn");
@@ -325,7 +361,7 @@ if (grid) {
   });
 }
 
-// 선택된 프로젝트 정보를 바탕으로 모달 내용 채우고 띄우기
+// 모달 내용 동적 채우기
 function openProjectModal(p) {
   document.getElementById("pm-title").textContent = p.title;
   document.getElementById("pm-type").textContent =
@@ -333,7 +369,16 @@ function openProjectModal(p) {
   document.getElementById("pm-duration").textContent =
     p.duration || "기간 미상";
 
-  // 사용 기술 태그 렌더링
+  // 역할(Role) 유무 처리
+  const roleWrapper = document.getElementById("pm-role-wrapper");
+  if (p.role) {
+    document.getElementById("pm-role").textContent = p.role;
+    roleWrapper.style.display = "flex";
+  } else {
+    roleWrapper.style.display = "none";
+  }
+
+  // 사용 기술 태그
   const tagsContainer = document.getElementById("pm-tags");
   tagsContainer.innerHTML = p.tags
     .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
@@ -361,17 +406,26 @@ function openProjectModal(p) {
     depWrapper.style.display = "none";
   }
 
-  // 비주얼 영역 (영상 > 이미지 > 기본 컬러 순서로 표시)
-  const visual = document.getElementById("pm-visual");
-  if (p.video) {
-    visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop></video>`;
-  } else if (p.image) {
-    visual.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.title)}">`;
+  // 보고서(PPT) 링크 유무 처리
+  const reportLink = document.getElementById("pm-report");
+  const reportWrapper = document.getElementById("pm-report-wrapper");
+  if (p.report) {
+    reportLink.href = p.report;
+    reportWrapper.style.display = "flex";
   } else {
-    visual.innerHTML = `<div style="width:100%; height:100%; background:linear-gradient(135deg, ${p.color[0]}, ${p.color[1]}); display:flex; align-items:center; justify-content:center; color:#666;">이미지/영상 준비중</div>`;
+    reportWrapper.style.display = "none";
   }
 
-  // 모달 활성화
+  // 비주얼 영역 (영상 > 이미지 > 기본 컬러)
+  const visual = document.getElementById("pm-visual");
+  if (p.video) {
+    visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop style="width:100%; height:100%; border-radius:12px;"></video>`;
+  } else if (p.image) {
+    visual.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.title)}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">`;
+  } else {
+    visual.innerHTML = `<div style="width:100%; height:100%; background:linear-gradient(135deg, ${p.color[0]}, ${p.color[1]}); display:flex; align-items:center; justify-content:center; color:#666; border-radius:12px;">시각 자료 준비중</div>`;
+  }
+
   projectModal.classList.add("active");
   document.body.style.overflow = "hidden";
 }

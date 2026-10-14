@@ -390,7 +390,7 @@
       </button>
     </div>
 
-    <!-- ===== 프로젝트 팝업 모달창 (새로 추가됨) ===== -->
+    <!-- ===== 프로젝트 팝업 모달창 (역할 및 보고서 필드 추가) ===== -->
     <div id="projectModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content project-modal-content">
         <div class="modal-header">
@@ -414,6 +414,10 @@
                 <strong>제작기간</strong>
                 <span id="pm-duration">0000.00 ~ 0000.00</span>
               </li>
+              <!-- 추가: 담당역할 -->
+              <li id="pm-role-wrapper">
+                <strong>담당역할</strong> <span id="pm-role">프론트엔드</span>
+              </li>
               <li>
                 <strong>사용기술</strong>
                 <div id="pm-tags" class="tags"></div>
@@ -425,6 +429,13 @@
               <li id="pm-deploy-wrapper">
                 <strong>배포주소</strong>
                 <a href="#" id="pm-deploy" target="_blank">링크</a>
+              </li>
+              <!-- 추가: PPT 보고서 -->
+              <li id="pm-report-wrapper">
+                <strong>보고서</strong>
+                <a href="#" id="pm-report" target="_blank"
+                  >PPT 보기 및 다운로드</a
+                >
               </li>
             </ul>
           </div>
