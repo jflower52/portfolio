@@ -157,12 +157,12 @@ const PROJECTS = [
     title: "포켓몬 도감",
     desc: "포켓몬 도감",
     type: "single",
-    duration: "YYYY.MM ~ YYYY.MM",
-    role: "",
-    tags: ["JavaScript", "API"],
-    github: "",
-    deploy: "",
-    image: "",
+    duration: "2025.04.17 ~ 2025.04.25",
+    role: "개인 프로젝트 (전체 개발)",
+    tags: ["React", "Tailwindcss", "Firebase"],
+    github: "https://github.com/jflower52/pokemon",
+    deploy: "https://pokemon-d5bca.web.app/",
+    image: "img/pokemon.png",
     video: "",
     report: "",
     color: ["#f2ebff", "#f8f5ff"],
@@ -177,11 +177,8 @@ const PROJECTS = [
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/jflower52/ArtB",
     deploy: "https://jflower52.github.io/ArtB/",
-
-    // 💡 썸네일과 모달창 이미지를 다르게 분리 설정
-    thumbImage: "img/artb1.png", // 목록에 보이는 이미지
-    image: "img/artb2.png", // 상세 모달창에 보이는 이미지
-
+    thumbImage: "img/artb1.png",
+    image: "img/artb2.png",
     video: "",
     report: "",
     color: ["#e3efff", "#f0f5ff"],
@@ -264,7 +261,6 @@ function render() {
 function cardHTML(p) {
   const typeLabel = p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
 
-  // 💡 썸네일 전용 이미지(thumbImage)가 있다면 그걸 우선적으로 사용하고, 없으면 공통 이미지(image)를 사용합니다.
   const targetImage = p.thumbImage || p.image;
 
   const bgStyle = targetImage
