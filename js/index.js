@@ -67,7 +67,7 @@ function toast(msg) {
   setTimeout(() => el.remove(), 1500);
 }
 
-// ======== 프로젝트 데이터 (오호준 님 실제 프로젝트로 교체됨) ========
+// ======== 프로젝트 데이터 ========
 const PROJECTS = [
   // --- 팀 프로젝트 ---
   {
@@ -90,14 +90,23 @@ const PROJECTS = [
     title: "오늘 한 빵",
     desc: "빵집 탐방 스탬프 투어 앱",
     type: "team",
-    duration: "YYYY.MM ~ YYYY.MM",
-    role: "",
-    tags: ["React Native", "JavaScript"],
-    github: "",
-    deploy: "",
-    image: "",
-    video: "",
-    report: "",
+    duration: "2025.07.01 ~ 2025.07.25",
+    role: "디자인, 프론트엔드, 백엔드",
+    tags: [
+      "Figma",
+      "Photoshop",
+      "Visual Studio Code",
+      "Android Studio",
+      "Kotlin",
+      "EJS",
+      "Node.js",
+      "MySQL",
+    ],
+    github: "https://github.com/orgs/TodayHanBbang/repositories",
+    deploy: "https://todayhanbbang.onrender.com/",
+    image: "img/todayhanbbang.png",
+    video: "video/todayhanbbang.mp4", // 세로 영상도 짤림 없이 재생됩니다.
+    report: "report/todayhanbbang.pptx", // pptx로 적용 완료 (클릭 시 다운로드 됨)
     color: ["#ffeaf6", "#fff2fb"],
   },
   {
@@ -251,7 +260,6 @@ function cardHTML(p) {
       <span class="proj-type">${typeLabel}</span>
       <h4>${escapeHtml(p.title)}</h4>
       <p>${escapeHtml(p.desc)}</p>
-      <!-- 자세히 보기 버튼 클릭 시 id 값으로 데이터 연동 -->
       <button class="more-btn" data-id="${p.id}">자세히 보기</button>
     </div>
   </article>`;
@@ -271,7 +279,6 @@ function escapeHtml(s) {
   );
 }
 
-// 초기 프로젝트 렌더링 실행
 render();
 
 // ======== 스크롤 이벤트 처리 ========
@@ -329,7 +336,6 @@ if (closeProjectModalBtn && projectModal) {
     projectModal.classList.remove("active");
     document.body.style.overflow = "";
 
-    // 모달 닫을 때 비디오 재생 중지
     const video = document.querySelector("#pm-visual video");
     if (video) video.pause();
   });
@@ -346,7 +352,6 @@ if (projectModal) {
   });
 }
 
-// "자세히 보기" 클릭 이벤트 위임
 if (grid) {
   grid.addEventListener("click", (e) => {
     const btn = e.target.closest(".more-btn");
@@ -368,7 +373,6 @@ function openProjectModal(p) {
   document.getElementById("pm-duration").textContent =
     p.duration || "기간 미상";
 
-  // 역할(Role) 유무 처리
   const roleWrapper = document.getElementById("pm-role-wrapper");
   if (p.role) {
     document.getElementById("pm-role").textContent = p.role;
@@ -377,13 +381,11 @@ function openProjectModal(p) {
     roleWrapper.style.display = "none";
   }
 
-  // 사용 기술 태그
   const tagsContainer = document.getElementById("pm-tags");
   tagsContainer.innerHTML = p.tags
     .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
     .join("");
 
-  // 깃허브 링크 유무 처리
   const gitLink = document.getElementById("pm-github");
   const gitWrapper = document.getElementById("pm-github-wrapper");
   if (p.github) {
@@ -394,7 +396,6 @@ function openProjectModal(p) {
     gitWrapper.style.display = "none";
   }
 
-  // 배포 링크 유무 처리
   const depLink = document.getElementById("pm-deploy");
   const depWrapper = document.getElementById("pm-deploy-wrapper");
   if (p.deploy) {
@@ -405,20 +406,24 @@ function openProjectModal(p) {
     depWrapper.style.display = "none";
   }
 
-  // 보고서(PPT) 링크 유무 처리
+  // 💡 보고서(PPT) 링크 로직
   const reportLink = document.getElementById("pm-report");
   const reportWrapper = document.getElementById("pm-report-wrapper");
   if (p.report) {
     reportLink.href = p.report;
+    // 파일명에 따라 버튼 텍스트 변경
+    reportLink.textContent = p.report.endsWith(".pdf")
+      ? "PDF 보기 및 다운로드"
+      : "PPT 다운로드";
     reportWrapper.style.display = "flex";
   } else {
     reportWrapper.style.display = "none";
   }
 
-  // 비주얼 영역 (영상 > 이미지 > 기본 컬러)
+  // 비주얼 영역 (세로 영상 짤림 방지 로직 적용됨)
   const visual = document.getElementById("pm-visual");
   if (p.video) {
-    visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop style="width:100%; height:100%; border-radius:12px;"></video>`;
+    visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop style="width:100%; height:100%; object-fit:contain; background-color:#000; border-radius:12px;"></video>`;
   } else if (p.image) {
     visual.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.title)}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">`;
   } else {
