@@ -67,7 +67,7 @@ function toast(msg) {
   setTimeout(() => el.remove(), 1500);
 }
 
-// ======== 프로젝트 데이터 (오호준 님 실제 프로젝트로 교체됨) ========
+// ======== 프로젝트 데이터 ========
 const PROJECTS = [
   // --- 팀 프로젝트 ---
   {
@@ -172,12 +172,16 @@ const PROJECTS = [
     title: "ArtB",
     desc: "커미션, 외주, 웹툰 등 다양한 작가님들의 사용이 편한 플랫폼",
     type: "single",
-    duration: "YYYY.MM ~ YYYY.MM",
-    role: "",
-    tags: ["HTML", "CSS", "JavaScript", "React"],
-    github: "",
-    deploy: "",
-    image: "",
+    duration: "2025.03.19 ~ 2025.04.02",
+    role: "개인 프로젝트 (전체 개발)",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/jflower52/ArtB",
+    deploy: "https://jflower52.github.io/ArtB/",
+
+    // 💡 썸네일과 모달창 이미지를 다르게 분리 설정
+    thumbImage: "img/artb1.png", // 목록에 보이는 이미지
+    image: "img/artb2.png", // 상세 모달창에 보이는 이미지
+
     video: "",
     report: "",
     color: ["#e3efff", "#f0f5ff"],
@@ -260,8 +264,11 @@ function render() {
 function cardHTML(p) {
   const typeLabel = p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
 
-  const bgStyle = p.image
-    ? `background: url('${p.image}') center top / cover no-repeat;`
+  // 💡 썸네일 전용 이미지(thumbImage)가 있다면 그걸 우선적으로 사용하고, 없으면 공통 이미지(image)를 사용합니다.
+  const targetImage = p.thumbImage || p.image;
+
+  const bgStyle = targetImage
+    ? `background: url('${targetImage}') center top / cover no-repeat;`
     : `background: linear-gradient(135deg, ${p.color[0]}, ${p.color[1]});`;
 
   return `
@@ -433,7 +440,7 @@ function openProjectModal(p) {
   if (p.video) {
     visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop style="width:100%; height:100%; object-fit:contain; background-color:#000; border-radius:12px;"></video>`;
   } else if (p.image) {
-    visual.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.title)}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">`;
+    visual.innerHTML = `<img src="${p.image}" alt="${escapeHtml(p.title)}" style="width:100%; height:100%; object-fit:contain; background-color:#e5e7eb; border-radius:12px;">`;
   } else {
     visual.innerHTML = `<div style="width:100%; height:100%; background:linear-gradient(135deg, ${p.color[0]}, ${p.color[1]}); display:flex; align-items:center; justify-content:center; color:#666; border-radius:12px;">시각 자료 준비중</div>`;
   }
