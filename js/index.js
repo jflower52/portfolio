@@ -91,7 +91,7 @@ const PROJECTS = [
     desc: "빵집 탐방 스탬프 투어 앱",
     type: "team",
     duration: "2025.07.01 ~ 2025.07.25",
-    role: "디자인, 프론트엔드, 백엔드",
+    role: "디자인, 프론트엔드",
     tags: [
       "Figma",
       "Photoshop",
