@@ -157,7 +157,7 @@ const PROJECTS = [
     github: "https://github.com/jflower52/todolist",
     deploy: "https://todolist-ohj.web.app",
     download:
-      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk", // 분리된 다운로드 속성
+      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk",
     thumbImage: "img/doneday1.png",
     image: "img/doneday2.png",
     video: "",
@@ -183,7 +183,7 @@ const PROJECTS = [
   {
     id: 6,
     title: "ArtB",
-    desc: "커미션, 외주, 웹툰 등 다양한 작가님들의 사용이 편한 플랫폼",
+    desc: "작가님들 커미션, 외주 등 통합 플랫폼",
     type: "single",
     duration: "2025.03.19 ~ 2025.04.02",
     role: "개인 프로젝트 (전체 개발)",
@@ -424,7 +424,6 @@ function openProjectModal(p) {
     gitWrapper.style.display = "none";
   }
 
-  // 웹 배포주소 표시
   const depLink = document.getElementById("pm-deploy");
   const depWrapper = document.getElementById("pm-deploy-wrapper");
   if (p.deploy) {
@@ -435,7 +434,6 @@ function openProjectModal(p) {
     depWrapper.style.display = "none";
   }
 
-  // APK 등 다운로드 링크 분리 표시
   const downLink = document.getElementById("pm-download");
   const downWrapper = document.getElementById("pm-download-wrapper");
   if (p.download) {
