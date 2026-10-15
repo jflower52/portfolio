@@ -67,7 +67,7 @@ function toast(msg) {
   setTimeout(() => el.remove(), 1500);
 }
 
-// ======== 프로젝트 데이터 ========
+// ======== 프로젝트 데이터 (오호준 님 실제 프로젝트로 교체됨) ========
 const PROJECTS = [
   // --- 팀 프로젝트 ---
   {
@@ -105,8 +105,8 @@ const PROJECTS = [
     github: "https://github.com/orgs/TodayHanBbang/repositories",
     deploy: "https://todayhanbbang.onrender.com/",
     image: "img/todayhanbbang.png",
-    video: "video/todayhanbbang.mp4", // 세로 영상도 짤림 없이 재생됩니다.
-    report: "report/todayhanbbang.pptx", // pptx로 적용 완료 (클릭 시 다운로드 됨)
+    video: "video/todayhanbbang.mp4",
+    report: "report/todayhanbbang.pptx",
     color: ["#ffeaf6", "#fff2fb"],
   },
   {
@@ -114,14 +114,25 @@ const PROJECTS = [
     title: "i-Mon",
     desc: "보안 프로그램 파일 암호화 및 통합 관리자 서버 개발",
     type: "team",
-    duration: "YYYY.MM ~ YYYY.MM",
-    role: "",
-    tags: ["HTML", "CSS", "JavaScript"],
-    github: "",
+    duration: "2025.04.29 ~ 2025.06.11",
+    role: "디자인, 프론트엔드",
+    tags: [
+      "Figma",
+      "PhotoShop",
+      "Illustrator",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "PHP",
+      "Laravel",
+      "MariaDB",
+      "C#",
+    ],
+    github: "https://github.com/CodeNation04/CodeNation",
     deploy: "",
-    image: "",
-    video: "",
-    report: "",
+    image: "img/imon.png",
+    video: "video/imon.mp4",
+    report: "report/imon.pdf",
     color: ["#e6fff4", "#effff8"],
   },
   // --- 개인 프로젝트 ---
@@ -406,12 +417,10 @@ function openProjectModal(p) {
     depWrapper.style.display = "none";
   }
 
-  // 💡 보고서(PPT) 링크 로직
   const reportLink = document.getElementById("pm-report");
   const reportWrapper = document.getElementById("pm-report-wrapper");
   if (p.report) {
     reportLink.href = p.report;
-    // 파일명에 따라 버튼 텍스트 변경
     reportLink.textContent = p.report.endsWith(".pdf")
       ? "PDF 보기 및 다운로드"
       : "PPT 다운로드";
@@ -420,7 +429,6 @@ function openProjectModal(p) {
     reportWrapper.style.display = "none";
   }
 
-  // 비주얼 영역 (세로 영상 짤림 방지 로직 적용됨)
   const visual = document.getElementById("pm-visual");
   if (p.video) {
     visual.innerHTML = `<video src="${p.video}" controls autoplay muted loop style="width:100%; height:100%; object-fit:contain; background-color:#000; border-radius:12px;"></video>`;
