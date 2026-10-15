@@ -183,7 +183,7 @@ const PROJECTS = [
   {
     id: 6,
     title: "ArtB",
-    desc: "작가님들 커미션, 외주 등 통합 플랫폼",
+    desc: "작가님들의 커미션, 외주 등 통합 플랫폼",
     type: "single",
     duration: "2025.03.19 ~ 2025.04.02",
     role: "개인 프로젝트 (전체 개발)",
