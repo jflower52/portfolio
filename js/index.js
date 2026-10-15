@@ -80,6 +80,7 @@ const PROJECTS = [
     tags: ["Figma", "React", "JS", "Node.js", "PostgreSQL"],
     github: "https://github.com/movieStudioTalk/project",
     deploy: "https://good-ping.onrender.com",
+    download: "",
     image: "img/goodping.png",
     video: "video/goodping.mp4",
     report: "report/goodping.pdf",
@@ -104,6 +105,7 @@ const PROJECTS = [
     ],
     github: "https://github.com/orgs/TodayHanBbang/repositories",
     deploy: "https://todayhanbbang.onrender.com/",
+    download: "",
     image: "img/todayhanbbang.png",
     video: "video/todayhanbbang.mp4",
     report: "report/todayhanbbang.pptx",
@@ -130,6 +132,7 @@ const PROJECTS = [
     ],
     github: "https://github.com/CodeNation04/CodeNation",
     deploy: "",
+    download: "",
     image: "img/imon.png",
     video: "video/imon.mp4",
     report: "report/imon.pdf",
@@ -141,13 +144,22 @@ const PROJECTS = [
     title: "던데이",
     desc: "일정 관리 프로그램",
     type: "single",
-    duration: "2026.09",
+    duration: "2026.09.24 ~ 2026.09.26",
     role: "개인 프로젝트 (전체 개발)",
-    tags: ["Android Studio", "Java"],
-    github: "https://github.com/jflower52/DoneDay_APK",
-    deploy:
-      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk",
-    image: "",
+    tags: [
+      "React",
+      "CSS",
+      "JavaScript",
+      "Node.js",
+      "Visual Studio Code",
+      "Android Studio",
+    ],
+    github: "https://github.com/jflower52/todolist",
+    deploy: "https://todolist-ohj.web.app",
+    download:
+      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk", // 분리된 다운로드 속성
+    thumbImage: "img/doneday1.png",
+    image: "img/doneday2.png",
     video: "",
     report: "",
     color: ["#fff2e6", "#fff8f0"],
@@ -162,6 +174,7 @@ const PROJECTS = [
     tags: ["React", "Tailwindcss", "Firebase"],
     github: "https://github.com/jflower52/pokemon",
     deploy: "https://pokemon-d5bca.web.app/",
+    download: "",
     image: "img/pokemon.png",
     video: "",
     report: "",
@@ -177,6 +190,7 @@ const PROJECTS = [
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/jflower52/ArtB",
     deploy: "https://jflower52.github.io/ArtB/",
+    download: "",
     thumbImage: "img/artb1.png",
     image: "img/artb2.png",
     video: "",
@@ -410,6 +424,7 @@ function openProjectModal(p) {
     gitWrapper.style.display = "none";
   }
 
+  // 웹 배포주소 표시
   const depLink = document.getElementById("pm-deploy");
   const depWrapper = document.getElementById("pm-deploy-wrapper");
   if (p.deploy) {
@@ -418,6 +433,19 @@ function openProjectModal(p) {
     depWrapper.style.display = "flex";
   } else {
     depWrapper.style.display = "none";
+  }
+
+  // APK 등 다운로드 링크 분리 표시
+  const downLink = document.getElementById("pm-download");
+  const downWrapper = document.getElementById("pm-download-wrapper");
+  if (p.download) {
+    downLink.href = p.download;
+    downLink.textContent = p.download.endsWith(".apk")
+      ? "APK 파일 다운로드"
+      : "파일 다운로드";
+    downWrapper.style.display = "flex";
+  } else {
+    downWrapper.style.display = "none";
   }
 
   const reportLink = document.getElementById("pm-report");

@@ -390,7 +390,7 @@
       </button>
     </div>
 
-    <!-- ===== 프로젝트 팝업 모달창 (역할 및 보고서 필드 추가 / 순서 변경) ===== -->
+    <!-- ===== 프로젝트 팝업 모달창 (다운로드 필드 별도 추가) ===== -->
     <div id="projectModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content project-modal-content">
         <div class="modal-header">
@@ -414,7 +414,6 @@
                 <strong>제작기간</strong>
                 <span id="pm-duration">0000.00 ~ 0000.00</span>
               </li>
-              <!-- 사용기술이 담당역할 위로 올라옴 -->
               <li>
                 <strong>사용기술</strong>
                 <div id="pm-tags" class="tags"></div>
@@ -429,6 +428,11 @@
               <li id="pm-deploy-wrapper">
                 <strong>배포주소</strong>
                 <a href="#" id="pm-deploy" target="_blank">링크</a>
+              </li>
+              <!-- 추가: 다운로드 주소 -->
+              <li id="pm-download-wrapper">
+                <strong>다운로드</strong>
+                <a href="#" id="pm-download" target="_blank">APK 다운로드</a>
               </li>
               <li id="pm-report-wrapper">
                 <strong>보고서</strong>
