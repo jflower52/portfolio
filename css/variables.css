@@ -1,0 +1,125 @@
+:root {
+  --bg: #ffffff;
+  --text: #15181e;
+  --muted: #5d6470;
+  --primary: #0d9488;
+  --primary-weak: #ccfbf1;
+  --border: #e7e9ee;
+  --card: #f8f9fb;
+  --chip: #eef1f6;
+  --shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+  --header-h: 64px;
+
+  /* Section backgrounds */
+  --bg-home: #f7faff;
+  --bg-skills: #f9fafb;
+  --bg-projects: #f6f6ff;
+  --bg-end: #f4f6f9;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  font-family:
+    "Noto Sans KR",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  z-index: 1000;
+}
+
+/* Common Sections */
+.section {
+  min-height: calc(100svh - var(--header-h));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  scroll-margin-top: calc(var(--header-h) + 1px);
+}
+@supports (height: 100dvh) {
+  .section {
+    min-height: calc(100dvh - var(--header-h));
+  }
+}
+.section > .container {
+  width: min(1120px, 92%);
+  margin: auto;
+  padding: 24px 0;
+}
+.section-title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 3.5rem 0;
+  color: var(--text);
+}
+
+.home {
+  background: var(--bg-home);
+}
+.skills {
+  background: var(--bg-skills);
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+.projects {
+  background: var(--bg-projects);
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+.end {
+  background: var(--bg-end);
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+
+/* Focus outlines */
+a:focus {
+  outline: none;
+}
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+button:focus:not(:focus-visible) {
+  outline: none;
+}

@@ -1,0 +1,120 @@
+/* Skills Section */
+#skills.section {
+  align-items: flex-start;
+  padding: 0;
+}
+#skills.section > .container {
+  margin-top: 140px;
+  margin-bottom: auto;
+}
+.skills .section-title {
+  margin-top: 0;
+  margin-bottom: 3.5rem;
+}
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.skills-group {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.skills-group h3 {
+  margin: 0 0 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.skills .chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.chip {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 52px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.chip i {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.06));
+}
+.chip:hover {
+  transform: translateY(-5px);
+}
+.chip::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.chip:hover::after {
+  opacity: 1;
+}
+
+/* Colors */
+.c-html {
+  color: #e34f26;
+}
+.c-css {
+  color: #1572b6;
+}
+.c-js {
+  color: #f7df1e;
+}
+.c-react {
+  color: #61dafb;
+}
+.c-figma {
+  background: linear-gradient(
+    45deg,
+    #f24e1e,
+    #ff7262,
+    #a259ff,
+    #1abcfe,
+    #0acf83
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.c-github {
+  color: #181717;
+}
+.c-discord {
+  color: #5865f2;
+}
+
+@media (max-width: 850px) {
+  .skills-wrapper {
+    gap: 40px;
+  }
+}
+@media (max-width: 720px) {
+  #skills.section > .container {
+    margin-top: 100px;
+  }
+}
