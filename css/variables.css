@@ -35,7 +35,7 @@ body.dark-mode {
   --bg-end: #1f2937;
 }
 
-/* 다크모드 시 기존 흰색 하드코딩 요소들 강제 반전 (유지보수 편의) */
+/* 다크모드 시 기존 흰색 하드코딩 요소들 강제 반전 (메뉴바 제외) */
 body.dark-mode #about.section,
 body.dark-mode .site-header.scrolled,
 body.dark-mode .util-btn,
@@ -47,11 +47,16 @@ body.dark-mode .more-btn,
 body.dark-mode .contact-card,
 body.dark-mode .form-group input:focus,
 body.dark-mode .form-group textarea:focus,
-body.dark-mode .resume-btn,
-body.dark-mode .primary-nav {
+body.dark-mode .resume-btn {
   background-color: var(--card);
   color: var(--text);
 }
+
+/* 💡 다크모드일 때 About Me 좌측 배경을 부드럽게 조정 */
+body.dark-mode .about-left::before {
+  background-color: var(--bg);
+}
+
 body.dark-mode .modal-body {
   background-color: var(--bg);
 }
@@ -63,6 +68,13 @@ body.dark-mode .tab.is-active {
 body.dark-mode .more-btn:hover {
   background-color: var(--primary-weak);
   color: var(--primary);
+}
+
+/* 모바일 메뉴 배경은 모바일 사이즈(720px 이하)에서만 어둡게 적용되도록 수정 */
+@media (max-width: 720px) {
+  body.dark-mode .primary-nav {
+    background-color: var(--card);
+  }
 }
 
 * {
@@ -91,7 +103,7 @@ body {
   scroll-snap-type: y mandatory;
   transition:
     background-color 0.3s ease,
-    color 0.3s ease; /* 다크모드 전환 애니메이션 */
+    color 0.3s ease;
 }
 
 /* Skip Link for Accessibility */

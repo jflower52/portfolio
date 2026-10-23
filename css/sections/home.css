@@ -108,3 +108,26 @@
     word-break: keep-all;
   }
 }
+
+/* 타이핑 커서 애니메이션 */
+.cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1.1em;
+  background-color: var(--text);
+  margin-left: 6px;
+  vertical-align: middle;
+  transform: translateY(-3px);
+  animation: blink 0.9s step-end infinite;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

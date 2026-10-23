@@ -31,17 +31,42 @@ export function initUI() {
   // === 다크모드 토글 로직 ===
   const darkModeBtn = document.getElementById("darkModeBtn");
 
-  // 브라우저에 저장된 다크모드 설정이 있으면 불러오기
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
   }
 
   darkModeBtn?.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-    // 현재 모드를 Local Storage에 저장
     const isDark = document.body.classList.contains("dark-mode");
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
+
+  // === 메인 화면 타이핑 효과 ===
+  const typingTextElement = document.getElementById("typing-text");
+  if (typingTextElement) {
+    const text = "프론트엔드 개발자 \n오호준입니다.";
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        let currentStr = text.substring(0, index + 1);
+
+        // 줄바꿈 기호를 <br>로 변환
+        currentStr = currentStr.replace(/\n/g, '<br class="mobile-br" />');
+        // '오호준'이 완성되면 strong 태그로 감싸기
+        currentStr = currentStr.replace("오호준", "<strong>오호준</strong>");
+
+        typingTextElement.innerHTML = currentStr;
+        index++;
+
+        // 사람처럼 타이핑 속도에 불규칙한 느낌 주기 (100ms ~ 200ms)
+        const typeSpeed = Math.random() * 100 + 100;
+        setTimeout(type, typeSpeed);
+      }
+    }
+    // 페이지 로드 후 0.5초 뒤에 타이핑 시작
+    setTimeout(type, 500);
+  }
 
   // === 헤더 및 네비게이션 제어 ===
   const headerEl = document.querySelector(".site-header");

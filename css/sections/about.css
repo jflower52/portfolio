@@ -32,6 +32,7 @@
   width: 100vw;
   background-color: #0b1120;
   z-index: -1;
+  transition: background-color 0.3s ease;
 }
 .about-title {
   font-size: clamp(32px, 4vw, 44px);
@@ -142,9 +143,10 @@
   margin-right: 6px;
   font-weight: 800;
 }
+/* 💡 여기서 하드코딩된 색상을 지우고 var(--muted)로 변경하여 다크모드 대응 */
 .interview-item .a {
   margin: 0;
-  color: #3a4250;
+  color: var(--muted);
   line-height: 1.7;
   font-size: 1.05rem;
   word-break: keep-all;
