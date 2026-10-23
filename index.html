@@ -6,30 +6,34 @@
     <title>오호준 포트폴리오</title>
     <meta name="description" content="프론트엔드 개발자 오호준의 포트폴리오" />
     <meta name="theme-color" content="#ffffff" />
+
+    <!-- 폰트 및 스타일시트 -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/index.css" />
-    <!-- Font Awesome (jsDelivr) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
     />
   </head>
   <body>
+    <!-- 웹 접근성용 스킵 네비게이션 -->
     <a class="skip-link" href="#home">본문 바로가기</a>
 
-    <!-- 고정 헤더 -->
+    <!-- ==========================================
+         [HEADER] 상단 네비게이션 바 (GNB)
+    =========================================== -->
     <header class="site-header" role="banner">
       <div class="container nav-inner">
-        <!-- 왼쪽 로고 -->
+        <!-- 로고 -->
         <a href="#home" class="site-logo" aria-label="홈으로 이동"
           >OHJ's Portfolio</a
         >
 
-        <!-- 우측 정렬 내비게이션 -->
+        <!-- 메뉴 영역 -->
         <nav
           id="primary-menu"
           class="primary-nav"
@@ -46,7 +50,7 @@
           </ul>
         </nav>
 
-        <!-- 모바일 햄버거 -->
+        <!-- 모바일용 햄버거 버튼 -->
         <button
           class="nav-toggle"
           aria-label="메뉴 열기"
@@ -61,7 +65,9 @@
     </header>
 
     <main id="content">
-      <!-- Home -->
+      <!-- ==========================================
+           [SECTION 1] Home (메인 배너 영역)
+      =========================================== -->
       <section id="home" class="section home" aria-label="홈">
         <div class="container home-inner">
           <h1 class="hero-title">
@@ -73,6 +79,7 @@
             <br class="mobile-br" />개발자입니다.
           </p>
 
+          <!-- 소셜 아이콘 (GitHub, Velog) -->
           <div class="fixed-social" aria-label="소셜 바로가기">
             <a
               class="social-btn github"
@@ -100,9 +107,12 @@
         </a>
       </section>
 
-      <!-- About Me -->
+      <!-- ==========================================
+           [SECTION 2] About Me (프로필 및 인터뷰)
+      =========================================== -->
       <section id="about" class="section about" aria-label="소개">
         <div class="about-content">
+          <!-- 좌측 프로필 사진 -->
           <div class="about-left">
             <h2 class="about-title">About Me</h2>
             <img
@@ -114,6 +124,7 @@
             />
           </div>
 
+          <!-- 우측 인적사항 및 인터뷰 -->
           <div class="about-right">
             <div class="about-right-inner">
               <ul class="info-list">
@@ -196,7 +207,9 @@
         </div>
       </section>
 
-      <!-- Skills -->
+      <!-- ==========================================
+           [SECTION 3] Skills (기술 스택)
+      =========================================== -->
       <section id="skills" class="section skills">
         <div class="container">
           <h2 class="section-title">Skills</h2>
@@ -241,11 +254,14 @@
         </div>
       </section>
 
-      <!-- Projects -->
+      <!-- ==========================================
+           [SECTION 4] Projects (프로젝트 목록)
+      =========================================== -->
       <section id="projects" class="section projects" aria-label="프로젝트">
         <div class="container">
           <h2 class="section-title" style="display: none">Projects</h2>
           <div class="proj-header">
+            <!-- 필터 및 검색 -->
             <div class="tabs" role="tablist" aria-label="프로젝트 분류">
               <button
                 class="tab is-active"
@@ -283,8 +299,10 @@
             </div>
           </div>
 
+          <!-- 프로젝트 카드 동적 렌더링 영역 -->
           <div id="project-grid" class="grid" aria-live="polite"></div>
 
+          <!-- 페이지네이션 -->
           <div class="paginator" aria-label="페이지네이션">
             <button id="prevPage" class="page-btn" disabled>◀ Prev</button>
             <span id="pageIndicator" class="page-indicator">1 / 1</span>
@@ -293,18 +311,20 @@
         </div>
       </section>
 
-      <!-- End / Contact -->
+      <!-- ==========================================
+           [SECTION 5] Contact (메일 폼 및 이력서)
+      =========================================== -->
       <section id="end" class="section end" aria-label="연락처 및 마무리">
         <div class="container end-container">
           <h2 class="section-title">Contact Me</h2>
           <div class="end-content">
+            <!-- 이메일 전송 폼 (EmailJS) -->
             <div class="contact-card form-area">
               <h3>메일로 연락하기</h3>
               <p class="form-desc">
                 궁금한 점이 있으시거나 면접 제안이 있으시다면 언제든 연락
                 주세요.
               </p>
-
               <form id="contactForm" class="contact-form">
                 <div class="form-group">
                   <label for="senderName">이름</label>
@@ -352,6 +372,7 @@
               </form>
             </div>
 
+            <!-- 이력서 보기 및 직통 연락처 -->
             <div class="contact-card info-area">
               <h3>이력서</h3>
               <p class="info-desc">
@@ -381,6 +402,9 @@
       </section>
     </main>
 
+    <!-- ==========================================
+         [UTILS] 플로팅 버튼 (위로가기, 이메일 복사, 다크모드)
+    =========================================== -->
     <div class="float-utils" aria-label="빠른 동작">
       <button id="toTopBtn" class="util-btn" aria-label="최상단으로 이동">
         <i class="fa-solid fa-arrow-up"></i>
@@ -388,9 +412,14 @@
       <button id="copyEmailBtn" class="util-btn" aria-label="이메일 복사">
         <i class="fa-solid fa-envelope"></i>
       </button>
+      <button id="darkModeBtn" class="util-btn" aria-label="다크모드 전환">
+        <i class="fa-solid fa-circle-half-stroke"></i>
+      </button>
     </div>
 
-    <!-- ===== 프로젝트 팝업 모달창 ===== -->
+    <!-- ==========================================
+         [MODALS] 프로젝트 상세 모달
+    =========================================== -->
     <div id="projectModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content project-modal-content">
         <div class="modal-header">
@@ -405,7 +434,7 @@
         </div>
         <div class="modal-body pm-body">
           <div class="pm-visual" id="pm-visual">
-            <!-- 이미지/영상이 동적으로 들어갑니다 -->
+            <!-- JS를 통해 이미지 또는 영상이 삽입됨 -->
           </div>
           <div class="pm-details">
             <ul class="pm-info-list">
@@ -445,7 +474,9 @@
       </div>
     </div>
 
-    <!-- ===== 이력서 팝업 모달창 ===== -->
+    <!-- ==========================================
+         [MODALS] 이력서 모달
+    =========================================== -->
     <div id="resumeModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content">
         <div class="modal-header">
@@ -468,6 +499,9 @@
       </div>
     </div>
 
+    <!-- ==========================================
+         [SCRIPTS] 외부 라이브러리 및 모듈 연결
+    =========================================== -->
     <!-- EmailJS SDK -->
     <script
       type="text/javascript"

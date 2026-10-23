@@ -17,6 +17,54 @@
   --bg-end: #f4f6f9;
 }
 
+/* === 다크모드 테마 변수 === */
+body.dark-mode {
+  --bg: #111827;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --primary: #14b8a6;
+  --primary-weak: #134e4a;
+  --border: #374151;
+  --card: #1f2937;
+  --chip: #374151;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  --bg-home: #111827;
+  --bg-skills: #1f2937;
+  --bg-projects: #111827;
+  --bg-end: #1f2937;
+}
+
+/* 다크모드 시 기존 흰색 하드코딩 요소들 강제 반전 (유지보수 편의) */
+body.dark-mode #about.section,
+body.dark-mode .site-header.scrolled,
+body.dark-mode .util-btn,
+body.dark-mode .modal-content,
+body.dark-mode .tab,
+body.dark-mode .search input,
+body.dark-mode .card,
+body.dark-mode .more-btn,
+body.dark-mode .contact-card,
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus,
+body.dark-mode .resume-btn,
+body.dark-mode .primary-nav {
+  background-color: var(--card);
+  color: var(--text);
+}
+body.dark-mode .modal-body {
+  background-color: var(--bg);
+}
+body.dark-mode .tab.is-active {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+body.dark-mode .more-btn:hover {
+  background-color: var(--primary-weak);
+  color: var(--primary);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -41,6 +89,9 @@ body {
   line-height: 1.6;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease; /* 다크모드 전환 애니메이션 */
 }
 
 /* Skip Link for Accessibility */
@@ -74,6 +125,7 @@ body {
   align-items: center;
   padding: 0;
   scroll-margin-top: calc(var(--header-h) + 1px);
+  transition: background-color 0.3s ease;
 }
 @supports (height: 100dvh) {
   .section {
@@ -91,6 +143,7 @@ body {
   text-align: center;
   margin: 0 0 3.5rem 0;
   color: var(--text);
+  transition: color 0.3s ease;
 }
 
 .home {

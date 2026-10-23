@@ -1,4 +1,4 @@
-// HTML 특수문자 변환 (보안 및 화면 깨짐 방지용)
+// HTML 특수문자 변환
 export function escapeHtml(s) {
   return String(s).replace(
     /[&<>"']/g,
@@ -28,6 +28,22 @@ export function toast(msg) {
 }
 
 export function initUI() {
+  // === 다크모드 토글 로직 ===
+  const darkModeBtn = document.getElementById("darkModeBtn");
+
+  // 브라우저에 저장된 다크모드 설정이 있으면 불러오기
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  darkModeBtn?.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    // 현재 모드를 Local Storage에 저장
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  // === 헤더 및 네비게이션 제어 ===
   const headerEl = document.querySelector(".site-header");
   function syncHeaderHeightVar() {
     const h = headerEl ? headerEl.offsetHeight : 64;
@@ -63,6 +79,7 @@ export function initUI() {
       });
     });
 
+  // === 플로팅 버튼 제어 ===
   document.getElementById("toTopBtn")?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
