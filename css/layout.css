@@ -310,3 +310,58 @@
     border-radius: 8px;
   }
 }
+
+/* ==========================================
+   툴팁(Tooltip) 애니메이션 (좌측 소셜, 우측 플로팅)
+========================================== */
+/* 툴팁 기준점 설정 */
+.social-btn,
+.util-btn {
+  position: relative;
+}
+
+/* 툴팁 공통 디자인 (aria-label 속성을 가져와 텍스트로 사용) */
+.social-btn::after,
+.util-btn::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: 50%;
+  background-color: var(--text); /* 배경은 글자색으로 (다크모드 자동반전) */
+  color: var(--bg); /* 글자는 배경색으로 */
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* 마우스 방해 금지 */
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 100;
+}
+
+/* 좌측 소셜 버튼 툴팁 (오른쪽으로 등장) */
+.social-btn::after {
+  left: 100%;
+  margin-left: 12px;
+  transform: translateY(-50%) translateX(-5px);
+}
+.social-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* 우측 플로팅 버튼 툴팁 (왼쪽으로 등장) */
+.util-btn::after {
+  right: 100%;
+  margin-right: 12px;
+  transform: translateY(-50%) translateX(5px);
+}
+.util-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
