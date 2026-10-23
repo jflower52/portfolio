@@ -390,7 +390,7 @@
       </button>
     </div>
 
-    <!-- ===== 프로젝트 팝업 모달창 (다운로드 필드 별도 추가) ===== -->
+    <!-- ===== 프로젝트 팝업 모달창 ===== -->
     <div id="projectModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content project-modal-content">
         <div class="modal-header">
@@ -429,7 +429,6 @@
                 <strong>배포주소</strong>
                 <a href="#" id="pm-deploy" target="_blank">링크</a>
               </li>
-              <!-- 추가: 다운로드 주소 -->
               <li id="pm-download-wrapper">
                 <strong>다운로드</strong>
                 <a href="#" id="pm-download" target="_blank">APK 다운로드</a>
@@ -474,6 +473,8 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
-    <script src="js/index.js"></script>
+
+    <!-- 모듈화된 메인 JS 연결 -->
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
