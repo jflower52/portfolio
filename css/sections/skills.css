@@ -118,3 +118,32 @@
     margin-top: 100px;
   }
 }
+
+/* 새로 추가된 스킬 아이콘 색상 */
+.c-tailwind {
+  color: #06b6d4;
+}
+.c-node {
+  color: #339933;
+}
+.c-php {
+  color: #777bb4;
+}
+.c-firebase {
+  color: #ffca28;
+}
+.c-ps {
+  color: #31a8ff;
+}
+.c-ai {
+  color: #ff9a00;
+}
+.c-vscode {
+  color: #007acc;
+}
+.c-android {
+  color: #3ddc84;
+}
+.c-emailjs {
+  color: #f6a143;
+}
