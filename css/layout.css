@@ -317,8 +317,12 @@
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
   font-size: 0.85rem;
-  color: #3a4250;
+  color: var(--text); /* 고정 색상(#3a4250)을 테마 변수로 변경 */
   font-weight: 500;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 /* ==========================================
