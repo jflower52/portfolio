@@ -365,3 +365,77 @@
   visibility: visible;
   transform: translateY(-50%) translateX(0);
 }
+
+/* ==========================================
+   모던 햄버거 메뉴 버튼 (클릭 시 X로 변환)
+========================================== */
+.nav-toggle {
+  display: none; /* PC에서는 숨김 */
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-toggle:hover {
+  border-color: var(--primary);
+}
+
+/* 햄버거 내부 3줄 바(Bar) 기본 스타일 */
+.nav-toggle .bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text);
+  border-radius: 2px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.nav-toggle:hover .bar {
+  background-color: var(--primary);
+}
+
+/* 메뉴가 열렸을 때 (X 모양으로 회전 + 포인트 컬러 적용) */
+.nav-toggle[aria-expanded="true"] {
+  border-color: var(--primary);
+  background-color: var(--primary-weak);
+}
+
+.nav-toggle[aria-expanded="true"] .bar {
+  background-color: var(--primary);
+}
+
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 모바일 화면(720px 이하)에서만 버튼 표시 */
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
