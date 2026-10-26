@@ -4,24 +4,40 @@
   align-items: stretch;
   padding: 0;
 }
+
+/* Contact 영역만 단독으로 한 화면(100vh - 헤더)에 꽉 차도록 설정 (푸터는 아래로 분리) */
 .end-container {
-  flex: 1;
+  min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: min(1120px, 92%);
   margin: 0 auto;
+  padding: 20px 0;
 }
+@supports (height: 100dvh) {
+  .end-container {
+    min-height: calc(100dvh - var(--header-h));
+  }
+}
+
+/* Contact 타이틀 위치 및 여백 조정 */
+#end .section-title {
+  margin: 0 0 28px 0;
+  font-size: clamp(30px, 3.8vw, 40px);
+}
+
 .end-content {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   align-items: stretch;
 }
+
 .contact-card {
   background: var(--card);
-  padding: 40px;
+  padding: 32px 36px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   border: 1px solid var(--border);
@@ -31,50 +47,55 @@
     background-color 0.3s ease,
     border-color 0.3s ease;
 }
+
 .contact-card h3 {
-  font-size: 1.6rem;
+  font-size: 1.45rem;
   font-weight: 800;
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   color: var(--text);
   transition: color 0.3s ease;
 }
+
 .form-desc,
 .info-desc {
   color: var(--muted);
-  font-size: 0.95rem;
-  margin: 0 0 24px 0;
+  font-size: 0.92rem;
+  margin: 0 0 20px 0;
   word-break: keep-all;
   transition: color 0.3s ease;
 }
 
-/* Contact Form */
+/* Contact Form (한 화면 비율에 맞게 입력창 크기 조정) */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   flex: 1;
 }
+
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
+
 .form-group label {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);
   transition: color 0.3s ease;
 }
+
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 14px 16px;
+  padding: 11px 14px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   background: var(--bg);
   color: var(--text);
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.95rem;
   outline: none;
   transition:
     border-color 0.2s,
@@ -82,6 +103,11 @@
     color 0.3s ease;
   resize: none;
 }
+
+.form-group textarea {
+  height: 96px;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
@@ -89,12 +115,12 @@
 }
 
 .submit-btn {
-  margin-top: 10px;
-  padding: 16px;
-  border-radius: 12px;
+  margin-top: 6px;
+  padding: 14px;
+  border-radius: 10px;
   background: var(--primary);
   color: #ffffff;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -106,28 +132,31 @@
   align-items: center;
   gap: 8px;
 }
+
 .submit-btn:hover {
   background: #0f766e;
   transform: translateY(-2px);
 }
 
-/* Resume & Direct Info */
+/* Resume & Direct Info (좌측 카드 높이에 맞춘 우측 이력서 카드 중앙 배치) */
 .info-area {
   justify-content: center;
 }
+
 .info-area-inner {
   margin: auto 0;
   display: flex;
   flex-direction: column;
 }
+
 .resume-btn {
   width: 100%;
-  padding: 18px;
+  padding: 16px;
   border-radius: 12px;
   background: transparent;
   color: var(--primary);
   border: 2px solid var(--primary);
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 700;
   cursor: pointer;
   transition:
@@ -137,8 +166,9 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
+
 .resume-btn:hover {
   background: var(--primary-weak);
 }
@@ -147,13 +177,14 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-top: 24px;
+  padding-top: 22px;
   border-top: 1px solid var(--border);
   transition: border-color 0.3s ease;
 }
+
 .direct-contact p {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -161,15 +192,18 @@
   color: var(--text);
   transition: color 0.3s ease;
 }
+
 .direct-contact i {
   color: var(--muted);
   transition: color 0.3s ease;
 }
+
 .direct-contact a {
   color: var(--text);
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .direct-contact a:hover {
   color: var(--primary);
 }
@@ -187,10 +221,12 @@
   color: var(--muted);
   gap: 16px;
 }
+
 .resume-placeholder i {
   font-size: 3rem;
   color: var(--muted);
 }
+
 .download-btn {
   padding: 12px 24px;
   background: var(--text);
@@ -203,11 +239,16 @@
   align-items: center;
   transition: opacity 0.2s;
 }
+
 .download-btn:hover {
   opacity: 0.8;
 }
 
 @media (max-width: 850px) {
+  .end-container {
+    min-height: auto;
+    padding: 60px 0;
+  }
   .end-content {
     grid-template-columns: 1fr;
     gap: 20px;
