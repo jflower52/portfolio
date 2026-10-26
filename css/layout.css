@@ -65,19 +65,62 @@
   color: var(--primary);
   background: transparent;
 }
+
+/* ==========================================
+   모던 햄버거 메뉴 버튼 (클릭 시 X로 변환)
+========================================== */
 .nav-toggle {
-  display: none;
-  gap: 6px;
-  background: transparent;
-  border: 0;
+  display: none; /* PC에서는 숨김 */
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  color: var(--text);
   cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.nav-toggle:hover {
+  border-color: var(--primary);
 }
 .nav-toggle .bar {
   display: block;
-  width: 24px;
+  width: 20px;
   height: 2px;
-  background: #1f2430;
+  background-color: var(--text);
   border-radius: 2px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+.nav-toggle:hover .bar {
+  background-color: var(--primary);
+}
+.nav-toggle[aria-expanded="true"] {
+  border-color: var(--primary);
+  background-color: var(--primary-weak);
+}
+.nav-toggle[aria-expanded="true"] .bar {
+  background-color: var(--primary);
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Floating utils */
@@ -278,56 +321,20 @@
   font-weight: 500;
 }
 
-/* Layout Responsive */
-@media (max-width: 720px) {
-  .nav-toggle {
-    display: flex;
-  }
-  .primary-nav {
-    position: fixed;
-    inset: var(--header-h) 0 auto 0;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-    display: none;
-  }
-  .primary-nav.open {
-    display: block;
-  }
-  .menu {
-    flex-direction: column;
-    padding: 8px 12px;
-  }
-  .menu a {
-    padding: 0.8rem 1rem;
-  }
-  .modal-content {
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    border-radius: 0;
-  }
-  .pm-visual {
-    border-radius: 8px;
-  }
-}
-
 /* ==========================================
    툴팁(Tooltip) 애니메이션 (좌측 소셜, 우측 플로팅)
 ========================================== */
-/* 툴팁 기준점 설정 */
 .social-btn,
 .util-btn {
   position: relative;
 }
-
-/* 툴팁 공통 디자인 (aria-label 속성을 가져와 텍스트로 사용) */
 .social-btn::after,
 .util-btn::after {
   content: attr(aria-label);
   position: absolute;
   top: 50%;
-  background-color: var(--text); /* 배경은 글자색으로 (다크모드 자동반전) */
-  color: var(--bg); /* 글자는 배경색으로 */
+  background-color: var(--text);
+  color: var(--bg);
   font-size: 0.8rem;
   font-weight: 600;
   padding: 6px 12px;
@@ -335,14 +342,12 @@
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none; /* 마우스 방해 금지 */
+  pointer-events: none;
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
   z-index: 100;
 }
-
-/* 좌측 소셜 버튼 툴팁 (오른쪽으로 등장) */
 .social-btn::after {
   left: 100%;
   margin-left: 12px;
@@ -353,8 +358,6 @@
   visibility: visible;
   transform: translateY(-50%) translateX(0);
 }
-
-/* 우측 플로팅 버튼 툴팁 (왼쪽으로 등장) */
 .util-btn::after {
   right: 100%;
   margin-right: 12px;
@@ -367,75 +370,98 @@
 }
 
 /* ==========================================
-   모던 햄버거 메뉴 버튼 (클릭 시 X로 변환)
+   모바일 반응형 (720px 이하에서만 작동)
 ========================================== */
-.nav-toggle {
-  display: none; /* PC에서는 숨김 */
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background-color: var(--card);
-  color: var(--text);
-  cursor: pointer;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.nav-toggle:hover {
-  border-color: var(--primary);
-}
-
-/* 햄버거 내부 3줄 바(Bar) 기본 스타일 */
-.nav-toggle .bar {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: var(--text);
-  border-radius: 2px;
-  transition:
-    transform 0.3s ease,
-    opacity 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.nav-toggle:hover .bar {
-  background-color: var(--primary);
-}
-
-/* 메뉴가 열렸을 때 (X 모양으로 회전 + 포인트 컬러 적용) */
-.nav-toggle[aria-expanded="true"] {
-  border-color: var(--primary);
-  background-color: var(--primary-weak);
-}
-
-.nav-toggle[aria-expanded="true"] .bar {
-  background-color: var(--primary);
-}
-
-.nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-.nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* 모바일 화면(720px 이하)에서만 버튼 표시 */
 @media (max-width: 720px) {
   .nav-toggle {
     display: inline-flex;
+  }
+
+  /* 모바일 플로팅 드롭다운 메뉴창 */
+  .primary-nav {
+    display: block;
+    position: fixed;
+    top: calc(var(--header-h) + 8px);
+    left: 4%;
+    right: 4%;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-12px) scale(0.98);
+    transform-origin: top right;
+    transition:
+      opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.25s,
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+    z-index: 998;
+  }
+
+  .primary-nav.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+  }
+
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    color: var(--text);
+    font-weight: 600;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      padding-left 0.2s ease;
+  }
+
+  .menu a::after {
+    content: "→";
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+    color: var(--primary);
+  }
+
+  .menu a:hover,
+  .menu a:active {
+    background-color: var(--primary-weak);
+    color: var(--primary);
+    padding-left: 1.25rem;
+  }
+
+  .menu a:hover::after,
+  .menu a:active::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* 모바일 모달 반응형 유지 */
+  .modal-content {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .pm-visual {
+    border-radius: 8px;
   }
 }
