@@ -1,4 +1,8 @@
-// HTML 특수문자 변환
+/* ==========================================
+   [UTILS] 공통 유틸리티 함수
+========================================== */
+
+// HTML 특수문자 이스케이프 변환 (XSS 방지)
 export function escapeHtml(s) {
   return String(s).replace(
     /[&<>"']/g,
@@ -9,7 +13,7 @@ export function escapeHtml(s) {
   );
 }
 
-// 하단 알림창 (Toast)
+// 화면 하단 토스트(Toast) 알림창 표시
 export function toast(msg) {
   const el = document.createElement("div");
   el.textContent = msg;
@@ -27,11 +31,16 @@ export function toast(msg) {
   setTimeout(() => el.remove(), 1500);
 }
 
+/* ==========================================
+   [INIT] 전역 UI 인터랙션 초기화
+========================================== */
 export function initUI() {
-  // === 다크모드 토글 로직 ===
+  // 1. 다크모드 테마 제어 (기본값: 다크모드 시작)
   const darkModeBtn = document.getElementById("darkModeBtn");
 
-  if (localStorage.getItem("theme") === "dark") {
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.remove("dark-mode");
+  } else {
     document.body.classList.add("dark-mode");
   }
 
@@ -41,7 +50,7 @@ export function initUI() {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 
-  // === 메인 화면 타이핑 효과 ===
+  // 2. 홈 화면 메인 타이틀 타이핑 애니메이션
   const typingTextElement = document.getElementById("typing-text");
   if (typingTextElement) {
     const text = "프론트엔드 개발자 \n오호준입니다.";
@@ -51,24 +60,22 @@ export function initUI() {
       if (index < text.length) {
         let currentStr = text.substring(0, index + 1);
 
-        // 줄바꿈 기호를 <br>로 변환
+        // 줄바꿈(\n)을 모바일 전용 줄바꿈 태그로 변환 및 이름 강조 처리
         currentStr = currentStr.replace(/\n/g, '<br class="mobile-br" />');
-        // '오호준'이 완성되면 strong 태그로 감싸기
         currentStr = currentStr.replace("오호준", "<strong>오호준</strong>");
 
         typingTextElement.innerHTML = currentStr;
         index++;
 
-        // 사람처럼 타이핑 속도에 불규칙한 느낌 주기 (100ms ~ 200ms)
+        // 자연스러운 타이핑 연출을 위한 랜덤 속도 (100ms ~ 200ms)
         const typeSpeed = Math.random() * 100 + 100;
         setTimeout(type, typeSpeed);
       }
     }
-    // 페이지 로드 후 0.5초 뒤에 타이핑 시작
     setTimeout(type, 500);
   }
 
-  // === 헤더 및 네비게이션 제어 ===
+  // 3. 상단 헤더 높이 동기화 및 모바일 햄버거 메뉴 토글
   const headerEl = document.querySelector(".site-header");
   function syncHeaderHeightVar() {
     const h = headerEl ? headerEl.offsetHeight : 64;
@@ -86,6 +93,7 @@ export function initUI() {
     navToggle.setAttribute("aria-expanded", open ? "true" : "false");
   });
 
+  // 4. 네비게이션 앵커 스무스 스크롤 이동 및 모바일 메뉴 자동 닫기
   document
     .querySelectorAll('.menu a[href^="#"], .site-logo, .scroll-indicator')
     .forEach((a) => {
@@ -104,7 +112,7 @@ export function initUI() {
       });
     });
 
-  // === 플로팅 버튼 제어 ===
+  // 5. 우측 하단 플로팅 버튼 (최상단 이동, 이메일 복사) 및 스크롤 상태 감지
   document.getElementById("toTopBtn")?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
@@ -133,7 +141,7 @@ export function initUI() {
     }
   });
 
-  // === 이력서 모달 닫기 제어 ===
+  // 6. 이력서 모달 닫기 제어 (X 버튼, 바깥 배경 클릭, ESC 키)
   const resumeModal = document.getElementById("resumeModal");
 
   function closeResumeModal() {
@@ -143,19 +151,16 @@ export function initUI() {
     document.body.style.overflow = "";
   }
 
-  // 1. X 버튼 클릭 시 닫기
   resumeModal
     ?.querySelector(".modal-close-btn")
     ?.addEventListener("click", closeResumeModal);
 
-  // 2. 모달 바깥 배경 클릭 시 닫기
   resumeModal?.addEventListener("click", (e) => {
     if (e.target === resumeModal) {
       closeResumeModal();
     }
   });
 
-  // 3. ESC 키 누를 때 닫기
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && resumeModal?.classList.contains("active")) {
       closeResumeModal();

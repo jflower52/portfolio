@@ -1,4 +1,6 @@
-/* Contact / End Section */
+/* ==========================================
+   [CONTACT] Contact / End 섹션 전체 레이아웃
+========================================== */
 #end.section {
   flex-direction: column;
   align-items: stretch;
@@ -35,6 +37,9 @@
   align-items: stretch;
 }
 
+/* ==========================================
+   [CONTACT] 좌우 컨택트 카드 공통 스타일
+========================================== */
 .contact-card {
   background: var(--card);
   padding: 32px 36px;
@@ -65,7 +70,9 @@
   transition: color 0.3s ease;
 }
 
-/* Contact Form (한 화면 비율에 맞게 입력창 크기 조정) */
+/* ==========================================
+   [CONTACT] 좌측 메일 전송 폼 (Contact Form)
+========================================== */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -138,7 +145,9 @@
   transform: translateY(-2px);
 }
 
-/* Resume & Direct Info (좌측 카드 높이에 맞춘 우측 이력서 카드 중앙 배치) */
+/* ==========================================
+   [CONTACT] 우측 이력서 및 직통 연락처 영역
+========================================== */
 .info-area {
   justify-content: center;
 }
@@ -208,7 +217,9 @@
   color: var(--primary);
 }
 
-/* Resume Modal Placeholders */
+/* ==========================================
+   [MODAL] 이력서 모달 내부 플레이스홀더 및 다운로드 버튼
+========================================== */
 .resume-placeholder {
   width: 100%;
   height: 400px;
@@ -244,6 +255,9 @@
   opacity: 0.8;
 }
 
+/* ==========================================
+   [CONTACT] 반응형 미디어 쿼리
+========================================== */
 @media (max-width: 850px) {
   .end-container {
     min-height: auto;

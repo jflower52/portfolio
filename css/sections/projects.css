@@ -1,4 +1,6 @@
-/* Projects Section */
+/* ==========================================
+   [PROJECTS] 상단 필터 탭 및 검색창 레이아웃
+========================================== */
 .proj-header {
   display: flex;
   gap: 16px;
@@ -7,10 +9,12 @@
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
+
 .tabs {
   display: flex;
   gap: 10px;
 }
+
 .tab {
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
@@ -23,17 +27,20 @@
     color 0.2s,
     border-color 0.2s;
 }
+
 .tab.is-active {
   background: var(--primary);
   border-color: var(--primary);
   color: #fff;
 }
+
 .search {
   position: relative;
   min-width: 260px;
   flex: 1;
   max-width: 420px;
 }
+
 .search i {
   position: absolute;
   left: 12px;
@@ -41,6 +48,7 @@
   transform: translateY(-50%);
   color: var(--muted);
 }
+
 .search input {
   width: 100%;
   padding: 0.7rem 0.9rem 0.7rem 36px;
@@ -51,6 +59,9 @@
   outline: none;
 }
 
+/* ==========================================
+   [PROJECTS] 프로젝트 그리드 및 16:9 카드 레이아웃
+========================================== */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -76,10 +87,14 @@
   height: 100%;
   transition: transform 0.4s ease;
 }
+
 .card:hover .thumb {
   transform: scale(1.05);
 }
 
+/* ==========================================
+   [PROJECTS] 카드 호버 오버레이 및 상세 내용
+========================================== */
 .card-overlay {
   position: absolute;
   top: 0;
@@ -97,6 +112,7 @@
   color: #ffffff;
   text-align: center;
 }
+
 .card:hover .card-overlay {
   opacity: 1;
 }
@@ -116,6 +132,7 @@
   font-size: 1.3rem;
   color: #ffffff;
 }
+
 .card-overlay p {
   margin: 0 0 20px;
   font-size: 0.95rem;
@@ -140,11 +157,15 @@
     background 0.2s,
     color 0.2s;
 }
+
 .more-btn:hover {
   background: var(--primary-weak);
   color: var(--primary);
 }
 
+/* ==========================================
+   [PROJECTS] 하단 페이지네이션 컨트롤
+========================================== */
 .paginator {
   display: flex;
   gap: 12px;
@@ -152,6 +173,7 @@
   justify-content: center;
   margin-top: 32px;
 }
+
 .page-btn {
   padding: 0.5rem 1rem;
   border-radius: 10px;
@@ -160,20 +182,26 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .page-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 .page-indicator {
   font-weight: 600;
   color: var(--muted);
 }
 
+/* ==========================================
+   [PROJECTS] 반응형 미디어 쿼리
+========================================== */
 @media (max-width: 1150px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;

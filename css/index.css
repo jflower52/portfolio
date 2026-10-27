@@ -1,3 +1,6 @@
+/* ==========================================
+   [IMPORTS] 파편화된 CSS 파일 통합 임포트
+========================================== */
 @import url("variables.css");
 @import url("layout.css");
 @import url("sections/home.css");

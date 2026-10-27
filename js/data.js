@@ -1,4 +1,24 @@
+/* ==========================================
+   [DATA] 포트폴리오 프로젝트 데이터 목록
+   ------------------------------------------
+   - id         : 프로젝트 고유 식별 번호
+   - title      : 프로젝트 명칭
+   - desc       : 카드 오버레이용 한 줄 요약 설명
+   - type       : 분류 기준 ("team": 팀 프로젝트 | "single": 개인 프로젝트)
+   - duration   : 제작 기간
+   - role       : 담당 역할
+   - tags       : 사용 기술 스택 배열
+   - github     : GitHub 저장소 URL
+   - deploy     : 배포 사이트 URL (없을 시 빈 문자열)
+   - download   : 설치 파일(APK 등) 다운로드 URL
+   - thumbImage : 목록 카드 전용 썸네일 경로 (생략 시 image 사용)
+   - image      : 대표 이미지 경로 (모달 및 기본 썸네일)
+   - video      : 시연 영상 경로 (존재 시 모달에서 최우선 재생)
+   - report     : 결과 보고서/발표자료 파일 경로 (PDF, PPTX)
+   - color      : 카드 테마 그라데이션 색상 배열
+========================================== */
 export const PROJECTS = [
+  // 1. Good-Ping (팀 프로젝트)
   {
     id: 1,
     title: "Good-Ping",
@@ -15,6 +35,8 @@ export const PROJECTS = [
     report: "report/goodping.pdf",
     color: ["#e3efff", "#f0f5ff"],
   },
+
+  // 2. 오늘 한 빵 (팀 프로젝트)
   {
     id: 2,
     title: "오늘 한 빵",
@@ -40,6 +62,8 @@ export const PROJECTS = [
     report: "report/todayhanbbang.pptx",
     color: ["#ffeaf6", "#fff2fb"],
   },
+
+  // 3. i-Mon (팀 프로젝트)
   {
     id: 3,
     title: "i-Mon",
@@ -67,6 +91,8 @@ export const PROJECTS = [
     report: "report/imon.pdf",
     color: ["#e6fff4", "#effff8"],
   },
+
+  // 4. 던데이 (개인 프로젝트)
   {
     id: 4,
     title: "던데이",
@@ -92,6 +118,8 @@ export const PROJECTS = [
     report: "",
     color: ["#fff2e6", "#fff8f0"],
   },
+
+  // 5. 포켓몬 도감 (개인 프로젝트)
   {
     id: 5,
     title: "포켓몬 도감",
@@ -108,6 +136,8 @@ export const PROJECTS = [
     report: "",
     color: ["#f2ebff", "#f8f5ff"],
   },
+
+  // 6. ArtB (개인 프로젝트)
   {
     id: 6,
     title: "ArtB",

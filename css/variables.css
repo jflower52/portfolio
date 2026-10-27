@@ -1,3 +1,6 @@
+/* ==========================================
+   [VARIABLES] 라이트모드 기본 테마 컬러 및 레이아웃 변수
+========================================== */
 :root {
   --bg: #ffffff;
   --text: #15181e;
@@ -10,14 +13,16 @@
   --shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
   --header-h: 64px;
 
-  /* Section backgrounds */
+  /* 구역별 배경 컬러 변수 */
   --bg-home: #f7faff;
   --bg-skills: #f9fafb;
   --bg-projects: #f6f6ff;
   --bg-end: #f4f6f9;
 }
 
-/* === 다크모드 테마 변수 === */
+/* ==========================================
+   [DARK MODE] 다크모드 테마 변수 재정의
+========================================== */
 body.dark-mode {
   --bg: #111827;
   --text: #f3f4f6;
@@ -77,6 +82,9 @@ body.dark-mode .more-btn:hover {
   }
 }
 
+/* ==========================================
+   [RESET] 글로벌 리셋 및 타이포그래피 설정
+========================================== */
 * {
   box-sizing: border-box;
 }
@@ -106,7 +114,9 @@ body {
     color 0.3s ease;
 }
 
-/* Skip Link for Accessibility */
+/* ==========================================
+   [ACCESSIBILITY] 웹 접근성용 스킵 네비게이션
+========================================== */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -128,7 +138,9 @@ body {
   z-index: 1000;
 }
 
-/* Common Sections */
+/* ==========================================
+   [SECTIONS] 공통 섹션 레이아웃 및 구역별 배경 지정
+========================================== */
 .section {
   min-height: calc(100svh - var(--header-h));
   scroll-snap-align: start;
@@ -174,7 +186,9 @@ body {
   box-shadow: inset 0 -1px 0 var(--border);
 }
 
-/* Focus outlines */
+/* ==========================================
+   [FOCUS] 포커스 아웃라인 스타일 정의
+========================================== */
 a:focus {
   outline: none;
 }
