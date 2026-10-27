@@ -132,4 +132,33 @@ export function initUI() {
       else scrollIndicator.classList.remove("hidden");
     }
   });
+
+  // === 이력서 모달 닫기 제어 ===
+  const resumeModal = document.getElementById("resumeModal");
+
+  function closeResumeModal() {
+    if (!resumeModal) return;
+    resumeModal.classList.remove("active");
+    resumeModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  // 1. X 버튼 클릭 시 닫기
+  resumeModal
+    ?.querySelector(".modal-close-btn")
+    ?.addEventListener("click", closeResumeModal);
+
+  // 2. 모달 바깥 배경 클릭 시 닫기
+  resumeModal?.addEventListener("click", (e) => {
+    if (e.target === resumeModal) {
+      closeResumeModal();
+    }
+  });
+
+  // 3. ESC 키 누를 때 닫기
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && resumeModal?.classList.contains("active")) {
+      closeResumeModal();
+    }
+  });
 }

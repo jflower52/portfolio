@@ -257,3 +257,12 @@
     margin: 0;
   }
 }
+
+/* 이력서 PDF 미리보기 뷰어 스타일 */
+.resume-iframe {
+  width: 100%;
+  height: 68vh;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: #ffffff;
+}

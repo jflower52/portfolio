@@ -510,25 +510,34 @@
     </div>
 
     <!-- ==========================================
-         [MODALS] 이력서 모달
+         이력서 모달 (Resume Modal)
     =========================================== -->
     <div id="resumeModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content">
         <div class="modal-header">
-          <h3>오호준 이력서</h3>
-          <button id="closeModalBtn" class="modal-close-btn" aria-label="닫기">
+          <h3>이력서 미리보기</h3>
+          <button class="modal-close-btn" aria-label="모달 닫기">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
+
+        <!-- PDF 뷰어 영역 -->
         <div class="modal-body">
-          <div class="resume-placeholder">
-            <i class="fa-solid fa-file-pdf"></i>
-            <p>이력서 이미지가 이곳에 표시됩니다.</p>
-          </div>
+          <iframe
+            src="./report/resume.pdf"
+            class="resume-iframe"
+            title="오호준 이력서 PDF 미리보기"
+          ></iframe>
         </div>
+
+        <!-- 하단 다운로드 버튼 영역 -->
         <div class="modal-footer">
-          <a href="#" download="오호준_이력서.pdf" class="download-btn">
-            PDF 다운로드 <i class="fa-solid fa-download"></i>
+          <a
+            href="./report/resume.pdf"
+            download="프론트엔드_개발자_오호준_이력서.pdf"
+            class="download-btn"
+          >
+            <i class="fa-solid fa-download"></i> PDF 다운로드
           </a>
         </div>
       </div>
