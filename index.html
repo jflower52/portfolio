@@ -7,7 +7,7 @@
     <meta name="description" content="프론트엔드 개발자 오호준의 포트폴리오" />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- 폰트 및 스타일시트 -->
+    <!-- 구글 폰트 (Noto Sans KR), 통합 CSS, Font Awesome 아이콘 -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
@@ -19,21 +19,21 @@
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
     />
   </head>
-  <body>
-    <!-- 웹 접근성용 스킵 네비게이션 -->
+  <body class="dark-mode">
+    <!-- 웹 접근성: 본문 바로가기 스킵 네비게이션 -->
     <a class="skip-link" href="#home">본문 바로가기</a>
 
     <!-- ==========================================
-         [HEADER] 상단 네비게이션 바 (GNB)
+         [HEADER] 상단 고정 네비게이션 바 (GNB)
     =========================================== -->
     <header class="site-header" role="banner">
       <div class="container nav-inner">
-        <!-- 로고 -->
+        <!-- 사이트 로고 -->
         <a href="#home" class="site-logo" aria-label="홈으로 이동"
           >OHJ's Portfolio</a
         >
 
-        <!-- 메뉴 영역 -->
+        <!-- 주요 섹션 이동 메뉴 (모바일: 드롭다운 메뉴) -->
         <nav
           id="primary-menu"
           class="primary-nav"
@@ -50,7 +50,7 @@
           </ul>
         </nav>
 
-        <!-- 모바일용 햄버거 버튼 -->
+        <!-- 모바일 햄버거 메뉴 토글 버튼 -->
         <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -61,10 +61,11 @@
 
     <main id="content">
       <!-- ==========================================
-           [SECTION 1] Home (메인 배너 영역)
+           [SECTION 1] Home (메인 인트로 배너)
       =========================================== -->
       <section id="home" class="section home" aria-label="홈">
         <div class="container home-inner">
+          <!-- 타이핑 애니메이션 타이틀 및 서브 카피 -->
           <h1 class="hero-title">
             <span id="typing-text"></span><span class="cursor"></span>
           </h1>
@@ -73,7 +74,7 @@
             <br class="mobile-br" />개발자입니다.
           </p>
 
-          <!-- 소셜 아이콘 (GitHub, Velog) -->
+          <!-- 좌측 하단 고정 소셜 링크 (GitHub, Velog) -->
           <div class="fixed-social" aria-label="소셜 바로가기">
             <a
               class="social-btn github"
@@ -96,6 +97,7 @@
           </div>
         </div>
 
+        <!-- 다음 섹션 스크롤 유도 인디케이터 -->
         <a href="#about" class="scroll-indicator" aria-label="아래로 스크롤">
           <i class="fa-solid fa-chevron-down"></i>
         </a>
@@ -106,7 +108,7 @@
       =========================================== -->
       <section id="about" class="section about" aria-label="소개">
         <div class="about-content">
-          <!-- 좌측 프로필 사진 -->
+          <!-- 좌측: 타이틀 및 프로필 사진 -->
           <div class="about-left">
             <h2 class="about-title">About Me</h2>
             <img
@@ -118,9 +120,10 @@
             />
           </div>
 
-          <!-- 우측 인적사항 및 인터뷰 -->
+          <!-- 우측: 기본 인적사항 및 인터뷰 Q&A -->
           <div class="about-right">
             <div class="about-right-inner">
+              <!-- 기본 인적사항 리스트 -->
               <ul class="info-list">
                 <li>
                   <i class="fa-solid fa-user"></i>
@@ -156,6 +159,7 @@
                 </li>
               </ul>
 
+              <!-- 개발 가치관 인터뷰 Q&A -->
               <div class="interview-section">
                 <h3>Interview</h3>
                 <div class="interview-list">
@@ -202,13 +206,13 @@
       </section>
 
       <!-- ==========================================
-           [SECTION 3] Skills (기술 스택)
+           [SECTION 3] Skills (기술 스택 분류)
       =========================================== -->
       <section id="skills" class="section skills">
         <div class="container">
           <h2 class="section-title">Skills</h2>
           <div class="skills-wrapper">
-            <!-- 1. Frontend -->
+            <!-- 1. Frontend 기술 -->
             <div class="skills-group">
               <h3>Frontend</h3>
               <div class="chips">
@@ -230,7 +234,7 @@
               </div>
             </div>
 
-            <!-- 2. Backend & BaaS -->
+            <!-- 2. Backend & BaaS 기술 -->
             <div class="skills-group">
               <h3>Backend & BaaS</h3>
               <div class="chips">
@@ -246,7 +250,7 @@
               </div>
             </div>
 
-            <!-- 3. Design -->
+            <!-- 3. Design 도구 -->
             <div class="skills-group">
               <h3>Design</h3>
               <div class="chips">
@@ -262,7 +266,7 @@
               </div>
             </div>
 
-            <!-- 4. Tools & Collaboration -->
+            <!-- 4. 개발 환경 및 협업 도구 -->
             <div class="skills-group">
               <h3>Tools & Collab</h3>
               <div class="chips">
@@ -293,8 +297,9 @@
       <section id="projects" class="section projects" aria-label="프로젝트">
         <div class="container">
           <h2 class="section-title" style="display: none">Projects</h2>
+
+          <!-- 상단 카테고리 탭 필터 및 검색창 -->
           <div class="proj-header">
-            <!-- 필터 및 검색 -->
             <div class="tabs" role="tablist" aria-label="프로젝트 분류">
               <button
                 class="tab is-active"
@@ -332,10 +337,10 @@
             </div>
           </div>
 
-          <!-- 프로젝트 카드 동적 렌더링 영역 -->
+          <!-- 프로젝트 카드 그리드 (js/projects.js에서 동적 렌더링) -->
           <div id="project-grid" class="grid" aria-live="polite"></div>
 
-          <!-- 페이지네이션 -->
+          <!-- 하단 페이지네이션 컨트롤 -->
           <div class="paginator" aria-label="페이지네이션">
             <button id="prevPage" class="page-btn" disabled>◀ Prev</button>
             <span id="pageIndicator" class="page-indicator">1 / 1</span>
@@ -345,13 +350,13 @@
       </section>
 
       <!-- ==========================================
-           [SECTION 5] Contact (메일 폼 및 이력서)
+           [SECTION 5] Contact & Footer (연락처 및 푸터)
       =========================================== -->
       <section id="end" class="section end" aria-label="연락처 및 마무리">
         <div class="container end-container">
           <h2 class="section-title">Contact Me</h2>
           <div class="end-content">
-            <!-- 이메일 전송 폼 (EmailJS) -->
+            <!-- 좌측 카드: 이메일 문의 폼 (EmailJS 연동) -->
             <div class="contact-card form-area">
               <h3>메일로 연락하기</h3>
               <p class="form-desc">
@@ -405,7 +410,7 @@
               </form>
             </div>
 
-            <!-- 이력서 보기 및 직통 연락처 -->
+            <!-- 우측 카드: 이력서 모달 열기 및 다이렉트 연락처 -->
             <div class="contact-card info-area">
               <div class="info-area-inner">
                 <h3>이력서</h3>
@@ -431,6 +436,7 @@
           </div>
         </div>
 
+        <!-- 하단 저작권 표시 푸터 -->
         <footer class="site-footer">
           <p class="copy">©2026 오호준. All rights reserved.</p>
         </footer>
@@ -438,7 +444,7 @@
     </main>
 
     <!-- ==========================================
-         [UTILS] 플로팅 버튼 (위로가기, 이메일 복사, 다크모드)
+         [UTILS] 우측 하단 플로팅 편의 버튼
     =========================================== -->
     <div class="float-utils" aria-label="빠른 동작">
       <button id="toTopBtn" class="util-btn" aria-label="최상단으로 이동">
@@ -453,7 +459,7 @@
     </div>
 
     <!-- ==========================================
-         [MODALS] 프로젝트 상세 모달
+         [MODAL 1] 프로젝트 상세 정보 모달
     =========================================== -->
     <div id="projectModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content project-modal-content">
@@ -468,9 +474,10 @@
           </button>
         </div>
         <div class="modal-body pm-body">
-          <div class="pm-visual" id="pm-visual">
-            <!-- JS를 통해 이미지 또는 영상이 삽입됨 -->
-          </div>
+          <!-- 시연 영상 또는 이미지 동적 삽입 영역 -->
+          <div class="pm-visual" id="pm-visual"></div>
+
+          <!-- 프로젝트 상세 메타데이터 목록 -->
           <div class="pm-details">
             <ul class="pm-info-list">
               <li><strong>구분</strong> <span id="pm-type">팀/개인</span></li>
@@ -510,7 +517,7 @@
     </div>
 
     <!-- ==========================================
-         이력서 모달 (Resume Modal)
+         [MODAL 2] 이력서 미리보기 및 다운로드 모달
     =========================================== -->
     <div id="resumeModal" class="modal-overlay" aria-hidden="true">
       <div class="modal-content">
@@ -521,7 +528,7 @@
           </button>
         </div>
 
-        <!-- PDF 뷰어 영역 (80% 배율로 시작) -->
+        <!-- PDF 미리보기 뷰어 (초기 화면 배율 80%) -->
         <div class="modal-body">
           <iframe
             src="./report/resume.pdf#zoom=80"
@@ -530,7 +537,7 @@
           ></iframe>
         </div>
 
-        <!-- 하단 다운로드 버튼 영역 -->
+        <!-- PDF 다운로드 버튼 -->
         <div class="modal-footer">
           <a
             href="./report/resume.pdf"
@@ -544,7 +551,7 @@
     </div>
 
     <!-- ==========================================
-         [SCRIPTS] 외부 라이브러리 및 모듈 연결
+         [SCRIPTS] 외부 SDK 및 메인 모듈 스크립트
     =========================================== -->
     <!-- EmailJS SDK -->
     <script
@@ -552,7 +559,7 @@
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
 
-    <!-- 모듈화된 메인 JS 연결 -->
+    <!-- 메인 애플리케이션 모듈 -->
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
