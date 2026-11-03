@@ -114,14 +114,23 @@ export function openProjectModal(p) {
     downWrapper.style.display = "none";
   }
 
-  // 보고서/발표자료 링크 제어
+  // 보고서/발표자료 링크 제어 (PDF는 브라우저 뷰어, PPT/PPTX는 MS 오피스 웹 뷰어 연동)
   const reportWrapper = document.getElementById("pm-report-wrapper");
   if (p.report) {
     const reportLink = document.getElementById("pm-report");
-    reportLink.href = p.report;
-    reportLink.textContent = p.report.endsWith(".pdf")
-      ? "PDF 보기 및 다운로드"
-      : "PPT 다운로드";
+    const lowerReport = p.report.toLowerCase();
+
+    if (lowerReport.endsWith(".pdf")) {
+      reportLink.href = p.report;
+      reportLink.textContent = "PDF 보기 및 다운로드";
+    } else if (lowerReport.endsWith(".ppt") || lowerReport.endsWith(".pptx")) {
+      const fileUrl = new URL(p.report, window.location.href).href;
+      reportLink.href = `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
+      reportLink.textContent = "PPT 보기 및 다운로드";
+    } else {
+      reportLink.href = p.report;
+      reportLink.textContent = "보고서 다운로드";
+    }
     reportWrapper.style.display = "flex";
   } else {
     reportWrapper.style.display = "none";
