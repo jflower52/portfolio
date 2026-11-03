@@ -155,4 +155,22 @@ export const PROJECTS = [
     report: "",
     color: ["#e3efff", "#f0f5ff"],
   },
+
+  // 7. 카페 키오스크 (팀 프로젝트)
+  {
+    id: 7,
+    title: "카페 키오스크 (해커톤)",
+    desc: "AI챗봇을 이용한 키오스크 개발",
+    type: "team",
+    duration: "2024.08.21 ~ 2024.08.23",
+    role: "프론트엔드, 백엔드",
+    tags: ["Visual Studio Code", "Microsoft Visual C++", "Anaconda", "Rasa"],
+    github: "",
+    deploy: "",
+    download: "",
+    image: "img/kiosk.png",
+    video: "",
+    report: "report/kiosk.pptx",
+    color: ["#e6fff4", "#effff8"],
+  },
 ];
