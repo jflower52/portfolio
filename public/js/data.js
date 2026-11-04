@@ -19,22 +19,33 @@
    - color      : 카드 테마 그라데이션 색상 배열
 ========================================== */
 export const PROJECTS = [
+  // 1. 던데이 (2026.09.24 ~ 2026.09.26)
   {
-    id: 1,
-    title: "Good-Ping",
-    desc: "네이버 웹툰 굿즈 리뉴얼 사이트",
-    type: "team",
-    duration: "2025.06.16 ~ 2025.06.27",
-    role: "프론트엔드, UI 디자인 및 구현",
-    tags: ["Figma", "React", "JS", "Node.js", "PostgreSQL"],
-    github: "https://github.com/movieStudioTalk/project",
-    deploy: "https://good-ping.onrender.com",
-    download: "",
-    image: "img/goodping.png",
-    video: "video/goodping.mp4",
-    report: "report/goodping.pdf",
-    color: ["#e3efff", "#f0f5ff"],
+    id: 4,
+    title: "던데이",
+    desc: "일정 관리 프로그램",
+    type: "single",
+    duration: "2026.09.24 ~ 2026.09.26",
+    role: "개인 프로젝트 (전체 개발)",
+    tags: [
+      "React",
+      "CSS",
+      "JavaScript",
+      "Node.js",
+      "Visual Studio Code",
+      "Android Studio",
+    ],
+    github: "https://github.com/jflower52/todolist",
+    deploy: "https://todolist-ohj.web.app",
+    download:
+      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk",
+    thumbImage: "img/doneday1.png",
+    image: "img/doneday2.png",
+    video: "",
+    report: "",
+    color: ["#fff2e6", "#fff8f0"],
   },
+  // 2. 오늘 한 빵 (2025.07.01 ~ 2025.07.25)
   {
     id: 2,
     title: "오늘 한 빵",
@@ -60,6 +71,24 @@ export const PROJECTS = [
     report: "report/todayhanbbang.pptx",
     color: ["#ffeaf6", "#fff2fb"],
   },
+  // 3. Good-Ping (2025.06.16 ~ 2025.06.27)
+  {
+    id: 1,
+    title: "Good-Ping",
+    desc: "네이버 웹툰 굿즈 리뉴얼 사이트",
+    type: "team",
+    duration: "2025.06.16 ~ 2025.06.27",
+    role: "프론트엔드, UI 디자인 및 구현",
+    tags: ["Figma", "React", "JS", "Node.js", "PostgreSQL"],
+    github: "https://github.com/movieStudioTalk/project",
+    deploy: "https://good-ping.onrender.com",
+    download: "",
+    image: "img/goodping.png",
+    video: "video/goodping.mp4",
+    report: "report/goodping.pdf",
+    color: ["#e3efff", "#f0f5ff"],
+  },
+  // 4. i-Mon (2025.04.29 ~ 2025.06.11)
   {
     id: 3,
     title: "i-Mon",
@@ -87,31 +116,7 @@ export const PROJECTS = [
     report: "report/imon.pdf",
     color: ["#e6fff4", "#effff8"],
   },
-  {
-    id: 4,
-    title: "던데이",
-    desc: "일정 관리 프로그램",
-    type: "single",
-    duration: "2026.09.24 ~ 2026.09.26",
-    role: "개인 프로젝트 (전체 개발)",
-    tags: [
-      "React",
-      "CSS",
-      "JavaScript",
-      "Node.js",
-      "Visual Studio Code",
-      "Android Studio",
-    ],
-    github: "https://github.com/jflower52/todolist",
-    deploy: "https://todolist-ohj.web.app",
-    download:
-      "https://github.com/jflower52/DoneDay_APK/releases/download/v1.0.0/doneday.apk",
-    thumbImage: "img/doneday1.png",
-    image: "img/doneday2.png",
-    video: "",
-    report: "",
-    color: ["#fff2e6", "#fff8f0"],
-  },
+  // 5. 포켓몬 도감 (2025.04.17 ~ 2025.04.25)
   {
     id: 5,
     title: "포켓몬 도감",
@@ -128,6 +133,7 @@ export const PROJECTS = [
     report: "",
     color: ["#f2ebff", "#f8f5ff"],
   },
+  // 6. ArtB (2025.03.19 ~ 2025.04.02)
   {
     id: 6,
     title: "ArtB",
@@ -145,6 +151,7 @@ export const PROJECTS = [
     report: "",
     color: ["#e3efff", "#f0f5ff"],
   },
+  // 7. 카페 키오스크 (해커톤) (2024.08.21 ~ 2024.08.23)
   {
     id: 7,
     title: "카페 키오스크 (해커톤)",
@@ -161,27 +168,7 @@ export const PROJECTS = [
     report: "report/kiosk.pptx",
     color: ["#e6fff4", "#effff8"],
   },
-  {
-    id: 8,
-    title: "펫노프",
-    desc: "강아지 코 비문(지문) 인식 개발",
-    type: "team",
-    duration: "2023.11.07 ~ 2023.12.04",
-    role: "프론트엔드, 백엔드",
-    tags: ["Java Eclipse", "OpenCV", "MariaDB", "MySQL"],
-    github: "",
-    deploy: "",
-    download: "",
-    thumbImage: "img/petnof1.png",
-    image: "img/petnof2.png",
-    video: "",
-    report: [
-      { label: "PPT (처음) 보기 및 다운로드", file: "report/petnof1.pptx" },
-      { label: "PPT (중간) 보기 및 다운로드", file: "report/petnof2.pptx" },
-      { label: "PPT (마무리) 보기 및 다운로드", file: "report/petnof3.pptx" },
-    ],
-    color: ["#fff2e6", "#fff8f0"],
-  },
+  // 8. Emodiary (2024.03.02 ~ 2024.08.20)
   {
     id: 9,
     title: "Emodiary",
@@ -221,5 +208,27 @@ export const PROJECTS = [
       },
     ],
     color: ["#f2ebff", "#f8f5ff"],
+  },
+  // 9. 펫노프 (2023.11.07 ~ 2023.12.04)
+  {
+    id: 8,
+    title: "펫노프",
+    desc: "강아지 코 비문(지문) 인식 개발",
+    type: "team",
+    duration: "2023.11.07 ~ 2023.12.04",
+    role: "프론트엔드, 백엔드",
+    tags: ["Java Eclipse", "OpenCV", "MariaDB", "MySQL"],
+    github: "",
+    deploy: "",
+    download: "",
+    thumbImage: "img/petnof1.png",
+    image: "img/petnof2.png",
+    video: "",
+    report: [
+      { label: "PPT (처음) 보기 및 다운로드", file: "report/petnof1.pptx" },
+      { label: "PPT (중간) 보기 및 다운로드", file: "report/petnof2.pptx" },
+      { label: "PPT (마무리) 보기 및 다운로드", file: "report/petnof3.pptx" },
+    ],
+    color: ["#fff2e6", "#fff8f0"],
   },
 ];
