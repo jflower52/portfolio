@@ -52,19 +52,40 @@ export function initModals() {
 }
 
 /* ==========================================
+   [HELPER] 보고서 파일 경로 및 라벨 변환 함수
+========================================== */
+// PPT/PPTX 파일은 웹에서 즉시 미리보기가 가능하도록 MS Office 웹 뷰어 URL로 변환
+function getReportHref(filePath) {
+  const lower = filePath.toLowerCase();
+  if (lower.endsWith(".ppt") || lower.endsWith(".pptx")) {
+    const fileUrl = new URL(filePath, window.location.href).href;
+    return `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
+  }
+  return filePath;
+}
+
+// 확장자별 기본 링크 텍스트 반환
+function getDefaultReportLabel(filePath) {
+  const lower = filePath.toLowerCase();
+  if (lower.endsWith(".pdf")) return "PDF 보기 및 다운로드";
+  if (lower.endsWith(".ppt") || lower.endsWith(".pptx"))
+    return "PPT 보기 및 다운로드";
+  return "보고서 다운로드";
+}
+
+/* ==========================================
    [DATA BINDING] 프로젝트 상세 데이터 모달 바인딩
 ========================================== */
 export function openProjectModal(p) {
   const projectModal = document.getElementById("projectModal");
 
-  // 기본 텍스트 정보 매핑 (제목, 구분, 제작 기간)
+  // 기본 텍스트 및 태그 정보 바인딩
   document.getElementById("pm-title").textContent = p.title;
   document.getElementById("pm-type").textContent =
     p.type === "team" ? "팀 프로젝트" : "개인 프로젝트";
   document.getElementById("pm-duration").textContent =
     p.duration || "기간 미상";
 
-  // 담당 역할 영역 표시 여부 제어
   const roleWrapper = document.getElementById("pm-role-wrapper");
   if (p.role) {
     document.getElementById("pm-role").textContent = p.role;
@@ -73,7 +94,6 @@ export function openProjectModal(p) {
     roleWrapper.style.display = "none";
   }
 
-  // 사용 기술 스택 태그 동적 생성 및 바인딩 (XSS 방지 적용)
   const tagsContainer = document.getElementById("pm-tags");
   tagsContainer.innerHTML = p.tags
     .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
@@ -114,23 +134,33 @@ export function openProjectModal(p) {
     downWrapper.style.display = "none";
   }
 
-  // 보고서/발표자료 링크 제어 (PDF는 브라우저 뷰어, PPT/PPTX는 MS 오피스 웹 뷰어 연동)
+  // 보고서 파일 링크 제어 (단일 문자열 및 다중 배열 지원)
   const reportWrapper = document.getElementById("pm-report-wrapper");
-  if (p.report) {
-    const reportLink = document.getElementById("pm-report");
-    const lowerReport = p.report.toLowerCase();
+  if (Array.isArray(p.report) && p.report.length > 0) {
+    const linksHtml = p.report
+      .map((item) => {
+        const filePath = typeof item === "string" ? item : item.file;
+        const label =
+          typeof item === "string"
+            ? getDefaultReportLabel(item)
+            : item.label || getDefaultReportLabel(item.file);
+        const href = getReportHref(filePath);
+        return `<a href="${href}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+      })
+      .join("");
 
-    if (lowerReport.endsWith(".pdf")) {
-      reportLink.href = p.report;
-      reportLink.textContent = "PDF 보기 및 다운로드";
-    } else if (lowerReport.endsWith(".ppt") || lowerReport.endsWith(".pptx")) {
-      const fileUrl = new URL(p.report, window.location.href).href;
-      reportLink.href = `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(fileUrl)}`;
-      reportLink.textContent = "PPT 보기 및 다운로드";
-    } else {
-      reportLink.href = p.report;
-      reportLink.textContent = "보고서 다운로드";
-    }
+    reportWrapper.innerHTML = `
+      <strong>보고서</strong>
+      <div style="display:flex; flex-direction:column; gap:8px;">${linksHtml}</div>
+    `;
+    reportWrapper.style.display = "flex";
+  } else if (typeof p.report === "string" && p.report.trim() !== "") {
+    const href = getReportHref(p.report);
+    const label = getDefaultReportLabel(p.report);
+    reportWrapper.innerHTML = `
+      <strong>보고서</strong>
+      <a id="pm-report" href="${href}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>
+    `;
     reportWrapper.style.display = "flex";
   } else {
     reportWrapper.style.display = "none";

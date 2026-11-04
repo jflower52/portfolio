@@ -14,11 +14,10 @@
    - thumbImage : 목록 카드 전용 썸네일 경로 (생략 시 image 사용)
    - image      : 대표 이미지 경로 (모달 및 기본 썸네일)
    - video      : 시연 영상 경로 (존재 시 모달에서 최우선 재생)
-   - report     : 결과 보고서/발표자료 파일 경로 (PDF, PPTX)
+   - report     : 결과 보고서/발표자료 경로 (단일 문자열 또는 다중 객체 배열)
    - color      : 카드 테마 그라데이션 색상 배열
 ========================================== */
 export const PROJECTS = [
-  // 1. Good-Ping (팀 프로젝트)
   {
     id: 1,
     title: "Good-Ping",
@@ -35,8 +34,6 @@ export const PROJECTS = [
     report: "report/goodping.pdf",
     color: ["#e3efff", "#f0f5ff"],
   },
-
-  // 2. 오늘 한 빵 (팀 프로젝트)
   {
     id: 2,
     title: "오늘 한 빵",
@@ -62,8 +59,6 @@ export const PROJECTS = [
     report: "report/todayhanbbang.pptx",
     color: ["#ffeaf6", "#fff2fb"],
   },
-
-  // 3. i-Mon (팀 프로젝트)
   {
     id: 3,
     title: "i-Mon",
@@ -91,8 +86,6 @@ export const PROJECTS = [
     report: "report/imon.pdf",
     color: ["#e6fff4", "#effff8"],
   },
-
-  // 4. 던데이 (개인 프로젝트)
   {
     id: 4,
     title: "던데이",
@@ -118,8 +111,6 @@ export const PROJECTS = [
     report: "",
     color: ["#fff2e6", "#fff8f0"],
   },
-
-  // 5. 포켓몬 도감 (개인 프로젝트)
   {
     id: 5,
     title: "포켓몬 도감",
@@ -136,8 +127,6 @@ export const PROJECTS = [
     report: "",
     color: ["#f2ebff", "#f8f5ff"],
   },
-
-  // 6. ArtB (개인 프로젝트)
   {
     id: 6,
     title: "ArtB",
@@ -155,8 +144,6 @@ export const PROJECTS = [
     report: "",
     color: ["#e3efff", "#f0f5ff"],
   },
-
-  // 7. 카페 키오스크 (팀 프로젝트)
   {
     id: 7,
     title: "카페 키오스크 (해커톤)",
@@ -172,5 +159,26 @@ export const PROJECTS = [
     video: "",
     report: "report/kiosk.pptx",
     color: ["#e6fff4", "#effff8"],
+  },
+  {
+    id: 8,
+    title: "펫노프",
+    desc: "강아지 코 비문(지문) 인식 개발",
+    type: "team",
+    duration: "2023.11.07 ~ 2023.12.04",
+    role: "프론트엔드, 백엔드",
+    tags: ["Java Eclipse", "OpenCV", "MariaDB", "MySQL"],
+    github: "",
+    deploy: "",
+    download: "",
+    thumbImage: "img/petnof1.png",
+    image: "img/petnof2.png",
+    video: "",
+    report: [
+      { label: "PPT (처음) 보기 및 다운로드", file: "report/petnof1.pptx" },
+      { label: "PPT (중간) 보기 및 다운로드", file: "report/petnof2.pptx" },
+      { label: "PPT (마무리) 보기 및 다운로드", file: "report/petnof3.pptx" },
+    ],
+    color: ["#fff2e6", "#fff8f0"],
   },
 ];
