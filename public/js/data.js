@@ -11,9 +11,10 @@
    - github     : GitHub 저장소 URL
    - deploy     : 배포 사이트 URL (없을 시 빈 문자열)
    - download   : 설치 파일(APK 등) 다운로드 URL
+   - thumbVideo : 목록 카드 전용 자동재생 영상 경로 (생략 시 이미지 사용)
    - thumbImage : 목록 카드 전용 썸네일 경로 (생략 시 image 사용)
    - image      : 대표 이미지 경로 (모달 및 기본 썸네일)
-   - video      : 시연 영상 경로 (존재 시 모달에서 최우선 재생)
+   - video      : 시연 영상 경로 (존재 시 모달에서 최우선 자동재생)
    - report     : 결과 보고서/발표자료 경로 (단일 문자열 또는 다중 객체 배열)
    - color      : 카드 테마 그라데이션 색상 배열
 ========================================== */
@@ -180,5 +181,45 @@ export const PROJECTS = [
       { label: "PPT (마무리) 보기 및 다운로드", file: "report/petnof3.pptx" },
     ],
     color: ["#fff2e6", "#fff8f0"],
+  },
+  {
+    id: 9,
+    title: "Emodiary",
+    desc: "AI 다이어리 웹 플랫폼 개발",
+    type: "team",
+    duration: "2024.03.02 ~ 2024.08.20",
+    role: "프론트엔드, 백엔드",
+    tags: [
+      "HTML",
+      "CSS",
+      "JS",
+      "SpringBoot",
+      "Spring Data JPA",
+      "ORACLE",
+      "Gradle",
+      "AWS",
+      "ChatGPT",
+    ],
+    github: "",
+    deploy: "",
+    download: "",
+    thumbVideo: "video/emodiary.mp4",
+    image: "",
+    video: "video/emodiary.mp4",
+    report: [
+      {
+        label: "기획서 PPT 보기 및 다운로드",
+        file: "report/emodiary_plan.pptx",
+      },
+      {
+        label: "최종발표 PPT 보기 및 다운로드",
+        file: "report/emodiary_final.pptx",
+      },
+      {
+        label: "결과보고서 (HWP) 다운로드",
+        file: "report/emodiary_report.hwp",
+      },
+    ],
+    color: ["#f2ebff", "#f8f5ff"],
   },
 ];
